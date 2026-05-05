@@ -1,0 +1,51 @@
+[window.padding]
+x = 0
+y = 0
+[colors.primary]
+background = "#000000"
+foreground = "#e0e0e0"
+
+[colors.normal]
+black   = "#111111"
+red     = "#ff2e2e"
+green   = "#888888"
+yellow  = "#cc1f1f"
+blue    = "#666666"
+magenta = "#ff2e2e"
+cyan    = "#999999"
+white   = "#e0e0e0"
+
+[colors.bright]
+black   = "#444444"
+red     = "#ff4d4d"
+white   = "#ffffff"
+#JetBrains font and SizeControl
+[font]
+normal = { family = "JetBrains Mono", style = "Regular" }
+bold = { family = "JetBrains Mono", style = "Bold" }
+italic = { family = "JetBrains Mono", style = "Italic" }
+#font size control
+size = 11.0
+
+[[keyboard.bindings]]
+key = "Plus"
+mods = "Control"
+action = "IncreaseFontSize"
+
+[[keyboard.bindings]]
+key = "Minus"
+mods = "Control"
+action = "DecreaseFontSize"
+
+[[keyboard.bindings]]
+key = "Key0"
+mods = "Control"
+action = "ResetFontSize"
+
+#UnderLine Cursor
+[cursor]
+style = { shape = "Underline", blinking = "On" }
+thickness = 0.25
+
+[window]
+opacity = 0.5
