@@ -1,7 +1,8 @@
 sw_volume: 100
 audio_device_state:1:PulseAudio
-state: stop
-current: 5
+state: pause
+current: 2
+time: 195.907
 random: 1
 repeat: 0
 single: 0
@@ -19,4 +20,5 @@ playlist_begin
 5:Favorites/702_spotdown.org.mp3
 6:Favorites/Guess featuring billie eilish_spotdown.org.mp3
 7:Favorites/Goliya_spotdown.org.mp3
+8:Favorites/Ek_Tera_Pyar.mp3
 playlist_end

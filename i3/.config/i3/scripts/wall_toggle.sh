@@ -3,6 +3,7 @@
 # Your wallpapers
 WALLPAPERS=(
   "$HOME/Pictures/3.png"
+  "$HOME/Pictures/1.jpg"
   "$HOME/Pictures/6.jpg"
   "$HOME/Pictures/5.jpg"
   "$HOME/Pictures/4.jpg"

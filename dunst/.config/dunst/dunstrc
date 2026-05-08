@@ -1,14 +1,14 @@
 [global]
 monitor = 0
 follow = mouse
-width = 320
-height = 300
-offset = 15x40
+width = 340
+height = 120
+offset = 15x42
 origin = top-right
 scale = 0
 
 font = JetBrainsMono Nerd Font 10
-line_height = 0
+line_height = 2
 markup = full
 format = "<b>%s</b>\n%b"
 
@@ -31,32 +31,39 @@ sticky_history = yes
 history_length = 20
 
 browser = firefox
-
 always_run_script = true
 
+# =========================
+# Modern Style
+# =========================
+padding = 14
+horizontal_padding = 14
+separator_height = 0
+
 frame_width = 2
-separator_height = 2
-padding = 10
-horizontal_padding = 10
+corner_radius = 14
 
-corner_radius = 10
+# Keep this at 0 when using ARGB colors
+transparency = 0
 
-transparency = 10
+# =========================
+# Theme
+# =========================
 
 [urgency_low]
 timeout = 4
-background = "#111111"
-foreground = "#aaaaaa"
-frame_color = "#222222"
+background = "#111111cc"
+foreground = "#b8b8b8"
+frame_color = "#2a2a2a"
 
 [urgency_normal]
 timeout = 6
-background = "#111111"
+background = "#111111aa"
 foreground = "#ffffff"
-frame_color = "#ff0000"
+frame_color = "#c1121f"
 
 [urgency_critical]
 timeout = 0
-background = "#111111"
+background = "#1a0d0fcc"
 foreground = "#ffffff"
-frame_color = "#ff0000"
+frame_color = "#ff3b4d"

@@ -15,10 +15,11 @@ exec_always --no-startup-id picom --backend glx --config ~/.config/picom/picom.c
 exec_always --no-startup-id autotiling
 
 #Polybar and Bind to close polybar
+exec_always --no-startup-id sh -c "killall -q polybar; sleep 1; polybar main &"
 bindsym --release $mod+Shift+p exec --no-startup-id ~/.config/polybar/toggle.sh
 
 #Wallpaper
-exec_always --no-startup-id feh --bg-fill ~/Pictures/3.png
+exec_always --no-startup-id feh --bg-fill ~/Pictures/1.jpg
 bindsym Mod1+Shift+w exec ~/.config/i3/scripts/wall_toggle.sh
 
 #Screenshot Bind
@@ -55,8 +56,8 @@ bindsym --release $mod+Shift+m exec ~/.config/i3/scripts/auto_mute.sh
 exec_always xinput set-prop 16 "libinput Tapping Enabled" 1
 exec_always --no-startup-id xinput set-prop 16 "libinput Natural Scrolling Enabled" 1
 
-#i3 lock
-exec --no-startup-id ~/.config/i3/scripts/lock.sh
+# i3 lock
+exec --no-startup-id sh -c "sleep 1 && ~/.config/i3/scripts/lock.sh"
 exec --no-startup-id xidlehook \
   --not-when-audio \
   --not-when-fullscreen \
@@ -76,13 +77,14 @@ for_window [title="scratchpad"] move scratchpad
 bindsym --release $mod+shift+b exec --no-startup-id ~/.config/i3/scripts/bt-toggle.sh
 
 #mpd music player
+exec --no-startup-id ~/.config/i3/scripts/mpd_boot_fix.sh
 bindsym --release F8 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh toggle
 bindsym --release F5 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh prev
 bindsym --release F6 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh next
-bindsym --release F9 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh stop
-bindsym --release Shift+F9 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh update
-bindsym --release Mod1+shift+f exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh fav
-bindsym --release Mod1+shift+d exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh trash
+bindsym --release Shift+F9 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh stop
+bindsym --release F9 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh update
+bindsym --release Mod1+Shift+f exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh fav
+bindsym --release Mod1+Shift+d exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh trash
 bindsym --release F7 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh cycle
 bindsym --release Shift+F7 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh cycle_prev
 bindsym --release Shift+F6 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh forward
@@ -101,7 +103,7 @@ default_border pixel 2
 default_floating_border pixel 2
 gaps inner 4 
 gaps outer 5    
-smart_gaps on
+smart_gaps off
 smart_borders on
 
 
@@ -121,12 +123,12 @@ set $gray       #444444
 
 
 #Volume binds
-bindsym F2 exec pactl set-sink-volume @DEFAULT_SINK@ -10%
-bindsym F3 exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym F2 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym F3 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym F4 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 #Brightness binds
-bindsym Mod1+F2 exec brightnessctl set 1%-
-bindsym Mod1+F3 exec brightnessctl set +1%
+bindsym Mod1+F2 exec brightnessctl set 5%-
+bindsym Mod1+F3 exec brightnessctl set +5%
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -135,8 +137,8 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym --release Mod1+t exec alacritty
-bindsym --release Mod1+Shift+t exec kitty
+bindsym --release Mod1+t exec kitty
+bindsym --release Mod1+Shift+t exec alacritty
 
 # kill focused window
 bindsym --release $mod+Shift+q kill
@@ -251,12 +253,6 @@ bindsym --release $mod+grave exec --no-startup-id ~/.config/i3/scripts/toggle_ws
 bindsym --release $mod+n workspace next
 bindsym --release $mod+p workspace prev
 
-#Assig Apps to Window
-bindsym --release Mod1+w exec ~/.config/i3/scripts/whatsapp.sh
-for_window [class="Brave-browser" instance="music.apple.com"] move container to workspace "music"
-for_window [class="Brave-browser" instance="web.whatsapp.com"] move container to workspace "whatsapp"
-bindsym --release Mod1+Shift+a exec ~/.config/i3/scripts/applemusic.sh
-
 #resizing
 bindsym $mod+Ctrl+h resize grow width 10 px or 5 ppt
 bindsym $mod+Ctrl+j resize shrink height 10 px or 5 ppt
@@ -269,33 +265,45 @@ bindsym $mod+Down resize shrink height 1 px or 1 ppt
 bindsym $mod+Up resize grow height 1 px or 1 ppt
 bindsym $mod+Right resize shrink width 1 px or 1 ppt   
 
+
 #MY Application binds
 bindsym --release Mod1+b exec helium-browser
 bindsym --release Mod1+Shift+b exec helium-browser --incognito
 bindsym --release Mod1+e exec kitty -e yazi
-bindsym --release Print exec --no-startup-id ~/.config/i3/scripts/dsa_mode.sh
+bindsym --release Mod1+Shift+l exec kitty -e nvim +"Leet"
 bindsym --release F10 exec thunderbird
+bindsym --release Mod1+r exec localsend
 bindsym --release Mod1+4 exec alacritty -e toofan
-bindsym --release Mod1+d exec kitty -e discordo
+bindsym --release Mod1+d exec alacritty -e discordo
+bindsym --release Mod1+q exec kitty -e btop
 bindsym --release $mod+Shift+s exec --no-startup-id ~/.config/i3/scripts/ss_window.sh
 
 #Code Editors
 bindsym --release Mod1+0 exec code
-bindsym --release Mod1+8 exec antigravity 
-bindsym --release Mod1+9 exec cursor 
+bindsym --release Mod1+8 exec antigravity
+bindsym --release Mod1+9 exec cursor
 bindsym --release Mod1+n exec kitty -e nvim
+bindsym --release Mod1+v exec kitty -e vim ~/Notes/todo
 
 #PWA binds
 bindsym --release Mod1+1 exec helium-browser --app="https://monkeytype.com"
 bindsym --release Mod1+2 exec helium-browser --app="https://keybr.com"
 bindsym --release Mod1+3 exec helium-browser --app="https://www.typingclub.com"
-bindsym --release Mod1+z exec helium-browser --app="https://leetcode.com/problemset"
-bindsym --release Mod1+x exec helium-browser --app="https://neetcode.io"
-bindsym --release Mod1+c exec brave --app="https://chatgpt.com"
+bindsym --release Mod1+c exec helium-browser --app="https://chatgpt.com"
 bindsym --release Mod1+Shift+c exec helium-browser --app="https://lichess.org/"
-bindsym --release Mod1+a xec brave --app="https://9anime.org.lv"
-bindsym --release Mod1+Shift+n exec brave --app="https://net20.cc"
-bindsym --release Mod1+y exec brave --app="https://youtube.com"
+bindsym --release Mod1+a exec helium-browser --app="https://9anime.org.lv/bookmark/"
+bindsym --release Mod1+Shift+n exec helium-browser --app="https://net20.cc"
+bindsym --release Mod1+y exec helium-browser --app="https://youtube.com"
+bindsym --release Mod1+z exec helium-browser --app="https://leetcode.com/problemset"
+bindsym --release Mod1+g exec helium-browser --app="https://mail.proton.me/u/0/inbox"
+
+
+#Assig Apps to Window
+bindsym --release Mod1+w exec ~/.config/i3/scripts/whatsapp.sh
+bindsym --release Mod1+Shift+a exec ~/.config/i3/scripts/applemusic.sh
+for_window [class="Brave-browser" instance="music.apple.com"] move container to workspace "music"
+for_window [class="Brave-browser" instance="web.whatsapp.com"] move container to workspace "whatsapp"
+
 
 #timer
 #to stop Pad
@@ -303,7 +311,6 @@ bindsym --release Mod1+y exec brave --app="https://youtube.com"
 #i3 bar toggle
 #exec_always exec --no-startup-id hidden_state 
 #bindsym $mod+Shift+b exec --no-startup-id ~/.config/i3/scripts/toggle_bar.sh
-#i3blocks Setting
 #bar {
 #   status_command i3blocks
 #   position top

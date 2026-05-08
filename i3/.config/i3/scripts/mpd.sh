@@ -13,12 +13,31 @@ is_mpd_running() {
 }
 
 start_mpd() {
+
+  # fully kill old restored session
+  pkill -9 -x mpd >/dev/null 2>&1
+
+  sleep 1
+
+  # remove saved playback state
+  rm -f "$HOME/.config/mpd/state"
+
+  # start fresh daemon
   mpd "$CONFIG"
-  sleep 0.5
+
+  sleep 1
+
+  # ensure silent startup
+  mpc stop >/dev/null 2>&1
+
+  # preload favorites
+  mpc clear >/dev/null 2>&1
+  mpc add "Favorites" >/dev/null 2>&1
+  mpc random on >/dev/null 2>&1
 }
 
-# 🔒 Block everything except "stop" and "fzf" if MPD not running
-if ! is_mpd_running && [[ "$1" != "stop" && "$1" != "fzf" ]]; then
+# 🔒 Block everything except "stop" if MPD not running
+if ! is_mpd_running && [[ "$1" != "stop" ]]; then
   exit
 fi
 
@@ -26,21 +45,25 @@ CMD="$1"
 shift
 
 case "$CMD" in
+
 # ───────── BASIC CONTROLS ─────────
+
 play)
-  mpc play && notify "Play"
+  mpc play
   ;;
 
 pause)
-  mpc pause && notify "Paused"
+  mpc pause
   ;;
 
 toggle)
+
   STATUS=$(mpc status | grep -o "\[.*\]" | tr -d '[]')
+
   if [ "$STATUS" = "playing" ]; then
-    mpc pause && notify "Paused"
+    mpc pause
   else
-    mpc play && notify "Playing"
+    mpc play
   fi
   ;;
 
@@ -53,32 +76,53 @@ prev)
   ;;
 
 # ───────── POWER BUTTON ─────────
+
 stop)
+
   if is_mpd_running; then
-    mpc stop
-    pkill -x mpd
+
+    # stop playback
+    mpc stop >/dev/null 2>&1
+
+    sleep 0.5
+
+    # kill daemon
+    pkill -TERM -x mpd
+
+    # wait until fully closed
+    while pgrep -x mpd >/dev/null; do
+      sleep 0.1
+    done
+
+    # remove playback restore state
+    rm -f "$HOME/.config/mpd/state"
+
     notify "MPD stopped"
+
   else
+
     start_mpd
-    mpc clear
-    mpc add "Favorites"
-    mpc random on
-    mpc play
-    notify "MPD started"
+
+    notify "MPD Loaded"
+
   fi
   ;;
 
 # ───────── DATABASE ─────────
+
 update)
   mpc update && notify "Database updated"
   ;;
 
 # ───────── FAVORITES ─────────
+
 fav)
+
   FILE=$(mpc --format %file% current)
   SRC="$MUSIC_DIR/$FILE"
 
   mkdir -p "$MUSIC_DIR/Favorites"
+
   BASENAME=$(basename "$FILE")
 
   if [ -e "$MUSIC_DIR/Favorites/$BASENAME" ]; then
@@ -87,28 +131,45 @@ fav)
   fi
 
   cp "$SRC" "$MUSIC_DIR/Favorites/"
+
   notify "Added to Favorites"
   ;;
 
 # ───────── TRASH ─────────
+
 trash)
+
   FILE=$(mpc --format %file% current)
+
   gio trash "$MUSIC_DIR/$FILE"
+
   mpc next
   mpc update
+
   notify "Moved to Trash"
   ;;
 
 # ───────── FOLDER CYCLING ─────────
+
 cycle | cycle_next)
-  mapfile -t FOLDERS < <(find "$MUSIC_DIR" -mindepth 1 -maxdepth 1 -type d | sort)
+
+  mapfile -t FOLDERS < <(
+    find "$MUSIC_DIR" \
+      -mindepth 1 \
+      -maxdepth 1 \
+      -type d | sort
+  )
+
   TOTAL=${#FOLDERS[@]}
+
   [ "$TOTAL" -eq 0 ] && exit
 
   INDEX=0
+
   [ -f "$STATE_FILE" ] && INDEX=$(cat "$STATE_FILE")
 
   INDEX=$(((INDEX + 1) % TOTAL))
+
   echo "$INDEX" >"$STATE_FILE"
 
   FOLDER=$(basename "${FOLDERS[$INDEX]}")
@@ -122,14 +183,24 @@ cycle | cycle_next)
   ;;
 
 cycle_prev)
-  mapfile -t FOLDERS < <(find "$MUSIC_DIR" -mindepth 1 -maxdepth 1 -type d | sort)
+
+  mapfile -t FOLDERS < <(
+    find "$MUSIC_DIR" \
+      -mindepth 1 \
+      -maxdepth 1 \
+      -type d | sort
+  )
+
   TOTAL=${#FOLDERS[@]}
+
   [ "$TOTAL" -eq 0 ] && exit
 
   INDEX=0
+
   [ -f "$STATE_FILE" ] && INDEX=$(cat "$STATE_FILE")
 
   INDEX=$(((INDEX - 1 + TOTAL) % TOTAL))
+
   echo "$INDEX" >"$STATE_FILE"
 
   FOLDER=$(basename "${FOLDERS[$INDEX]}")
@@ -141,29 +212,42 @@ cycle_prev)
 
   notify "Playing: $FOLDER"
   ;;
+
 # ───────── SEEK CONTROLS ─────────
+
 forward)
-  mpc seek +10 >/dev/null && notify "⏩ +10s"
+  mpc seek +10 >/dev/null
   ;;
 
 backward)
-  mpc seek -10 >/dev/null && notify "⏪ -10s"
+  mpc seek -10 >/dev/null
   ;;
+
 # ───────── REPEAT ONE TOGGLE ─────────
+
 repeat_one)
+
   STATUS=$(mpc status)
 
-  if echo "$STATUS" | grep -q "repeat: on" && echo "$STATUS" | grep -q "single: on"; then
+  if echo "$STATUS" | grep -q "repeat: on" &&
+    echo "$STATUS" | grep -q "single: on"; then
+
     mpc repeat off
     mpc single off
+
     notify "Repeat One: OFF"
+
   else
+
     mpc repeat on
     mpc single on
+
     notify "Repeat One: ON"
   fi
   ;;
+
 *)
   exit
   ;;
+
 esac

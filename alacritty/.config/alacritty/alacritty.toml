@@ -1,31 +1,46 @@
 [window.padding]
 x = 0
 y = 0
+
 [colors.primary]
 background = "#000000"
-foreground = "#e0e0e0"
+foreground = "#ffffff"   # brighter default text
 
 [colors.normal]
-black   = "#111111"
-red     = "#ff2e2e"
-green   = "#888888"
-yellow  = "#cc1f1f"
-blue    = "#666666"
-magenta = "#ff2e2e"
-cyan    = "#999999"
-white   = "#e0e0e0"
+black   = "#1a1a1a"
+red     = "#ff4d4d"
+green   = "#c0c0c0"
+yellow  = "#ff6666"
+blue    = "#a0a0a0"
+magenta = "#ff7575"
+cyan    = "#d0d0d0"
+white   = "#ffffff"
 
 [colors.bright]
-black   = "#444444"
-red     = "#ff4d4d"
+black   = "#555555"
+red     = "#ff8080"
+green   = "#ffffff"
+yellow  = "#ff9999"
+blue    = "#d9d9d9"
+magenta = "#ffb3b3"
+cyan    = "#ffffff"
 white   = "#ffffff"
+
 #JetBrains font and SizeControl
 [font]
-normal = { family = "JetBrains Mono", style = "Regular" }
-bold = { family = "JetBrains Mono", style = "Bold" }
-italic = { family = "JetBrains Mono", style = "Italic" }
-#font size control
-size = 11.0
+size = 10.25
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Italic"
 
 [[keyboard.bindings]]
 key = "Plus"
@@ -48,4 +63,4 @@ style = { shape = "Underline", blinking = "On" }
 thickness = 0.25
 
 [window]
-opacity = 0.5
+opacity = 0.6

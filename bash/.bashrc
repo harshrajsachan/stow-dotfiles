@@ -131,6 +131,7 @@ alias config="nvim ~/.config/i3/config"
 alias bashrc="nvim ~/.bashrc"
 alias reload="source ~/.bashrc"
 alias clr="clear"
+alias ff="fastfetch"
 alias scripts="cd ~/.config/i3/scripts"
 alias install="sudo pacman -S"
 alias update="sudo pacman -Syu"
@@ -142,6 +143,8 @@ alias wifi="bash ~/.config/i3/scripts/wifi.sh"
 alias bt="bash ~/.config/i3/scripts/bt.sh"
 alias music="ncmpcpp"
 alias nvimlc='NVIM_APPNAME=nvim-2 nvim'
+alias home="cd ~/"
+alias neovim="nvim"
 
 #Bash directory color and icon
 PS1='\[\e[38;5;160m\] $( [[ "$PWD" == "$HOME" ]] && echo   || echo "${PWD#$HOME/}" )\[\e[0m\]  ❯ '
@@ -158,4 +161,3 @@ ex=38;5;46:\
 tw=38;5;196:\
 ow=38;5;196:\
 st=38;5;196"
-export DISCORDO_TOKEN=""
