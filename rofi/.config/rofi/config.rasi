@@ -1,0 +1,269 @@
+/* =====================================================
+ * Compact Sakura Noir Rofi Theme
+ * Transparent + Wallpaper Matched
+ * ===================================================== */
+
+* {
+    /* ===== Wallpaper Palette ===== */
+
+    rosewater: #ff7a93;
+    flamingo:  #ff5c7a;
+    pink:      #ff4d73;
+    mauve:     #d14b74;
+
+    red:       #c23a63;
+    maroon:    #8f2748;
+    peach:     #ff8a5b;
+
+    text:      #f2f2f2;
+    subtext1:  #c9c9c9;
+    subtext0:  #a0a0a0;
+
+    overlay2:  #7a7a7a;
+    overlay1:  #5f5f5f;
+    overlay0:  #444444;
+
+    surface2:  #2b1c22;
+    surface1:  #1a1418;
+    surface0:  #111114;
+
+    base:      #0b0b0bcc;
+    mantle:    #090909cc;
+    crust:     #050505cc;
+
+    /* ===== Theme Mapping ===== */
+
+    background:                  transparent;
+    background-color:            transparent;
+
+    foreground:                  @text;
+    lightfg:                     @text;
+
+    normal-background:           rgba(10,10,10,0.72);
+    normal-foreground:           @foreground;
+
+    alternate-normal-background: rgba(16,16,16,0.55);
+    alternate-normal-foreground: @foreground;
+
+    selected-normal-background:  rgba(194,58,99,0.92);
+    selected-normal-foreground:  #ffffff;
+
+    active-background:           rgba(194,58,99,0.18);
+    active-foreground:           @pink;
+
+    urgent-background:           rgba(255,60,90,0.18);
+    urgent-foreground:           #ff6b8c;
+
+    selected-active-background:  @red;
+    selected-active-foreground:  #ffffff;
+
+    selected-urgent-background:  #ff4d73;
+    selected-urgent-foreground:  #ffffff;
+
+    alternate-active-background: @surface0;
+    alternate-active-foreground: @pink;
+
+    alternate-urgent-background: @surface0;
+    alternate-urgent-foreground: #ff6b8c;
+
+    border-color:                rgba(255,77,115,0.50);
+    separatorcolor:              rgba(255,77,115,0.25);
+
+    spacing: 3;
+}
+
+/* =====================================================
+ * Window
+ * ===================================================== */
+
+window {
+    transparency: "real";
+    location: center;
+
+    width: 520;
+
+    border: 2px;
+    border-radius: 16px;
+    border-color: @border-color;
+
+    background-color: rgba(8,8,8,0.72);
+
+    padding: 12px;
+}
+
+/* =====================================================
+ * Main Layout
+ * ===================================================== */
+
+mainbox {
+    border: 0;
+    padding: 0;
+    spacing: 8px;
+}
+
+/* =====================================================
+ * Input Bar
+ * ===================================================== */
+
+inputbar {
+    background-color: rgba(20,20,20,0.70);
+
+    border: 1px;
+    border-radius: 12px;
+    border-color: rgba(255,77,115,0.22);
+
+    padding: 8px 12px;
+    spacing: 8px;
+
+    children: [
+        "prompt",
+        "entry"
+    ];
+}
+
+prompt {
+    text-color: @pink;
+    font: "JetBrainsMono Nerd Font Bold 10";
+}
+
+entry {
+    background-color: transparent;
+    text-color: @text;
+
+    font: "JetBrainsMono Nerd Font 10";
+
+    placeholder: "Search...";
+    placeholder-color: @overlay2;
+}
+
+/* =====================================================
+ * List View
+ * ===================================================== */
+
+listview {
+    background-color: transparent;
+
+    border: 0;
+    scrollbar: false;
+
+    lines: 6;
+    columns: 1;
+
+    spacing: 6px;
+    cycle: true;
+    dynamic: true;
+
+    padding: 2px;
+}
+
+/* =====================================================
+ * Elements
+ * ===================================================== */
+
+element {
+    padding: 8px 10px;
+    spacing: 8px;
+
+    border: 0;
+    border-radius: 12px;
+
+    background-color: transparent;
+    text-color: @foreground;
+
+    cursor: pointer;
+}
+
+element normal.normal {
+    background-color: rgba(18,18,18,0.45);
+    text-color: @foreground;
+}
+
+element selected.normal {
+    background-color: rgba(194,58,99,0.92);
+    text-color: #ffffff;
+}
+
+element normal.active {
+    background-color: rgba(194,58,99,0.12);
+    text-color: @pink;
+}
+
+element selected.active {
+    background-color: rgba(194,58,99,0.95);
+    text-color: #ffffff;
+}
+
+element normal.urgent {
+    background-color: rgba(255,70,100,0.12);
+    text-color: #ff6b8c;
+}
+
+element selected.urgent {
+    background-color: #ff4d73;
+    text-color: #ffffff;
+}
+
+/* =====================================================
+ * Text / Icons
+ * ===================================================== */
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    cursor: inherit;
+
+    font: "JetBrainsMono Nerd Font 10";
+
+    vertical-align: 0.5;
+}
+
+element-icon {
+    background-color: transparent;
+
+    size: 1em;
+    cursor: inherit;
+}
+
+/* =====================================================
+ * Scrollbar
+ * ===================================================== */
+
+scrollbar {
+    width: 4px;
+    border: 0;
+
+    handle-width: 8px;
+    padding: 0;
+
+    handle-color: rgba(255,77,115,0.65);
+}
+
+/* =====================================================
+ * Message Box
+ * ===================================================== */
+
+message {
+    border: 0;
+    border-radius: 12px;
+
+    background-color: rgba(20,20,20,0.55);
+
+    padding: 10px;
+}
+
+textbox {
+    text-color: @foreground;
+}
+
+/* =====================================================
+ * Modes
+ * ===================================================== */
+
+configuration {
+    modi: "drun,run,window,ssh";
+    show-icons: true;
+    display-drun: "󰀻 Apps";
+    display-run: " Run";
+    display-window: " Window";
+    display-ssh: "󰣀 SSH";
+}
