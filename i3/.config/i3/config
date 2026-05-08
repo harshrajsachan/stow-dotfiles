@@ -16,7 +16,7 @@ exec_always --no-startup-id autotiling
 
 #Polybar and Bind to close polybar
 exec_always --no-startup-id sh -c "killall -q polybar; sleep 1; polybar main &"
-bindsym --release $mod+Shift+p exec --no-startup-id ~/.config/polybar/toggle.sh
+bindsym --release $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/polybar_toggle.sh
 
 #Wallpaper
 exec_always --no-startup-id feh --bg-fill ~/Pictures/1.jpg
