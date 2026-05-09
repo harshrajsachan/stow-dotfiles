@@ -142,9 +142,9 @@ alias ....="cd ../../.."
 alias wifi="bash ~/.config/i3/scripts/wifi.sh"
 alias bt="bash ~/.config/i3/scripts/bt.sh"
 alias music="ncmpcpp"
-alias nvimlc='NVIM_APPNAME=nvim-2 nvim'
 alias home="cd ~/"
 alias neovim="nvim"
+alias ffk="fastfetch -c ~/.config/fastfetch/alacritty.jsonc"
 
 #Bash directory color and icon
 PS1='\[\e[38;5;160m\] $( [[ "$PWD" == "$HOME" ]] && echo   || echo "${PWD#$HOME/}" )\[\e[0m\]  ❯ '
@@ -161,3 +161,8 @@ ex=38;5;46:\
 tw=38;5;196:\
 ow=38;5;196:\
 st=38;5;196"
+if [[ $TERM == "xterm-kitty" ]]; then
+  fastfetch -c ~/.config/fastfetch/kitty.jsonc
+else
+  fastfetch -c ~/.config/fastfetch/alacritty.jsonc
+fi
