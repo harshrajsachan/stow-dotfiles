@@ -25,6 +25,9 @@ bindsym Mod1+Shift+w exec ~/.config/i3/scripts/wall_toggle.sh
 #Screenshot Bind
 bindsym Mod1+s exec --no-startup-id flameshot gui -p ~/Screenshots -c
 
+#Screen Recording
+bindsym Mod1+Shift+r exec --no-startup-id ~/.config/i3/scripts/record_toggle.sh
+
 #redshift
 exec_always --no-startup-id pkill redshift; redshift -O 4000 -P
 bindsym $mod+Shift+Up exec "redshift -O 4000"
@@ -279,7 +282,7 @@ bindsym --release Mod1+q exec kitty -e btop
 bindsym --release $mod+Shift+s exec --no-startup-id ~/.config/i3/scripts/ss_window.sh
 
 #Code Editors
-bindsym --release Mod1+0 exec code
+bindsym --release Mod1+Shift+v exec code
 bindsym --release Mod1+8 exec antigravity
 bindsym --release Mod1+9 exec cursor
 bindsym --release Mod1+n exec kitty -e nvim
@@ -295,7 +298,7 @@ bindsym --release Mod1+a exec helium-browser --app="https://9anime.org.lv/bookma
 bindsym --release Mod1+Shift+n exec helium-browser --app="https://net20.cc"
 bindsym --release Mod1+y exec helium-browser --app="https://youtube.com"
 bindsym --release Mod1+z exec helium-browser --app="https://leetcode.com/problemset"
-bindsym --release Mod1+g exec helium-browser --app="https://mail.proton.me/u/0/inbox"
+bindsym --release Mod1+g exec helium-browser --app="https://github.com"
 
 
 #Assig Apps to Window
