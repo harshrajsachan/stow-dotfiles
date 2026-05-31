@@ -15,8 +15,9 @@ exec_always --no-startup-id picom --backend glx --config ~/.config/picom/picom.c
 exec_always --no-startup-id autotiling
 
 #Polybar and Bind to close polybar
-exec_always --no-startup-id sh -c "killall -q polybar; sleep 1; polybar main &"
-bindsym --release $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/polybar_toggle.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+bindsym --release Mod1+Shift+p exec --no-startup-id ~/.config/i3/scripts/polybar_toggle.sh
+bindsym $mod+shift+p exec --no-startup-id ~/.config/polybar/toggle_position.sh
 
 #Wallpaper
 exec_always --no-startup-id feh --bg-fill ~/Pictures/1.jpg
@@ -61,11 +62,8 @@ exec_always --no-startup-id xinput set-prop 16 "libinput Natural Scrolling Enabl
 
 # i3 lock
 exec --no-startup-id sh -c "sleep 1 && ~/.config/i3/scripts/lock.sh"
-exec --no-startup-id xidlehook \
-  --not-when-audio \
-  --not-when-fullscreen \
-  --timer 300 '~/.config/i3/scripts/lock.sh' ''
-bindsym --release $mod+Shift+x exec --no-startup-id ~/.config/i3/scripts/lock.sh
+exec --no-startup-id xautolock -time 5 -locker "/home/harsh/.config/i3/scripts/lock.sh"
+bindsym $mod+Shift+x exec --no-startup-id /home/harsh/.config/i3/scripts/lock.sh
 
 #emoji
 bindsym Mod1+Shift+e exec --no-startup-id rofi -show emoji
@@ -104,11 +102,11 @@ bindsym --release $mod+Shift+r restart
 #Windows Setting and Colours
 default_border pixel 2
 default_floating_border pixel 2
-gaps inner 4 
-gaps outer 5    
+gaps inner 4
+gaps outer 8
 smart_gaps off
 smart_borders on
-
+bindsym --release Mod1+Shift+q exec --no-startup-id ~/.config/i3/scripts/gap.sh
 
 # Focused window (ACTIVE TAB)
 client.focused          $red $red #ffffff $red $red
@@ -142,6 +140,7 @@ tiling_drag modifier titlebar
 # start a terminal
 bindsym --release Mod1+t exec kitty
 bindsym --release Mod1+Shift+t exec alacritty
+bindsym --release $mod+Return exec alacritty
 
 # kill focused window
 bindsym --release $mod+Shift+q kill
@@ -271,15 +270,16 @@ bindsym $mod+Right resize shrink width 1 px or 1 ppt
 
 #MY Application binds
 bindsym --release Mod1+b exec helium-browser
+bindsym --release Mod1+Shift+g exec gtk-launch tekken3 
 bindsym --release Mod1+Shift+b exec helium-browser --incognito
 bindsym --release Mod1+e exec kitty -e yazi
 bindsym --release Mod1+Shift+l exec kitty -e nvim +"Leet"
-bindsym --release F10 exec thunderbird
 bindsym --release Mod1+r exec localsend
 bindsym --release Mod1+4 exec alacritty -e toofan
 bindsym --release Mod1+d exec alacritty -e discordo
 bindsym --release Mod1+q exec kitty -e btop
 bindsym --release $mod+Shift+s exec --no-startup-id ~/.config/i3/scripts/ss_window.sh
+bindsym --release Mod1+5 exec --no-startup-id ~/.config/i3/scripts/typing-mode.sh
 
 #Code Editors
 bindsym --release Mod1+Shift+v exec code
@@ -331,3 +331,9 @@ for_window [class="Brave-browser" instance="web.whatsapp.com"] move container to
 #       inactive_workspace #6c7086 #1e1e2e #6c7086
 #       urgent_workspace   #f38ba8 #1e1e2e #f38ba8
 
+bindsym Mod1+o exec --no-startup-id ~/.config/i3/scripts/opacity.sh up
+bindsym Mod1+shift+o exec --no-startup-id ~/.config/i3/scripts/opacity.sh down
+bindsym $mod+Shift+o exec --no-startup-id ~/.config/i3/scripts/opacity.sh reset
+for_window [class="python3"] floating enable
+#include ~/.themes/current/i3.conf
+bindsym F1 exec ~/.config/i3/scripts/music-mode.sh

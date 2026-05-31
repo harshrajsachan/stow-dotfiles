@@ -1,23 +1,31 @@
-i3lock --blur 7x5 --clock --indicator \
+#!/bin/bash
+
+/usr/bin/i3lock \
+  --blur 7x5 \
+  --clock \
+  --indicator \
   --time-str="%H:%M:%S" \
   --date-str="%A, %d %B" \
-  \
-  --inside-color=00000088 \
-  --ring-color=ff0000aa \
+  --inside-color=111111aa \
+  --ring-color=ff2d55cc \
   --line-color=00000000 \
   --separator-color=00000000 \
-  \
-  --keyhl-color=ff4444ff \
-  --bshl-color=ff0000ff \
-  \
-  --insidever-color=00000088 \
-  --insidewrong-color=00000088 \
-  --ringver-color=ff0000aa \
-  --ringwrong-color=ff0000aa \
-  \
+  --insidever-color=111111aa \
+  --insidewrong-color=111111aa \
+  --ringver-color=ff4d6dcc \
+  --ringwrong-color=ff2d55cc \
+  --keyhl-color=ff6b81ff \
+  --bshl-color=ff2d55ff \
   --time-color=ffffffff \
-  --date-color=ff4444ff \
-  --layout-color=ffffffff \
-  \
-  --verif-color=ff4444ff \
-  --wrong-color=ff0000ff
+  --date-color=ff4d6dff \
+  --layout-color=ddddddff \
+  --verif-color=ff6b81ff \
+  --wrong-color=ff2d55ff \
+  --radius=90 \
+  --ring-width=8 \
+  --time-font="JetBrainsMono Nerd Font SemiBold" \
+  --date-font="JetBrainsMono Nerd Font" \
+  --layout-font="JetBrainsMono Nerd Font" \
+  --time-size=32 \
+  --date-size=14 \
+  --layout-size=11

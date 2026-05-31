@@ -1,0 +1,48 @@
+{
+    "type": "con",
+    "layout": "splith",
+    "nodes": [
+        {
+            "type": "con",
+            "layout": "splitv",
+            "percent": 0.5,
+            "nodes": [
+                {
+                    "swallows": [
+                        {
+                            "title": "^Monkeytype \\| A minimalistic, customizable typing test$"
+                        }
+                    ]
+                },
+                {
+                    "swallows": [
+                        {
+                            "title": "^Learn Touch Typing Free - TypingClub$"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "con",
+            "layout": "splitv",
+            "percent": 0.5,
+            "nodes": [
+                {
+                    "swallows": [
+                        {
+                            "title": "^Practice$"
+                        }
+                    ]
+                },
+                {
+                    "swallows": [
+                        {
+                            "class": "^Alacritty$"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -134,6 +134,7 @@ alias clr="clear"
 alias ff="fastfetch"
 alias scripts="cd ~/.config/i3/scripts"
 alias install="sudo pacman -S"
+alias stop="killall"
 alias update="sudo pacman -Syu"
 alias remove="sudo pacman -Rns"
 alias ..="cd .."
@@ -144,10 +145,9 @@ alias bt="bash ~/.config/i3/scripts/bt.sh"
 alias music="ncmpcpp"
 alias home="cd ~/"
 alias neovim="nvim"
-alias ffk="fastfetch -c ~/.config/fastfetch/alacritty.jsonc"
 
 #Bash directory color and icon
-PS1='\[\e[38;5;160m\] $( [[ "$PWD" == "$HOME" ]] && echo   || echo "${PWD#$HOME/}" )\[\e[0m\]  ❯ '
+PS1='\[\e[38;5;160m\]  $( [[ "$PWD" == "$HOME" ]] && echo   || echo "${PWD#$HOME/}" )\[\e[0m\]  ❯ '
 export LS_COLORS="\
 di=38;5;196:\
 fi=38;5;250:\
@@ -161,8 +161,7 @@ ex=38;5;46:\
 tw=38;5;196:\
 ow=38;5;196:\
 st=38;5;196"
-if [[ $TERM == "xterm-kitty" ]]; then
-  fastfetch -c ~/.config/fastfetch/kitty.jsonc
-else
-  fastfetch -c ~/.config/fastfetch/alacritty.jsonc
-fi
+
+fastfetch -c ~/.config/fastfetch/config.jsonc
+alias duck='~/.local/bin/appimages/DuckStation-x64.AppImage'
+alias yt='yt-dlp -P ~/Videos/YouTube -o "%(playlist)s/%(title)s.%(ext)s" -f bestvideo+bestaudio'

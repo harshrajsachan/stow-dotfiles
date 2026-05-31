@@ -139,21 +139,26 @@ entry {
 /* =====================================================
  * List View
  * ===================================================== */
-
 listview {
     background-color: transparent;
 
     border: 0;
-    scrollbar: false;
 
-    lines: 6;
+    scrollbar: true;
+    scrollbar-width: 6px;
+
+    lines: 10;
     columns: 1;
 
     spacing: 6px;
     cycle: true;
     dynamic: true;
 
+    fixed-height: false;
+
     padding: 2px;
+
+    mouse-scroll: true;
 }
 
 /* =====================================================
@@ -229,13 +234,16 @@ element-icon {
  * ===================================================== */
 
 scrollbar {
-    width: 4px;
+    width: 6px;
     border: 0;
+    border-radius: 10px;
 
-    handle-width: 8px;
+    background-color: rgba(255,255,255,0.04);
+
+    handle-width: 10px;
+    handle-color: rgba(255,77,115,0.85);
+
     padding: 0;
-
-    handle-color: rgba(255,77,115,0.65);
 }
 
 /* =====================================================
@@ -262,8 +270,35 @@ textbox {
 configuration {
     modi: "drun,run,window,ssh";
     show-icons: true;
+
     display-drun: "󰀻 Apps";
     display-run: " Run";
     display-window: " Window";
     display-ssh: "󰣀 SSH";
+
+    hover-select: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
+
+    /* ===== Smart Sorting ===== */
+
+    drun-display-format: "{icon}  {name}";
+    drun-match-fields: "name,generic,exec,categories";
+
+  sorting-method: "normal";
+    sort: true;
+
+    /* Frequently used apps first */
+    drun-use-desktop-cache: true;
+    disable-history: false;
+
+    /* Better searching */
+    tokenize: true;
+    case-sensitive: false;
+
+    /* Keep last used app selected */
+    auto-select: false;
+
+    /* Window */
+    window-format: "{w} · {c} · {t}";
 }

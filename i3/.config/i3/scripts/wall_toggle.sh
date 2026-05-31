@@ -2,16 +2,18 @@
 
 # Your wallpapers
 WALLPAPERS=(
-  "$HOME/Pictures/3.png"
   "$HOME/Pictures/1.jpg"
-  "$HOME/Pictures/6.jpg"
-  "$HOME/Pictures/5.jpg"
-  "$HOME/Pictures/4.jpg"
-  "$HOME/Pictures/2.png"
-  "$HOME/Pictures/9.jpg"
+  "$HOME/Pictures/29.jpg"
+  "$HOME/Pictures/3.png"
   "$HOME/Pictures/10.jpg"
+  "$HOME/Pictures/23.png"
+  "$HOME/Pictures/20.jpg"
+  "$HOME/Pictures/4.jpg"
+  "$HOME/Pictures/50.jpg"
+  "$HOME/Pictures/51.jpg"
+  "$HOME/Pictures/52.jpg"
+  "$HOME/Pictures/53.jpg"
 )
-
 STATE_FILE="$HOME/.cache/wall_index"
 
 # Default index

@@ -28,11 +28,11 @@ white   = "#ffffff"
 
 #JetBrains font and SizeControl
 [font]
-size = 10.25
+size = 10.75
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
-style = "Regular"
+style = "SemiBold"
 
 [font.bold]
 family = "JetBrainsMono Nerd Font"
@@ -40,7 +40,11 @@ style = "Bold"
 
 [font.italic]
 family = "JetBrainsMono Nerd Font"
-style = "Italic"
+style = "SemiBold Italic"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "Bold Italic"
 
 [[keyboard.bindings]]
 key = "Plus"
@@ -63,4 +67,4 @@ style = { shape = "Underline", blinking = "On" }
 thickness = 0.25
 
 [window]
-opacity = 0.6
+opacity = 0.63

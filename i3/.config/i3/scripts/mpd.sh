@@ -32,7 +32,7 @@ start_mpd() {
 
   # preload favorites
   mpc clear >/dev/null 2>&1
-  mpc add "Favorites" >/dev/null 2>&1
+  mpc add "1.Favorites" >/dev/null 2>&1
   mpc random on >/dev/null 2>&1
 }
 
@@ -141,10 +141,24 @@ trash)
 
   FILE=$(mpc --format %file% current)
 
-  gio trash "$MUSIC_DIR/$FILE"
+  # nothing playing
+  if [ -z "$FILE" ]; then
+    notify "No song playing"
+    exit
+  fi
 
-  mpc next
-  mpc update
+  TARGET="$MUSIC_DIR/$FILE"
+
+  # file does not exist
+  if [ ! -f "$TARGET" ]; then
+    notify "Song not found"
+    exit
+  fi
+
+  gio trash "$TARGET"
+
+  mpc next >/dev/null 2>&1
+  mpc update >/dev/null 2>&1
 
   notify "Moved to Trash"
   ;;
