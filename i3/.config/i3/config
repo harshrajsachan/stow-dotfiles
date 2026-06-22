@@ -20,7 +20,7 @@ bindsym --release Mod1+Shift+p exec --no-startup-id ~/.config/i3/scripts/polybar
 bindsym $mod+shift+p exec --no-startup-id ~/.config/polybar/toggle_position.sh
 
 #Wallpaper
-exec_always --no-startup-id feh --bg-fill ~/Pictures/1.jpg
+exec_always --no-startup-id feh --bg-fill ~/Pictures/100.jpeg
 bindsym Mod1+Shift+w exec ~/.config/i3/scripts/wall_toggle.sh
 
 #Screenshot Bind
@@ -30,8 +30,7 @@ bindsym Mod1+s exec --no-startup-id flameshot gui -p ~/Screenshots -c
 bindsym Mod1+Shift+r exec --no-startup-id ~/.config/i3/scripts/record_toggle.sh
 
 #redshift
-exec_always --no-startup-id pkill redshift; redshift -O 4000 -P
-bindsym $mod+Shift+Up exec "redshift -O 4000"
+bindsym $mod+Shift+Up exec "redshift -O 5500"
 bindsym $mod+Shift+Down exec "redshift -x"
 
 #dunst
@@ -61,9 +60,8 @@ exec_always xinput set-prop 16 "libinput Tapping Enabled" 1
 exec_always --no-startup-id xinput set-prop 16 "libinput Natural Scrolling Enabled" 1
 
 # i3 lock
-exec --no-startup-id sh -c "sleep 1 && ~/.config/i3/scripts/lock.sh"
-exec --no-startup-id xautolock -time 5 -locker "/home/harsh/.config/i3/scripts/lock.sh"
-bindsym $mod+Shift+x exec --no-startup-id /home/harsh/.config/i3/scripts/lock.sh
+exec --no-startup-id ~/.config/i3/scripts/idle-lock.sh
+bindsym $mod+Shift+x exec --no-startup-id ~/.config/i3/scripts/lock1.sh
 
 #emoji
 bindsym Mod1+Shift+e exec --no-startup-id rofi -show emoji
@@ -78,7 +76,6 @@ for_window [title="scratchpad"] move scratchpad
 bindsym --release $mod+shift+b exec --no-startup-id ~/.config/i3/scripts/bt-toggle.sh
 
 #mpd music player
-exec --no-startup-id ~/.config/i3/scripts/mpd_boot_fix.sh
 bindsym --release F8 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh toggle
 bindsym --release F5 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh prev
 bindsym --release F6 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh next
@@ -103,24 +100,26 @@ bindsym --release $mod+Shift+r restart
 default_border pixel 2
 default_floating_border pixel 2
 gaps inner 4
-gaps outer 8
+gaps outer 1
 smart_gaps off
-smart_borders on
 bindsym --release Mod1+Shift+q exec --no-startup-id ~/.config/i3/scripts/gap.sh
 
-# Focused window (ACTIVE TAB)
-client.focused          $red $red #ffffff $red $red
-client.unfocused        #111111 #111111 #444444 #111111 #111111
-client.focused_inactive #111111 #111111 #aaaaaa #111111 #111111
-client.urgent           $red      $red      $white    $red      $red
+client.focused          #ffffff #ffffff #000000 #ffffff #ffffff
+client.unfocused        #101010 #101010 #707070 #101010 #101010
+client.focused_inactive #101010 #101010 #c0c0c0 #101010 #101010
+client.urgent           #ffffff #ffffff #000000 #ffffff #ffffff
 
-# Base colors
-set $bg         #000000
-set $bg-alt     #111111
-set $red        #ff2e2e
-set $red-dark   #cc1f1f
-set $white      #e0e0e0
-set $gray       #444444
+# Berserk Theme Colors
+
+set $bg         #050505
+set $bg-alt     #101010
+
+set $accent     #ffffff
+set $accent2    #c0c0c0
+
+set $white      #ffffff
+set $gray       #707070
+set $gray-dark  #2a2a2a
 
 
 #Volume binds
@@ -294,8 +293,8 @@ bindsym --release Mod1+2 exec helium-browser --app="https://keybr.com"
 bindsym --release Mod1+3 exec helium-browser --app="https://www.typingclub.com"
 bindsym --release Mod1+c exec helium-browser --app="https://chatgpt.com"
 bindsym --release Mod1+Shift+c exec helium-browser --app="https://lichess.org/"
-bindsym --release Mod1+a exec helium-browser --app="https://9anime.org.lv/bookmark/"
-bindsym --release Mod1+Shift+n exec helium-browser --app="https://net20.cc"
+bindsym --release Mod1+a exec helium-browser --app="https://hianime.lol/home"
+bindsym --release Mod1+Shift+n exec helium-browser --app="https://net11.cc"
 bindsym --release Mod1+y exec helium-browser --app="https://youtube.com"
 bindsym --release Mod1+z exec helium-browser --app="https://leetcode.com/problemset"
 bindsym --release Mod1+g exec helium-browser --app="https://github.com"
@@ -303,8 +302,9 @@ bindsym --release Mod1+g exec helium-browser --app="https://github.com"
 
 #Assig Apps to Window
 bindsym --release Mod1+w exec ~/.config/i3/scripts/whatsapp.sh
+bindsym --release Mod1+F4 exec poweroff
 bindsym --release Mod1+Shift+a exec ~/.config/i3/scripts/applemusic.sh
-for_window [class="Brave-browser" instance="music.apple.com"] move container to workspace "music"
+for_window [class="Brave-browser" instance="music.youtube.com"] move container to workspace "music"
 for_window [class="Brave-browser" instance="web.whatsapp.com"] move container to workspace "whatsapp"
 
 

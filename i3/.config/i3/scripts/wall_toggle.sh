@@ -5,14 +5,10 @@ WALLPAPERS=(
   "$HOME/Pictures/1.jpg"
   "$HOME/Pictures/29.jpg"
   "$HOME/Pictures/3.png"
-  "$HOME/Pictures/10.jpg"
-  "$HOME/Pictures/23.png"
-  "$HOME/Pictures/20.jpg"
   "$HOME/Pictures/4.jpg"
-  "$HOME/Pictures/50.jpg"
-  "$HOME/Pictures/51.jpg"
-  "$HOME/Pictures/52.jpg"
-  "$HOME/Pictures/53.jpg"
+  "$HOME/Pictures/100.jpeg"
+  "$HOME/Pictures/101.png"
+  "$HOME/Pictures/102.png"
 )
 STATE_FILE="$HOME/.cache/wall_index"
 

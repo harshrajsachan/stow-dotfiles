@@ -43,27 +43,26 @@ separator_height = 0
 frame_width = 2
 corner_radius = 14
 
-# Keep this at 0 when using ARGB colors
 transparency = 0
 
 # =========================
-# Theme
+# Berserk Monochrome Theme
 # =========================
 
 [urgency_low]
 timeout = 4
-background = "#111111cc"
-foreground = "#b8b8b8"
-frame_color = "#2a2a2a"
+background = "#0a0a0acc"
+foreground = "#a0a0a0"
+frame_color = "#3a3a3a"
 
 [urgency_normal]
 timeout = 6
-background = "#111111aa"
+background = "#101010cc"
 foreground = "#ffffff"
-frame_color = "#c1121f"
+frame_color = "#d0d0d0"
 
 [urgency_critical]
 timeout = 0
-background = "#1a0d0fcc"
+background = "#151515dd"
 foreground = "#ffffff"
-frame_color = "#ff3b4d"
+frame_color = "#ffffff"

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Don't start another lock if already locked
+pgrep -x i3lock && exit 0
+
+# Start i3lock without forking
 /usr/bin/i3lock \
   --blur 7x5 \
   --clock \
@@ -28,4 +32,11 @@
   --layout-font="JetBrainsMono Nerd Font" \
   --time-size=32 \
   --date-size=14 \
-  --layout-size=11
+  --layout-size=11 &
+
+sleep 0.5
+
+# Turn monitor off
+xset dpms force off
+
+wait

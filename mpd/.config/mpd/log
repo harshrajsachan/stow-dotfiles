@@ -5092,3 +5092,309 @@
 2026-05-30T19:35:53 player: played "3.Arpit Bala/702_spotdown.org.mp3"
 2026-05-30T20:43:01 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
 2026-05-31T08:12:33 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-05-31T11:08:17 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-05-31T11:08:26 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-05-31T11:11:43 player: played "2.HoneySingh/Candy Sugar_spotdown.org.mp3"
+2026-05-31T11:24:27 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-05-31T11:25:48 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-05-31T13:14:10 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-05-31T13:28:03 player: played "1.Favorites/Brahamachari_spotdown.org.mp3"
+2026-05-31T13:32:16 player: played "1.Favorites/Desi Kalakaar_spotdown.org.mp3"
+2026-05-31T13:36:24 player: played "1.Favorites/702_spotdown.org.mp3"
+2026-05-31T13:47:11 player: played "1.Favorites/Billie Jean_spotdown.org.mp3"
+2026-05-31T13:47:14 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-05-31T19:37:25 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-05-31T19:53:39 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-05-31T23:39:58 player: played "4.Seedhe Maut/Kilas_spotdown.org.mp3"
+2026-06-01T07:50:06 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-01T14:41:28 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-01T16:29:05 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-01T17:06:16 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-01T17:10:12 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-06-01T17:10:13 player: played "5.Billie Eilish/ilomilo_spotdown.org.mp3"
+2026-06-01T17:10:14 player: played "6.MJ/Love Never Felt So Good_spotdown.org.mp3"
+2026-06-01T17:10:15 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-06-01T17:10:16 player: played "1.Favorites/Shaayar_spotdown.org.mp3"
+2026-06-01T17:10:17 player: played "2.HoneySingh/Majnoonh_spotdown.org.mp3"
+2026-06-01T17:11:46 player: played "3.Arpit Bala/702_spotdown.org.mp3"
+2026-06-01T17:12:05 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-02T00:23:39 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-02T08:11:49 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-02T11:44:23 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-02T14:01:30 output: Failed to play on "PulseAudio" (pulse): suspended
+2026-06-02T14:01:30 exception: Failed to open audio output
+2026-06-02T14:01:34 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-06-02T14:01:36 player: played "4.Seedhe Maut/Akela_spotdown.org.mp3"
+2026-06-02T14:01:36 player: played "5.Billie Eilish/you should see me in a crown_spotdown.org.mp3"
+2026-06-02T14:01:37 player: played "6.MJ/Smooth Criminal - 2012 Remaster_spotdown.org.mp3"
+2026-06-02T14:01:38 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-06-02T14:01:39 player: played "1.Favorites/Shaayar_spotdown.org.mp3"
+2026-06-02T14:02:57 player: played "2.HoneySingh/Dope Shope_spotdown.org.mp3"
+2026-06-02T14:07:17 player: played "2.HoneySingh/Desi Kalakaar_spotdown.org.mp3"
+2026-06-02T14:11:01 player: played "2.HoneySingh/Love Dose_spotdown.org.mp3"
+2026-06-02T14:16:48 player: played "2.HoneySingh/4bottlevodka.mp3"
+2026-06-02T14:19:42 player: played "2.HoneySingh/Beeba_spotdown.org.mp3"
+2026-06-02T14:22:40 player: played "2.HoneySingh/Bonita_spotdown.org.mp3"
+2026-06-02T14:26:27 player: played "2.HoneySingh/Payal_spotdown.org.mp3"
+2026-06-02T14:29:36 player: played "2.HoneySingh/Sheeshe Wali Chunni_spotdown.org.mp3"
+2026-06-02T14:33:20 player: played "2.HoneySingh/6 Am_spotdown.org.mp3"
+2026-06-02T14:37:10 player: played "2.HoneySingh/Aadat (Feat. AP Dhillon)_spotdown.org.mp3"
+2026-06-02T14:40:05 player: played "2.HoneySingh/High On Me_spotdown.org.mp3"
+2026-06-02T14:48:47 player: played "2.HoneySingh/Rap God_spotdown.org.mp3"
+2026-06-02T14:51:59 player: played "3.Arpit Bala/Anveshna_spotdown.org.mp3"
+2026-06-02T14:56:42 player: played "3.Arpit Bala/KYA_spotdown.org.mp3"
+2026-06-02T14:56:43 player: played "4.Seedhe Maut/Kavi_spotdown.org.mp3"
+2026-06-02T14:56:43 player: played "5.Billie Eilish/Getting Older_spotdown.org.mp3"
+2026-06-02T14:56:44 player: played "6.MJ/Human Nature_spotdown.org.mp3"
+2026-06-02T14:56:45 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-06-02T15:00:34 player: played "1.Favorites/Guess featuring billie eilish_spotdown.org.mp3"
+2026-06-02T15:00:36 player: played "2.HoneySingh/Sexual_spotdown.org.mp3"
+2026-06-02T15:00:38 player: played "3.Arpit Bala/Pyari Amaanat_spotdown.org (1).mp3"
+2026-06-02T15:00:39 player: played "4.Seedhe Maut/RED_spotdown.org.mp3"
+2026-06-02T15:00:39 player: played "5.Billie Eilish/Ocean Eyes - GOLDHOUSE Remix_spotdown.org.mp3"
+2026-06-02T15:00:40 player: played "6.MJ/Billie Jean_spotdown.org.mp3"
+2026-06-02T15:00:41 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-06-03T09:01:36 player: played "1.Favorites/Adhura Hee Sahi_spotdown.org.mp3"
+2026-06-03T09:31:04 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-03T15:04:10 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-03T15:56:21 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-03T18:13:21 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-03T18:18:02 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-06-03T18:18:48 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-03T19:19:25 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-04T08:15:47 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-06-04T15:34:50 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-04T15:35:15 output: Failed to play on "PulseAudio" (pulse): suspended
+2026-06-04T15:35:15 exception: Failed to open audio output
+2026-06-04T16:54:06 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-04T17:06:29 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-04T18:23:09 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-04T19:41:02 exception: Not playing
+2026-06-04T21:01:09 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-06-05T03:37:41 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-05T04:33:59 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-06-05T04:34:00 player: played "2.HoneySingh/Rollie_spotdown.org.mp3"
+2026-06-05T04:34:03 player: played "3.Arpit Bala/Taaron Se_spotdown.org.mp3"
+2026-06-05T04:34:09 player: played "4.Seedhe Maut/Kehne Do_spotdown.org.mp3"
+2026-06-05T04:34:11 player: played "5.Billie Eilish/LUNCH_spotdown.org.mp3"
+2026-06-05T04:34:12 player: played "6.MJ/Blue Gangsta_spotdown.org.mp3"
+2026-06-05T04:34:13 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-06-05T04:34:14 player: played "1.Favorites/Guess featuring billie eilish_spotdown.org.mp3"
+2026-06-05T04:37:24 player: played "2.HoneySingh/Insane Drippin_spotdown.org.mp3"
+2026-06-05T04:39:00 player: played "2.HoneySingh/City Girl_spotdown.org.mp3"
+2026-06-05T04:39:02 player: played "3.Arpit Bala/Champakali_spotdown.org.mp3"
+2026-06-05T04:39:02 player: played "4.Seedhe Maut/Luka Chippi_spotdown.org.mp3"
+2026-06-05T04:39:02 player: played "5.Billie Eilish/Ocean Eyes - Blackbear Remix_spotdown.org.mp3"
+2026-06-05T04:39:03 player: played "6.MJ/Thriller_spotdown.org.mp3"
+2026-06-05T04:39:04 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-06-05T04:39:04 player: played "1.Favorites/702_spotdown.org.mp3"
+2026-06-05T04:42:08 player: played "2.HoneySingh/Insane Drippin_spotdown.org.mp3"
+2026-06-05T04:53:08 player: played "2.HoneySingh/Felony_spotdown.org.mp3"
+2026-06-05T15:03:39 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-05T22:30:53 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-06T14:05:24 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-06T14:53:56 player: played "3.Arpit Bala/Ik Kudi_spotdown.org.mp3"
+2026-06-06T14:54:00 player: played "4.Seedhe Maut/Rahat_spotdown.org.mp3"
+2026-06-06T20:15:01 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-06T20:15:37 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-06-06T20:15:39 player: played "5.Billie Eilish/hotline (edit)_spotdown.org.mp3"
+2026-06-06T20:15:40 player: played "6.MJ/Break of Dawn_spotdown.org.mp3"
+2026-06-06T20:15:41 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-06-06T20:15:41 player: played "1.Favorites/Chris_Grey_-_LET_THE_WORLD_BURN_(mp3.pm).mp3"
+2026-06-06T20:15:42 player: played "2.HoneySingh/Goliya_spotdown.org.mp3"
+2026-06-06T20:20:25 player: played "3.Arpit Bala/Daraaz Mein_spotdown.org.mp3"
+2026-06-06T20:25:42 player: played "3.Arpit Bala/Karta Bayaan_spotdown.org.mp3"
+2026-06-06T20:29:15 player: played "3.Arpit Bala/Kya Tu Theek Hai_spotdown.org.mp3"
+2026-06-06T20:32:46 player: played "3.Arpit Bala/Aankhon_spotdown.org.mp3"
+2026-06-06T20:36:46 player: played "3.Arpit Bala/Bandar_spotdown.org.mp3"
+2026-06-06T20:39:33 player: played "3.Arpit Bala/Maharani_spotdown.org.mp3"
+2026-06-06T22:05:13 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-06T23:06:51 exception: Not playing
+2026-06-06T23:06:51 exception: Not playing
+2026-06-07T10:52:50 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-06-07T10:52:52 player: played "4.Seedhe Maut/Wajah_spotdown.org.mp3"
+2026-06-07T10:52:52 player: played "5.Billie Eilish/BITTERSUITE_spotdown.org.mp3"
+2026-06-07T10:52:53 player: played "6.MJ/Love Never Felt So Good_spotdown.org.mp3"
+2026-06-07T10:54:49 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-06-07T17:21:01 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-07T17:55:37 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-06-07T19:45:54 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-07T22:19:26 player: played "1.Favorites/Billie Jean_spotdown.org.mp3"
+2026-06-07T22:20:17 player: played "1.Favorites/Goliya_spotdown.org.mp3"
+2026-06-07T22:20:19 player: played "2.HoneySingh/Dheeth (From _Honey 3.0_)_spotdown.org.mp3"
+2026-06-07T22:24:27 player: played "3.Arpit Bala/702_spotdown.org.mp3"
+2026-06-07T22:29:33 player: played "3.Arpit Bala/Gulabo_spotdown.org.mp3"
+2026-06-07T22:33:07 player: played "3.Arpit Bala/Kya Tu Theek Hai_spotdown.org.mp3"
+2026-06-07T22:36:41 player: played "3.Arpit Bala/Best Friend_spotdown.org.mp3"
+2026-06-08T13:52:21 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-08T20:50:50 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-08T20:54:07 output: Failed to play on "PulseAudio" (pulse): suspended
+2026-06-08T20:54:07 exception: Failed to open audio output
+2026-06-08T20:55:37 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-06-08T21:01:04 exception: Failed to decode "/home/harsh/Music/Favorites/Shaayar_spotdown.org.mp3"; Failed to open "/home/harsh/Music/Favorites/Shaayar_spotdown.org.mp3": No such file or directory
+2026-06-08T21:01:04 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-06-08T21:01:06 exception: Failed to decode "/home/harsh/Music/Favorites/Shaayar_spotdown.org.mp3"; Failed to open "/home/harsh/Music/Favorites/Shaayar_spotdown.org.mp3": No such file or directory
+2026-06-08T21:01:06 player: played "Favorites/Shaayar_spotdown.org.mp3"
+2026-06-08T21:01:08 update: added 1.Favorites/Shaayar_spotdown.org_1.mp3
+2026-06-08T21:01:08 update: removing 1.Favorites/Shaayar_spotdown.org.mp3
+2026-06-08T21:01:08 update: removing Favorites/Shaayar_spotdown.org.mp3
+2026-06-08T21:01:19 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-08T21:01:26 player: played "1.Favorites/Billie Jean_spotdown.org.mp3"
+2026-06-08T21:01:27 player: played "4.Seedhe Maut/BUN MASKA_spotdown.org.mp3"
+2026-06-08T21:01:28 player: played "5.Billie Eilish/Lost Cause_spotdown.org.mp3"
+2026-06-08T21:01:28 player: played "6.MJ/Smooth Criminal - 2012 Remaster_spotdown.org.mp3"
+2026-06-08T21:01:29 player: played "1.Favorites/Brahamachari_spotdown.org.mp3"
+2026-06-08T21:01:29 player: played "2.HoneySingh/Ki Ho Gaya_spotdown.org.mp3"
+2026-06-08T21:01:30 player: played "3.Arpit Bala/Kaise Manaye_spotdown.org (1).mp3"
+2026-06-08T21:01:31 player: played "4.Seedhe Maut/Chaand (Tu Jo Dekh Le)_spotdown.org.mp3"
+2026-06-08T21:01:32 player: played "5.Billie Eilish/Six Feet Under - BLU J Remix_spotdown.org.mp3"
+2026-06-08T21:01:32 player: played "6.MJ/Jam_spotdown.org.mp3"
+2026-06-08T21:01:36 player: played "1.Favorites/Ek_Tera_Pyar.mp3"
+2026-06-08T21:01:40 update: added 1.Favorites/Insane Drippin_spotdown.org.mp3
+2026-06-09T13:54:07 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-09T13:54:08 exception: No such directory
+2026-06-09T13:56:25 exception: Not playing
+2026-06-09T13:56:25 exception: Not playing
+2026-06-09T13:56:28 player: played "3.Arpit Bala/WuShang Clan_spotdown.org.mp3"
+2026-06-09T13:56:29 player: played "4.Seedhe Maut/Brand New_spotdown.org.mp3"
+2026-06-09T13:59:10 player: played "5.Billie Eilish/GOLDWING_spotdown.org.mp3"
+2026-06-09T14:04:53 player: played "5.Billie Eilish/BLUE_spotdown.org.mp3"
+2026-06-09T14:11:04 player: played "5.Billie Eilish/Six Feet Under - Jerry Folk Remix_spotdown.org.mp3"
+2026-06-09T14:14:03 player: played "5.Billie Eilish/bellyache_spotdown.org.mp3"
+2026-06-09T14:17:34 player: played "5.Billie Eilish/come out and play_spotdown.org.mp3"
+2026-06-09T14:20:07 player: played "5.Billie Eilish/GOLDWING_spotdown.org.mp3"
+2026-06-09T14:25:50 player: played "5.Billie Eilish/BLUE_spotdown.org.mp3"
+2026-06-09T14:28:20 player: played "5.Billie Eilish/COPYCAT_spotdown.org.mp3"
+2026-06-10T14:45:13 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-10T14:45:13 exception: No such directory
+2026-06-10T15:04:29 exception: Not playing
+2026-06-10T15:04:29 exception: Not playing
+2026-06-10T15:04:30 exception: Not playing
+2026-06-10T15:04:30 exception: Not playing
+2026-06-10T15:07:42 player: played "6.MJ/2 Bad_spotdown.org.mp3"
+2026-06-10T15:07:42 player: played "1.Favorites/Chris_Grey_-_LET_THE_WORLD_BURN_(mp3.pm).mp3"
+2026-06-10T15:07:43 player: played "2.HoneySingh/Mafia_spotdown.org.mp3"
+2026-06-10T15:07:43 exception: Not playing
+2026-06-10T15:07:52 player: played "3.Arpit Bala/Kya Tu Theek Hai_spotdown.org.mp3"
+2026-06-10T15:07:55 player: played "4.Seedhe Maut/Bin Tere_spotdown.org.mp3"
+2026-06-10T15:07:56 player: played "5.Billie Eilish/Happier Than Ever_spotdown.org.mp3"
+2026-06-10T15:07:58 player: played "6.MJ/Leave Me Alone - 2012 Remaster_spotdown.org.mp3"
+2026-06-10T15:08:36 player: played "1.Favorites/Blue Eyes_spotdown.org.mp3"
+2026-06-10T15:09:08 player: played "2.HoneySingh/One Thousand Miles_spotdown.org.mp3"
+2026-06-11T16:09:34 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-11T16:09:35 exception: No such directory
+2026-06-11T16:39:18 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-11T16:39:18 exception: No such directory
+2026-06-11T20:27:04 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-11T20:27:04 exception: No such directory
+2026-06-11T20:27:44 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-11T20:27:44 exception: No such directory
+2026-06-11T20:28:00 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-11T20:28:00 exception: No such directory
+2026-06-11T20:29:02 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-11T20:29:03 exception: No such directory
+2026-06-12T10:31:55 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-12T10:31:55 exception: No such directory
+2026-06-12T11:20:12 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-12T11:20:12 exception: No such directory
+2026-06-12T11:20:59 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-12T11:20:59 exception: No such directory
+2026-06-12T11:33:07 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-12T11:33:07 exception: No such directory
+2026-06-12T12:28:03 exception: Not playing
+2026-06-12T12:29:36 exception: Not playing
+2026-06-12T21:52:49 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-12T21:52:50 exception: No such directory
+2026-06-12T21:55:05 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-12T21:55:10 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-12T22:00:14 player: played "1.Favorites/Ek_Tera_Pyar.mp3"
+2026-06-12T22:01:30 player: played "1.Favorites/Insane Drippin_spotdown.org.mp3"
+2026-06-12T22:01:53 player: played "3.Arpit Bala/Champakali_spotdown.org.mp3"
+2026-06-12T22:04:44 player: played "4.Seedhe Maut/Cha Chi_spotdown.org.mp3"
+2026-06-13T00:51:09 player: played "4.Seedhe Maut/Madira_spotdown.org.mp3"
+2026-06-13T11:55:15 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-13T11:55:15 exception: No such directory
+2026-06-13T12:33:29 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-13T12:33:29 exception: No such directory
+2026-06-14T01:47:33 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-14T01:47:33 exception: No such directory
+2026-06-14T01:47:53 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-14T01:49:40 player: played "1.Favorites/Blue Eyes_spotdown.org.mp3"
+2026-06-14T01:51:30 player: played "5.Billie Eilish/Ocean Eyes - Astronomyy Remix_spotdown.org.mp3"
+2026-06-14T01:51:38 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-14T01:52:21 player: played "1.Favorites/Chris_Grey_-_LET_THE_WORLD_BURN_(mp3.pm).mp3"
+2026-06-14T01:52:22 player: played "6.MJ/Don't Stop 'Til You Get Enough_spotdown.org.mp3"
+2026-06-14T01:52:23 player: played "1.Favorites/Desi Kalakaar_spotdown.org.mp3"
+2026-06-14T01:52:23 player: played "2.HoneySingh/Rap God_spotdown.org.mp3"
+2026-06-14T01:52:24 player: played "3.Arpit Bala/Champakali_spotdown.org.mp3"
+2026-06-14T01:52:25 player: played "4.Seedhe Maut/Kya Mai Yaha_spotdown.org.mp3"
+2026-06-14T01:56:27 player: played "5.Billie Eilish/No Time To Die_spotdown.org.mp3"
+2026-06-14T02:00:30 player: played "5.Billie Eilish/listen before i go_spotdown.org.mp3"
+2026-06-14T23:09:48 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-14T23:09:49 exception: No such directory
+2026-06-15T22:34:57 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-15T22:34:58 exception: No such directory
+2026-06-16T14:10:30 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-16T14:10:30 exception: No such directory
+2026-06-17T08:38:43 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-17T08:38:43 exception: No such directory
+2026-06-17T09:13:05 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-17T09:13:06 exception: No such directory
+2026-06-17T09:27:15 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-17T09:27:23 player: played "1.Favorites/Goliya_spotdown.org.mp3"
+2026-06-17T09:27:28 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-17T09:42:10 player: played "1.Favorites/Shaayar_spotdown.org_1.mp3"
+2026-06-17T09:42:10 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-17T09:42:11 exception: No such directory
+2026-06-17T09:51:28 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-17T09:51:29 exception: No such directory
+2026-06-17T09:56:27 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-17T09:56:28 exception: No such directory
+2026-06-17T09:58:46 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-17T09:58:47 exception: No such directory
+2026-06-17T10:01:35 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-17T10:01:36 exception: No such directory
+2026-06-17T10:04:04 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-17T10:04:04 exception: No such directory
+2026-06-17T10:05:16 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-17T10:05:18 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-17T10:05:36 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-20T19:48:36 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-21T10:42:26 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-21T22:09:44 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-21T22:14:01 player: played "1.Favorites/702_spotdown.org.mp3"
+2026-06-21T22:17:22 player: played "1.Favorites/Adhura Hee Sahi_spotdown.org.mp3"
+2026-06-21T22:20:06 player: played "1.Favorites/Chris_Grey_-_LET_THE_WORLD_BURN_(mp3.pm).mp3"
+2026-06-21T22:24:00 player: played "1.Favorites/Tame Impala - Dracula (Official Video).mp3"
+2026-06-21T22:27:34 player: played "1.Favorites/Brahamachari_spotdown.org.mp3"
+2026-06-21T22:29:57 player: played "1.Favorites/Guess featuring billie eilish_spotdown.org.mp3"
+2026-06-21T22:34:34 player: played "1.Favorites/Ek_Tera_Pyar.mp3"
+2026-06-21T22:36:25 player: played "1.Favorites/Billie Jean_spotdown.org.mp3"
+2026-06-21T22:39:06 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-21T22:42:33 player: played "1.Favorites/Adhura Hee Sahi_spotdown.org.mp3"
+2026-06-21T22:46:46 player: played "1.Favorites/Desi Kalakaar_spotdown.org.mp3"
+2026-06-21T22:49:10 player: played "1.Favorites/Guess featuring billie eilish_spotdown.org.mp3"
+2026-06-21T22:53:19 player: played "1.Favorites/Jaga Do (feat. Foosie Gang)_spotdown.org.mp3"
+2026-06-21T22:53:42 player: played "1.Favorites/Goliya_spotdown.org.mp3"
+2026-06-21T22:53:44 player: played "6.MJ/The Girl Is Mine (with Paul McCartney)_spotdown.org.mp3"
+2026-06-21T22:53:45 player: played "1.Favorites/Goliya_spotdown.org.mp3"
+2026-06-21T22:53:45 player: played "2.HoneySingh/Jatt Mehkma_spotdown.org.mp3"
+2026-06-21T22:57:55 player: played "3.Arpit Bala/Jaga Do (feat. Foosie Gang)_spotdown.org.mp3"
+2026-06-21T23:01:10 player: played "3.Arpit Bala/WuShang Clan_spotdown.org.mp3"
+2026-06-21T23:04:50 player: played "3.Arpit Bala/Daraaz Mein_spotdown.org.mp3"
+2026-06-21T23:06:39 player: played "3.Arpit Bala/RTC Bonus_spotdown.org.mp3"
+2026-06-21T23:09:44 player: played "3.Arpit Bala/Aankhon_spotdown.org.mp3"
+2026-06-21T23:15:01 player: played "3.Arpit Bala/Karta Bayaan_spotdown.org.mp3"
+2026-06-21T23:16:58 player: played "3.Arpit Bala/Anveshna_spotdown.org.mp3"
+2026-06-21T23:20:07 player: played "3.Arpit Bala/Pyari Amaanat_spotdown.org (1).mp3"
+2026-06-21T23:23:40 player: played "3.Arpit Bala/Kya Tu Theek Hai_spotdown.org.mp3"
+2026-06-21T23:27:22 player: played "3.Arpit Bala/Best Friend_spotdown.org.mp3"
+2026-06-21T23:30:14 player: played "3.Arpit Bala/Kaisa Mai_spotdown.org.mp3"
+2026-06-21T23:32:30 player: played "3.Arpit Bala/Champakali_spotdown.org.mp3"
+2026-06-21T23:36:30 player: played "3.Arpit Bala/Bandar_spotdown.org.mp3"
+2026-06-21T23:41:37 player: played "3.Arpit Bala/Gulabo_spotdown.org.mp3"
+2026-06-21T23:41:39 player: played "3.Arpit Bala/Zimmedaar_spotdown.org.mp3"
+2026-06-22T00:20:09 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-22T09:27:24 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-06-22T09:40:52 player: played "1.Favorites/Insane Drippin_spotdown.org.mp3"
+2026-06-22T23:44:53 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory

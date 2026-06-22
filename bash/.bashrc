@@ -145,23 +145,24 @@ alias bt="bash ~/.config/i3/scripts/bt.sh"
 alias music="ncmpcpp"
 alias home="cd ~/"
 alias neovim="nvim"
+alias leetcode="nvim +Leet"
+alias kallu="helium-browser https://youtube.com"
 
 #Bash directory color and icon
-PS1='\[\e[38;5;160m\]  $( [[ "$PWD" == "$HOME" ]] && echo   || echo "${PWD#$HOME/}" )\[\e[0m\]  ❯ '
+PS1='\[\e[38;5;255m\]  $( [[ "$PWD" == "$HOME" ]] && echo   || echo "${PWD#$HOME/}" )\[\e[0m\]  ❯ '
 export LS_COLORS="\
-di=38;5;196:\
+di=38;5;255:\
 fi=38;5;250:\
-ln=38;5;51:\
-pi=38;5;208:\
-so=38;5;135:\
-bd=38;5;196:\
-cd=38;5;196:\
-or=38;5;196:\
-ex=38;5;46:\
-tw=38;5;196:\
-ow=38;5;196:\
-st=38;5;196"
+ln=38;5;252:\
+pi=38;5;245:\
+so=38;5;248:\
+bd=38;5;255:\
+cd=38;5;255:\
+or=38;5;255:\
+ex=38;5;255:\
+tw=38;5;250:\
+ow=38;5;250:\
+st=38;5;255"
 
 fastfetch -c ~/.config/fastfetch/config.jsonc
 alias duck='~/.local/bin/appimages/DuckStation-x64.AppImage'
-alias yt='yt-dlp -P ~/Videos/YouTube -o "%(playlist)s/%(title)s.%(ext)s" -f bestvideo+bestaudio'

@@ -119,18 +119,29 @@ update)
 fav)
 
   FILE=$(mpc --format %file% current)
+
+  if [ -z "$FILE" ]; then
+    notify "No song playing"
+    exit
+  fi
+
   SRC="$MUSIC_DIR/$FILE"
 
-  mkdir -p "$MUSIC_DIR/Favorites"
+  mkdir -p "$MUSIC_DIR/1.Favorites"
 
   BASENAME=$(basename "$FILE")
 
-  if [ -e "$MUSIC_DIR/Favorites/$BASENAME" ]; then
+  if [ -e "$MUSIC_DIR/1.Favorites/$BASENAME" ]; then
     notify "Already in Favorites"
     exit
   fi
 
-  cp "$SRC" "$MUSIC_DIR/Favorites/"
+  cp "$SRC" "$MUSIC_DIR/1.Favorites/" || {
+    notify "Failed to add Favorite"
+    exit
+  }
+
+  mpc update >/dev/null 2>&1
 
   notify "Added to Favorites"
   ;;
