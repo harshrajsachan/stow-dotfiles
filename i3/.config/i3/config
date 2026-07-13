@@ -103,10 +103,8 @@ bindsym --release $mod+Shift+r restart
 default_border pixel 2
 default_floating_border pixel 2
 gaps inner 4
-gaps outer 8
+gaps outer 2
 smart_gaps off
-smart_borders on
-bindsym --release Mod1+Shift+q exec --no-startup-id ~/.config/i3/scripts/gap.sh
 
 # Focused window (ACTIVE TAB)
 client.focused          $red $red #ffffff $red $red
