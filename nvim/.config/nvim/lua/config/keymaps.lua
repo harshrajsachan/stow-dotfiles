@@ -1,7 +1,3 @@
-vim.keymap.set("n", "<leader>tt", function()
-  require("config.theme").toggle()
-end, { desc = "Toggle Theme" })
--- disable default Lazy binding
 vim.keymap.set("n", "<leader>l", "<Nop>", { silent = true })
 -- move Lazy to <leader>L
 vim.keymap.set("n", "<leader>L", "<cmd>Lazy<CR>", { desc = "Lazy" })
@@ -40,12 +36,6 @@ vim.keymap.set("n", "<leader>-", "<C-x>")
 -- Splits
 vim.keymap.set("n", "<leader>v", "<C-w>v")
 vim.keymap.set("n", "<leader>h", "<C-w>s")
-
--- Tabs
-vim.keymap.set("n", "<leader>to", "<cmd>tabnew<cr>")
-vim.keymap.set("n", "<leader>tx", "<cmd>tabclose<cr>")
-vim.keymap.set("n", "<leader>tn", "<cmd>tabnext<cr>")
-vim.keymap.set("n", "<leader>tp", "<cmd>tabprevious<cr>")
 
 -- Visual indent (stay selected)
 vim.keymap.set("v", "<", "<gv")
@@ -102,3 +92,8 @@ vim.keymap.set("n", "<leader>p", function()
   vim.cmd("split")
   vim.cmd("terminal cd " .. dir .. " && python3 " .. file)
 end, { desc = "Run Python" })
+
+vim.opt.wrap = true
+vim.opt.linebreak = true -- break at words when possible
+vim.opt.breakindent = true -- preserve indentation
+vim.opt.showbreak = "↪ " -- symbol for wrapped line

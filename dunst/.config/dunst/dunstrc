@@ -34,8 +34,9 @@ browser = firefox
 always_run_script = true
 
 # =========================
-# Modern Style
+# Style
 # =========================
+
 padding = 14
 horizontal_padding = 14
 separator_height = 0
@@ -46,23 +47,7 @@ corner_radius = 14
 transparency = 0
 
 # =========================
-# Berserk Monochrome Theme
+# Theme
 # =========================
 
-[urgency_low]
-timeout = 4
-background = "#0a0a0acc"
-foreground = "#a0a0a0"
-frame_color = "#3a3a3a"
-
-[urgency_normal]
-timeout = 6
-background = "#101010cc"
-foreground = "#ffffff"
-frame_color = "#d0d0d0"
-
-[urgency_critical]
-timeout = 0
-background = "#151515dd"
-foreground = "#ffffff"
-frame_color = "#ffffff"
+include /home/harsh/.config/themes/current/dunst.conf

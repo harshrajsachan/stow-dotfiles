@@ -166,3 +166,7 @@ st=38;5;255"
 
 fastfetch -c ~/.config/fastfetch/config.jsonc
 alias duck='~/.local/bin/appimages/DuckStation-x64.AppImage'
+alias leet='~/.config/i3/scripts/leet.sh'
+export PATH="$PATH:/usr/games"
+
+alias exec:mvn='toofan'

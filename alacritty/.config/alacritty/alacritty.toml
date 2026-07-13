@@ -3,26 +3,26 @@ x = 0
 y = 0
 
 [colors.primary]
-background = "#000000"
-foreground = "#ffffff"   # brighter default text
+background = "#050505"
+foreground = "#e8e8e8"
 
 [colors.normal]
 black   = "#1a1a1a"
-red     = "#ff4d4d"
+red     = "#707070"
 green   = "#c0c0c0"
-yellow  = "#ff6666"
-blue    = "#a0a0a0"
-magenta = "#ff7575"
-cyan    = "#d0d0d0"
+yellow  = "#a0a0a0"
+blue    = "#b0b0b0"
+magenta = "#d0d0d0"
+cyan    = "#e0e0e0"
 white   = "#ffffff"
 
 [colors.bright]
 black   = "#555555"
-red     = "#ff8080"
+red     = "#909090"
 green   = "#ffffff"
-yellow  = "#ff9999"
-blue    = "#d9d9d9"
-magenta = "#ffb3b3"
+yellow  = "#d9d9d9"
+blue    = "#e8e8e8"
+magenta = "#f0f0f0"
 cyan    = "#ffffff"
 white   = "#ffffff"
 

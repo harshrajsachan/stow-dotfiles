@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # === CONFIG ===
-DEFAULT_BT="30:CC:8D:99:61:D0"
+DEFAULT_BT="F9:6E:7D:97:55:9E"
 
 notify() {
   notify-send "Bluetooth Manager" "$1"
