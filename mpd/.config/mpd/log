@@ -5092,3 +5092,10 @@
 2026-05-30T19:35:53 player: played "3.Arpit Bala/702_spotdown.org.mp3"
 2026-05-30T20:43:01 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
 2026-05-31T08:12:33 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-07-13T23:15:24 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-07-13T23:16:27 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-07-13T23:16:37 update: added 1.Favorites/Daraaz Mein_spotdown.org.mp3
+2026-07-13T23:16:37 update: added 1.Favorites/Insane Drippin_spotdown.org.mp3
+2026-07-13T23:16:37 update: added 1.Favorites/Shaayar_spotdown.org_1.mp3
+2026-07-13T23:16:37 update: removing 1.Favorites/Shaayar_spotdown.org.mp3
+2026-07-13T23:16:37 update: removing Favorites/Shaayar_spotdown.org.mp3

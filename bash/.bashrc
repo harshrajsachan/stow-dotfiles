@@ -165,3 +165,6 @@ st=38;5;196"
 fastfetch -c ~/.config/fastfetch/config.jsonc
 alias duck='~/.local/bin/appimages/DuckStation-x64.AppImage'
 alias yt='yt-dlp -P ~/Videos/YouTube -o "%(playlist)s/%(title)s.%(ext)s" -f bestvideo+bestaudio'
+alias sakura='theme sakura'
+alias berserk='theme berserk'
+alias redblack='theme redblack'
