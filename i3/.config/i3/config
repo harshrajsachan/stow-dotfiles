@@ -333,4 +333,4 @@ bindsym $mod+Shift+o exec --no-startup-id ~/.config/i3/scripts/opacity.sh reset
 for_window [class="python3"] floating enable
 #include ~/.themes/current/i3.conf
 
-bindsym Mod1+Shift+t exec --no-startup-id ~/.local/bin/theme-menu
+bindsym $mod+Shift+t exec --no-startup-id ~/.local/bin/theme-menu
