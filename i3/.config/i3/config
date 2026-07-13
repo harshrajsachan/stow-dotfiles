@@ -14,3 +14,4 @@ include ~/.config/i3/config.d/12-scripts.conf
 include ~/.config/i3/config.d/13-rules.conf
 include ~/.config/i3/config.d/99-reload.conf
 
+bindsym Mod1+Shift+t exec --no-startup-id ~/.local/bin/theme-menu

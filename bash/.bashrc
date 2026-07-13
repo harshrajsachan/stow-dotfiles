@@ -170,3 +170,6 @@ alias leet='~/.config/i3/scripts/leet.sh'
 export PATH="$PATH:/usr/games"
 
 alias exec:mvn='toofan'
+alias sakura='theme sakura'
+alias berserk='theme berserk'
+alias redblack='theme redblack'
