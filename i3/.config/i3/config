@@ -30,7 +30,6 @@ bindsym Mod1+s exec --no-startup-id flameshot gui -p ~/Screenshots -c
 bindsym Mod1+Shift+r exec --no-startup-id ~/.config/i3/scripts/record_toggle.sh
 
 #redshift
-exec_always --no-startup-id pkill redshift; redshift -O 4000 -P
 bindsym $mod+Shift+Up exec "redshift -O 4000"
 bindsym $mod+Shift+Down exec "redshift -x"
 
