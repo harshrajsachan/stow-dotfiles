@@ -173,3 +173,5 @@ alias exec:mvn='toofan'
 alias sakura='theme sakura'
 alias berserk='theme berserk'
 alias redblack='theme redblack'
+
+eval "$(starship init bash)"
