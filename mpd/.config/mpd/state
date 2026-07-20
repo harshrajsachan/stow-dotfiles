@@ -1,6 +1,8 @@
 sw_volume: 100
 audio_device_state:1:PulseAudio
-state: stop
+state: pause
+current: 15
+time: 130.962
 random: 1
 repeat: 0
 single: 0
@@ -10,19 +12,31 @@ mixrampdb: 0
 mixrampdelay: -1
 lastloadedplaylist: 
 playlist_begin
-0:1.Favorites/Chris_Grey_-_LET_THE_WORLD_BURN_(mp3.pm).mp3
-1:1.Favorites/Tame Impala - Dracula (Official Video).mp3
-2:1.Favorites/Insane Drippin_spotdown.org.mp3
-3:1.Favorites/Adhura Hee Sahi_spotdown.org.mp3
-4:1.Favorites/Blue Eyes_spotdown.org.mp3
-5:1.Favorites/Desi Kalakaar_spotdown.org.mp3
-6:1.Favorites/702_spotdown.org.mp3
-7:1.Favorites/Guess featuring billie eilish_spotdown.org.mp3
-8:1.Favorites/Goliya_spotdown.org.mp3
-9:1.Favorites/Jaga Do (feat. Foosie Gang)_spotdown.org.mp3
-10:1.Favorites/Daraaz Mein_spotdown.org.mp3
-11:1.Favorites/Brahamachari_spotdown.org.mp3
-12:1.Favorites/Shaayar_spotdown.org_1.mp3
-13:1.Favorites/Ek_Tera_Pyar.mp3
-14:1.Favorites/Billie Jean_spotdown.org.mp3
+0:3.Arpit Bala/Aankhon_spotdown.org.mp3
+1:3.Arpit Bala/Adhura Hee Sahi_spotdown.org.mp3
+2:3.Arpit Bala/Anveshna_spotdown.org.mp3
+3:3.Arpit Bala/Kaisa Mai_spotdown.org.mp3
+4:3.Arpit Bala/Karta Bayaan_spotdown.org.mp3
+5:3.Arpit Bala/Bandar_spotdown.org.mp3
+6:3.Arpit Bala/bargad_spotdown.org.mp3
+7:3.Arpit Bala/702_spotdown.org.mp3
+8:3.Arpit Bala/Gulabo_spotdown.org.mp3
+9:3.Arpit Bala/Ik Kudi_spotdown.org.mp3
+10:3.Arpit Bala/Jaga Do (feat. Foosie Gang)_spotdown.org.mp3
+11:3.Arpit Bala/Kaise Manaye_spotdown.org.mp3
+12:3.Arpit Bala/Best Friend_spotdown.org.mp3
+13:3.Arpit Bala/Champakali_spotdown.org.mp3
+14:3.Arpit Bala/Daraaz Mein_spotdown.org.mp3
+15:3.Arpit Bala/Kaise Manaye_spotdown.org (1).mp3
+16:3.Arpit Bala/Pyari Amaanat_spotdown.org (1).mp3
+17:3.Arpit Bala/Rakhlo Tum Chupaake_spotdown.org.mp3
+18:3.Arpit Bala/RTC Bonus_spotdown.org.mp3
+19:3.Arpit Bala/Taaron Se_spotdown.org.mp3
+20:3.Arpit Bala/Kya Tu Theek Hai_spotdown.org.mp3
+21:3.Arpit Bala/Maharani_spotdown.org.mp3
+22:3.Arpit Bala/Zimmedaar_spotdown.org.mp3
+23:3.Arpit Bala/Pyari Amaanat_spotdown.org.mp3
+24:3.Arpit Bala/KYA_spotdown.org.mp3
+25:3.Arpit Bala/WHAT CAN I SAY__spotdown.org.mp3
+26:3.Arpit Bala/WuShang Clan_spotdown.org.mp3
 playlist_end

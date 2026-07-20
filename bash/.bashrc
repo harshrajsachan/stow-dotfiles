@@ -149,7 +149,8 @@ alias leetcode="nvim +Leet"
 alias kallu="helium-browser https://youtube.com"
 
 #Bash directory color and icon
-PS1='\[\e[38;5;255m\]  $( [[ "$PWD" == "$HOME" ]] && echo   || echo "${PWD#$HOME/}" )\[\e[0m\]  ❯ '
+PROMPT_COMMAND='printf "\n"'
+PS1='\[\e[38;5;255m\]  $( [[ "$PWD" == "$HOME" ]] && printf "  " || printf "%s" "${PWD#$HOME/}" )\[\e[0m\]\n ❯ '
 export LS_COLORS="\
 di=38;5;255:\
 fi=38;5;250:\
@@ -170,3 +171,5 @@ alias leet='~/.config/i3/scripts/leet.sh'
 export PATH="$PATH:/usr/games"
 
 alias exec:mvn='toofan'
+alias nvim2='NVIM_APPNAME=nvim2 nvim'
+eval "$(starship init bash)"
