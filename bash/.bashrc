@@ -168,3 +168,5 @@ alias yt='yt-dlp -P ~/Videos/YouTube -o "%(playlist)s/%(title)s.%(ext)s" -f best
 alias sakura='theme sakura'
 alias berserk='theme berserk'
 alias redblack='theme redblack'
+
+eval "$(starship init bash)"
