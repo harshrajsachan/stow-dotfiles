@@ -172,4 +172,3 @@ export PATH="$PATH:/usr/games"
 
 alias exec:mvn='toofan'
 alias nvim2='NVIM_APPNAME=nvim2 nvim'
-eval "$(starship init bash)"
