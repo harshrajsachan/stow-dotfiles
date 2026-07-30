@@ -1,3 +1,8 @@
+--dashboard
+vim.keymap.set("n", "<leader>ba", function()
+  Snacks.dashboard()
+end, { desc = "Open dashboard" })
+--silent l key
 vim.keymap.set("n", "<leader>l", "<Nop>", { silent = true })
 -- move Lazy to <leader>L
 vim.keymap.set("n", "<leader>L", "<cmd>Lazy<CR>", { desc = "Lazy" })

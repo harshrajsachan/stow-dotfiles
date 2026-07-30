@@ -5715,3 +5715,7 @@
 2026-07-16T16:15:03 player: played "3.Arpit Bala/Champakali_spotdown.org.mp3"
 2026-07-16T16:20:20 player: played "3.Arpit Bala/Karta Bayaan_spotdown.org.mp3"
 2026-07-16T17:11:43 player: played "3.Arpit Bala/Kaise Manaye_spotdown.org (1).mp3"
+2026-07-30T02:18:41 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-07-30T02:19:02 exception: Not playing
+2026-07-30T02:19:02 exception: Not playing
+2026-07-30T02:26:34 player: played "1.Favorites/702_spotdown.org.mp3"
