@@ -1,44 +1,24 @@
 #!/bin/bash
 
-STEP=1
-MIN=10
-MAX=100
-
 WIN=$(xdotool getactivewindow)
-
 STATE_FILE="/tmp/window-opacity-$WIN"
 
-# Default opacity
-if [ ! -f "$STATE_FILE" ]; then
-  CURRENT=100
+OPAQUE=4294967295
+
+# Current mode
+MODE="transparent"
+[ -f "$STATE_FILE" ] && MODE=$(cat "$STATE_FILE")
+
+if [ "$MODE" = "transparent" ]; then
+    # Make window fully opaque
+    xprop -id "$WIN" \
+        -f _NET_WM_WINDOW_OPACITY 32c \
+        -set _NET_WM_WINDOW_OPACITY "$OPAQUE" >/dev/null
+
+    echo "opaque" >"$STATE_FILE"
 else
-  CURRENT=$(cat "$STATE_FILE")
+    # Remove property so Picom uses opacity-rule again
+    xprop -id "$WIN" -remove _NET_WM_WINDOW_OPACITY >/dev/null
+
+    echo "transparent" >"$STATE_FILE"
 fi
-
-case "$1" in
-up)
-  NEW=$((CURRENT + STEP))
-  [ "$NEW" -gt "$MAX" ] && NEW=$MAX
-  ;;
-
-down)
-  NEW=$((CURRENT - STEP))
-  [ "$NEW" -lt "$MIN" ] && NEW=$MIN
-  ;;
-
-reset)
-  NEW=100
-  ;;
-
-*)
-  exit 1
-  ;;
-esac
-
-echo "$NEW" >"$STATE_FILE"
-
-OPAQUE=$((NEW * 4294967295 / 100))
-
-xprop -id "$WIN" \
-  -f _NET_WM_WINDOW_OPACITY 32c \
-  -set _NET_WM_WINDOW_OPACITY "$OPAQUE" >/dev/null

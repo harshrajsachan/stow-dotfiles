@@ -1,104 +1,138 @@
+-- Set leader key
+vim.g.mapleader = " "
+
+-- Disable the spacebar key's default behavior in Normal and Visual modes
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+
+-- For conciseness
+local opts = { noremap = true, silent = true }
+
+-- save file
+vim.keymap.set("n", "<C-s>", "<cmd> w <CR>", opts)
+
+-- save file without auto-formatting
+vim.keymap.set("n", "<leader>sn", "<cmd>noautocmd w <CR>", opts)
+
+-- quit file
+vim.keymap.set("n", "<C-q>", "<cmd> q <CR>", opts)
+
+-- delete single character without copying into register
+vim.keymap.set("n", "x", '"_x', opts)
+
+-- Vertical scroll and center
+vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
+vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
+
+-- Find and center
+vim.keymap.set("n", "n", "nzzzv", opts)
+vim.keymap.set("n", "N", "Nzzzv", opts)
+
+-- Resize with arrows
+vim.keymap.set("n", "<Up>", ":resize -2<CR>", opts)
+vim.keymap.set("n", "<Down>", ":resize +2<CR>", opts)
+vim.keymap.set("n", "<Left>", ":vertical resize -2<CR>", opts)
+vim.keymap.set("n", "<Right>", ":vertical resize +2<CR>", opts)
+
+-- Buffers
+vim.keymap.set("n", "<Tab>", ":bnext<CR>", opts)
+vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", opts)
+vim.keymap.set("n", "<leader>x", ":bdelete!<CR>", opts) -- close buffer
+vim.keymap.set("n", "<leader>b", "<cmd> enew <CR>", opts) -- new buffer
+
+-- Window management
+vim.keymap.set("n", "<leader>v", "<C-w>v", opts) -- split window vertically
+vim.keymap.set("n", "<leader>h", "<C-w>s", opts) -- split window horizontally
+vim.keymap.set("n", "<leader>se", "<C-w>=", opts) -- make split windows equal width & height
+vim.keymap.set("n", "<leader>xs", ":close<CR>", opts) -- close current split window
+
+-- Navigate between splits
+vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", opts)
+vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", opts)
+vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", opts)
+vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", opts)
+
+-- Tabs
+vim.keymap.set("n", "<leader>to", ":tabnew<CR>", opts) -- open new tab
+vim.keymap.set("n", "<leader>tx", ":tabclose<CR>", opts) -- close current tab
+vim.keymap.set("n", "<leader>tn", ":tabn<CR>", opts) --  go to next tab
+vim.keymap.set("n", "<leader>tp", ":tabp<CR>", opts) --  go to previous tab
+
+-- Toggle line wrapping
+vim.keymap.set("n", "<leader>lw", "<cmd>set wrap!<CR>", opts)
+
+-- Stay in indent mode
+vim.keymap.set("v", "<", "<gv", opts)
+vim.keymap.set("v", ">", ">gv", opts)
+
+-- Keep last yanked when pasting
+vim.keymap.set("v", "p", '"_dP', opts)
+
+-- Diagnostic keymaps
+vim.keymap.set("n", "[d", function()
+  vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "Go to previous diagnostic message" })
+
+vim.keymap.set("n", "]d", function()
+  vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "Go to next diagnostic message" })
+
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+
 --dashboard
 vim.keymap.set("n", "<leader>ba", function()
   Snacks.dashboard()
 end, { desc = "Open dashboard" })
+
 --silent l key
 vim.keymap.set("n", "<leader>l", "<Nop>", { silent = true })
 -- move Lazy to <leader>L
 vim.keymap.set("n", "<leader>L", "<cmd>Lazy<CR>", { desc = "Lazy" })
+
 --yank whole file
 vim.keymap.set("n", "<leader>yy", function()
   vim.cmd("%y")
 end, { desc = "Yank entire file" })
+
+--delete whole file
 vim.keymap.set("n", "<leader>dd", "<cmd>%d+<cr>", { desc = "Cut entire file to clipboard" })
--- Keymaps are automatically loaded on the VeryLazy event
-vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "save" }) -- keymap are automatically loaded on the VeryLazy event
-vim.keymap.set("n", "<leader>q", "<cmd>q<cr>", { desc = "Quit" }) -- keymap are automatically loaded on the VeryLazy event
-vim.keymap.set("n", "<leader>wq", "<cmd>wq<cr>", { desc = "Save and quit" }) -- keymap are automatically loaded on the VeryLazy event
+
 -- Move selected lines down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+
 -- Move selected lines up
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
---space key leader key
-vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
--- Resize with arrows
--- Resize windows
-vim.keymap.set("n", "<Up>", "<cmd>resize -2<cr>")
-vim.keymap.set("n", "<Down>", "<cmd>resize +2<cr>")
-vim.keymap.set("n", "<Left>", "<cmd>vertical resize -2<cr>")
-vim.keymap.set("n", "<Right>", "<cmd>vertical resize +2<cr>")
-
--- Buffers
-vim.keymap.set("n", "<Tab>", "<cmd>bnext<cr>")
-vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<cr>")
-vim.keymap.set("n", "<leader>x", "<cmd>bdelete!<cr>") -- or <cmd>bd!<cr> if no plugin
-vim.keymap.set("n", "<leader>b", "<cmd>enew<cr>")
 
 -- Numbers
 vim.keymap.set("n", "<leader>+", "<C-a>")
 vim.keymap.set("n", "<leader>-", "<C-x>")
 
--- Splits
-vim.keymap.set("n", "<leader>v", "<C-w>v")
-vim.keymap.set("n", "<leader>h", "<C-w>s")
-
--- Visual indent (stay selected)
-vim.keymap.set("v", "<", "<gv")
-vim.keymap.set("v", ">", ">gv")
---move ctrl-d while at centter
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
---move while cursor in  centter
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
 --go to normal with ij
 vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("i", "kj", "<Esc>")
---move through window
-vim.keymap.set("n", "<C-h>", "<C-w>h")
-vim.keymap.set("n", "<C-l>", "<C-w>l")
-vim.keymap.set("n", "<C-j>", "<C-w>j")
-vim.keymap.set("n", "<C-k>", "<C-w>k")
-vim.keymap.set("n", "<C-q>", "<cmd>close<CR>", { desc = "Close current window" })
+
 --find and replace
 vim.keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]])
---delete one char without yank
-vim.keymap.set("n", "x", '"_x')
 
---c++ run
-vim.keymap.set("n", "<leader>r", function()
+--the master compile compile and run file
+vim.keymap.set("n", "<leader>ls", function()
   vim.cmd("w")
 
+  local filetype = vim.bo.filetype
   local file = vim.fn.shellescape(vim.fn.expand("%:p"))
   local dir = vim.fn.shellescape(vim.fn.expand("%:p:h"))
-  local output = vim.fn.shellescape(vim.fn.expand("%:t:r"))
+  local filename = vim.fn.expand("%:t:r")
+  local output = vim.fn.shellescape(filename)
 
   vim.cmd("split")
-  vim.cmd("terminal cd " .. dir .. " && g++ -std=c++17 -O2 -Wall " .. file .. " -o " .. output .. " && ./" .. output)
-end, { desc = "Run C++ (robust)" })
---java run
-vim.keymap.set("n", "<leader>j", function()
-  vim.cmd("w")
 
-  local file = vim.fn.expand("%:p") -- full path
-  local dir = vim.fn.expand("%:p:h") -- directory
-  local classname = vim.fn.expand("%:t:r") -- filename = class name
-
-  vim.cmd("split")
-  vim.cmd("terminal cd " .. dir .. " && javac " .. file .. " && java " .. classname)
-end, { desc = "Compile & Run Java" })
---python run
-vim.keymap.set("n", "<leader>p", function()
-  vim.cmd("w")
-
-  local file = vim.fn.expand("%:p") -- full path
-  local dir = vim.fn.expand("%:p:h") -- file directory
-
-  vim.cmd("split")
-  vim.cmd("terminal cd " .. dir .. " && python3 " .. file)
-end, { desc = "Run Python" })
-
-vim.opt.wrap = true
-vim.opt.linebreak = true -- break at words when possible
-vim.opt.breakindent = true -- preserve indentation
-vim.opt.showbreak = "↪ " -- symbol for wrapped line
+  if filetype == "cpp" then
+    vim.cmd("terminal cd " .. dir .. " && g++ -std=c++17 -O2 -Wall " .. file .. " -o " .. output .. " && ./" .. output)
+  elseif filetype == "java" then
+    vim.cmd("terminal cd " .. dir .. " && javac " .. file .. " && java " .. filename)
+  elseif filetype == "python" then
+    vim.cmd("terminal cd " .. dir .. " && python3 " .. file)
+  else
+    vim.notify("No runner configured for filetype: " .. filetype, vim.log.levels.WARN)
+  end
+end, { desc = "Run current file" })
