@@ -1,33 +1,23 @@
 return {
-  "harshrajsachan/smartrunner.nvim",
-  config = function()
-    local languages = require("smartrunner.languages")
+  {
+    -- Load the local SmartRunner.nvim repository.
+    dir = vim.fn.expand("~/MyProject/smartrunner.nvim"),
 
-    vim.keymap.set("n", "<leader>lr", function()
-      require("smartrunner").run()
-    end, { desc = "SmartRunner: Run File" })
+    -- Give the plugin its name.
+    name = "smartrunner.nvim",
 
-    vim.keymap.set("n", "<leader>lb", function()
-      require("smartrunner").build()
-    end, { desc = "SmartRunner: Build" })
+    -- Load SmartRunner during startup.
+    lazy = false,
 
-    vim.keymap.set("n", "<leader>lk", function()
-      require("smartrunner").stop()
-    end, { desc = "SmartRunner: Stop" })
+    -- Configure SmartRunner.
+    config = function()
+      -- Load the built-in language definitions.
+      local languages = require("smartrunner.languages")
 
-    vim.keymap.set("n", "<leader>lR", function()
-      require("smartrunner").restart()
-    end, { desc = "SmartRunner: Restart" })
-
-    vim.keymap.set("n", "<leader>lt", function()
-      require("smartrunner").toggle()
-    end, { desc = "SmartRunner: Toggle Terminal" })
-
-    vim.keymap.set("n", "<leader>lc", function()
-      require("smartrunner").close()
-    end, { desc = "SmartRunner: Close Terminal" })
-    require("smartrunner").setup({
-      runners = languages.get(),
-    })
-  end,
+      -- Configure SmartRunner.
+      require("smartrunner").setup({
+        runners = languages.get(),
+      })
+    end,
+  },
 }
