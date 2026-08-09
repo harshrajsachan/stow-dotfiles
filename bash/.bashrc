@@ -169,16 +169,5 @@ fastfetch -c ~/.config/fastfetch/config.jsonc
 alias duck='~/.local/bin/appimages/DuckStation-x64.AppImage'
 alias leet='~/.config/i3/scripts/leet.sh'
 export PATH="$PATH:/usr/games"
-nvim() {
-    if [ "${NVIM_APPNAME}" = "nvim2" ]; then
-        NVIM_APPNAME=nvim /usr/bin/nvim "$@"
-    else
-        NVIM_APPNAME=nvim2 /usr/bin/nvim "$@"
-    fi
-}
-
-lazyvim() {
-    NVIM_APPNAME=nvim /usr/bin/nvim "$@"
-}
 
 alias exec:mvn='toofan'
