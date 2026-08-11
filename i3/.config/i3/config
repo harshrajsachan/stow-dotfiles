@@ -1,15 +1,278 @@
-include ~/.config/i3/config.d/00-core.conf
-include ~/.config/i3/config.d/01-theme.conf
-include ~/.config/i3/config.d/02-startup.conf
-include ~/.config/i3/config.d/03-window.conf
-include ~/.config/i3/config.d/04-workspaces.conf
-include ~/.config/i3/config.d/05-navigation.conf
-include ~/.config/i3/config.d/06-layout.conf
-include ~/.config/i3/config.d/07-resize.conf
-include ~/.config/i3/config.d/08-media.conf
-include ~/.config/i3/config.d/09-launchers.conf
-include ~/.config/i3/config.d/10-pwa.conf
-include ~/.config/i3/config.d/11-system.conf
-include ~/.config/i3/config.d/12-scripts.conf
-include ~/.config/i3/config.d/13-rules.conf
-include ~/.config/i3/config.d/99-reload.conf
+set $mod Mod4
+set $refresh_i3status killall -SIGUSR1 i3status
+
+font pango:JetBrains Nerd Font Mono 8
+
+floating_modifier $mod
+tiling_drag modifier titlebar
+
+
+#theme
+include ~/.config/themes/current/i3.conf
+
+
+# Autostart
+exec --no-startup-id dex --autostart --environment i3
+exec_always --no-startup-id picom --backend glx --config ~/.config/picom/picom.conf
+exec_always --no-startup-id autotiling
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id feh --bg-fill ~/Pictures/201.jpg
+exec_always --no-startup-id killall dunst; dunst
+exec_always --no-startup-id setxkbmap -option caps:escape
+exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id xsetroot -cursor_name left_ptr
+exec --no-startup-id sh -c "sleep 0.75 && ~/.config/i3/scripts/lock.sh"
+exec_always --no-startup-id xrdb -merge ~/.Xresources
+exec_always xinput set-prop 16 "libinput Tapping Enabled" 1
+exec_always --no-startup-id xinput set-prop 16 "libinput Natural Scrolling Enabled" 1
+exec --no-startup-id ~/.config/i3/scripts/idle-lock.sh
+
+# Polybar
+bindsym --release Mod1+Shift+p exec --no-startup-id ~/.config/i3/scripts/polybar_toggle.sh
+bindsym $mod+Shift+p exec --no-startup-id ~/.config/polybar/toggle_position.sh
+
+# Wallpaper
+bindsym Mod1+Shift+w exec ~/.config/i3/scripts/wall_toggle.sh
+
+# Screenshot
+bindsym Mod1+s exec --no-startup-id flameshot gui -p ~/Screenshots -c
+bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/scripts/ss_window.sh
+
+# Screen Recording
+bindsym Mod1+Shift+r exec --no-startup-id ~/.config/i3/scripts/record_toggle.sh
+
+# Bluetooth
+bindsym --release $mod+Shift+b exec --no-startup-id ~/.config/i3/scripts/bt-toggle.sh
+
+# Touchpad
+bindsym --release F12 exec ~/.config/i3/scripts/touchpad-toggle.sh
+
+# Auto Mute
+bindsym --release $mod+Shift+m exec ~/.config/i3/scripts/auto_mute.sh
+
+# Emoji Picker
+bindsym Mod1+Shift+e exec --no-startup-id rofi -show emoji
+
+# Lock
+bindsym $mod+Shift+x exec --no-startup-id ~/.config/i3/scripts/lock1.sh
+
+# Power
+bindsym --release Mod1+F4 exec poweroff
+
+# Gap Toggle
+bindsym --release Mod1+Shift+q exec --no-startup-id ~/.config/i3/scripts/gap.sh
+
+# Typing Mode
+bindsym --release Mod1+5 exec --no-startup-id ~/.config/i3/scripts/typing-mode.sh
+
+# Kill Mode
+bindsym --release Mod1+Shift+m exec --no-startup-id ~/.config/i3/scripts/kill-mode.sh
+# Scratchpad
+bindsym --release $mod+Shift+minus move scratchpad
+bindsym --release $mod+minus scratchpad show
+
+for_window [title="scratchpad"] floating enable, resize set 800 500, move position center
+for_window [title="scratchpad"] move scratchpad
+
+# Floating
+bindsym --release $mod+shift+space floating toggle,resize set 800 500,move position center
+bindsym --release $mod+space focus mode_toggle
+for_window [floating] resize set 70 ppt 50 ppt move position center
+
+# Focus
+bindsym --release $mod+a focus parent
+bindsym --release $mod+c focus child
+
+
+# Workspace Variables
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# Switch Workspace
+bindsym --release $mod+1 workspace number $ws1
+bindsym --release $mod+2 workspace number $ws2
+bindsym --release $mod+3 workspace number $ws3
+bindsym --release $mod+4 workspace number $ws4
+bindsym --release $mod+5 workspace number $ws5
+bindsym --release $mod+6 workspace number $ws6
+bindsym --release $mod+7 workspace number $ws7
+bindsym --release $mod+8 workspace number $ws8
+bindsym --release $mod+9 workspace number $ws9
+bindsym --release $mod+0 workspace number $ws10
+
+# Move Container
+bindsym --release $mod+Shift+1 move container to workspace number $ws1
+bindsym --release $mod+Shift+2 move container to workspace number $ws2
+bindsym --release $mod+Shift+3 move container to workspace number $ws3
+bindsym --release $mod+Shift+4 move container to workspace number $ws4
+bindsym --release $mod+Shift+5 move container to workspace number $ws5
+bindsym --release $mod+Shift+6 move container to workspace number $ws6
+bindsym --release $mod+Shift+7 move container to workspace number $ws7
+bindsym --release $mod+Shift+8 move container to workspace number $ws8
+bindsym --release $mod+Shift+9 move container to workspace number $ws9
+bindsym --release $mod+Shift+0 move container to workspace number $ws10
+
+# Move And Follow
+bindsym --release $mod+Ctrl+1 move container to workspace $ws1; workspace $ws1
+bindsym --release $mod+Ctrl+2 move container to workspace $ws2; workspace $ws2
+bindsym --release $mod+Ctrl+3 move container to workspace $ws3; workspace $ws3
+bindsym --release $mod+Ctrl+4 move container to workspace $ws4; workspace $ws4
+bindsym --release $mod+Ctrl+5 move container to workspace $ws5; workspace $ws5
+bindsym --release $mod+Ctrl+6 move container to workspace $ws6; workspace $ws6
+bindsym --release $mod+Ctrl+7 move container to workspace $ws7; workspace $ws7
+bindsym --release $mod+Ctrl+8 move container to workspace $ws8; workspace $ws8
+bindsym --release $mod+Ctrl+9 move container to workspace $ws9; workspace $ws9
+bindsym --release $mod+Ctrl+0 move container to workspace $ws10; workspace $ws10
+
+# Toggle Workspace
+#bindsym --release $mod+Tab exec --no-startup-id ~/.config/i3/scripts/toggle_ws1.sh
+#bindsym --release $mod+grave exec --no-startup-id ~/.config/i3/scripts/toggle_ws2.sh
+
+# Previous / Next Workspace
+bindsym --release $mod+grave workspace prev
+bindsym --release $mod+Tab workspace next
+
+
+# Focus Windows
+bindsym --release $mod+h focus left
+bindsym --release $mod+j focus down
+bindsym --release $mod+k focus up
+bindsym --release $mod+l focus right
+
+# Move Windows
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# Split
+bindsym --release $mod+b split h
+bindsym --release $mod+v split v
+
+# Fullscreen
+bindsym --release $mod+f fullscreen toggle
+
+# Layout
+bindsym --release $mod+s layout stacking
+bindsym --release $mod+w layout tabbed
+bindsym --release $mod+e layout toggle split
+
+# Kill Window
+bindsym --release $mod+Shift+q kill
+
+# Resize (Large)
+bindsym $mod+Ctrl+h resize grow width 10 px or 5 ppt
+bindsym $mod+Ctrl+j resize shrink height 10 px or 5 ppt
+bindsym $mod+Ctrl+k resize grow height 10 px or 5 ppt
+bindsym $mod+Ctrl+l resize shrink width 10 px or 5 ppt
+
+# Resize (Fine)
+bindsym $mod+Left resize grow width 1 px or 1 ppt
+bindsym $mod+Down resize shrink height 1 px or 1 ppt
+bindsym $mod+Up resize grow height 1 px or 1 ppt
+bindsym $mod+Right resize shrink width 1 px or 1 ppt
+
+
+# Volume
+bindsym F2 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym F3 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym F4 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Brightness
+bindsym Mod1+F2 exec brightnessctl set 5%-
+bindsym Mod1+F3 exec brightnessctl set +5%
+
+# Redshift
+bindsym $mod+Shift+Up exec "redshift -O 5500"
+bindsym $mod+Shift+Down exec "redshift -x"
+bindsym $mod+Shift+t exec --no-startup-id ~/.local/bin/theme-menu
+
+# MPD
+bindsym --release F8 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh toggle
+bindsym --release F5 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh prev
+bindsym --release F6 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh next
+bindsym --release Shift+F9 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh stop
+bindsym --release F9 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh update
+bindsym --release Mod1+Shift+f exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh fav
+bindsym --release Mod1+Shift+d exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh trash
+bindsym --release F7 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh cycle
+bindsym --release Shift+F7 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh cycle_prev
+bindsym --release Shift+F6 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh forward
+bindsym --release Shift+F5 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh backward
+bindsym --release Shift+F8 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh repeat_one
+
+# Opacity
+bindsym Mod1+o exec --no-startup-id ~/.config/i3/scripts/opacity.sh
+bindsym Mod1+Shift+Up exec --no-startup-id ~/.config/i3/scripts/opacity-up-down.sh.sh up
+bindsym Mod1+Shift+Down exec --no-startup-id ~/.config/i3/scripts/opacity-up-down.sh down
+
+# Terminal
+bindsym --release Mod1+t exec kitty
+bindsym --release Mod1+Return exec alacritty
+
+# App Launcher
+bindsym --release $mod+d exec rofi -show drun
+
+# Applications
+bindsym --release Mod1+b exec helium-browser
+bindsym --release Mod1+z exec obsidian
+bindsym --release Mod1+Shift+g exec gtk-launch tekken3
+bindsym --release Mod1+Shift+b exec helium-browser --incognito
+bindsym --release Mod1+e exec kitty -e yazi
+bindsym --release Mod1+Shift+l exec --no-startup-id kitty -e nvim +"Leet"
+bindsym --release Mod1+n exec --no-startup-id kitty -e nvim
+bindsym --release Mod1+r exec localsend
+bindsym --release Mod1+4 exec alacritty -e toofan
+bindsym --release Mod1+d exec alacritty -e discordo
+bindsym --release Mod1+q exec kitty -e btop
+bindsym --release Mod1+Shift+v exec code
+bindsym --release Mod1+8 exec antigravity
+bindsym --release Mod1+9 exec cursor
+bindsym --release Mod1+v exec kitty -e vim ~/Notes/todo
+
+
+# PWAs
+bindsym --release Mod1+1 exec helium-browser --app="https://monkeytype.com"
+bindsym --release Mod1+2 exec helium-browser --app="https://keybr.com"
+bindsym --release Mod1+3 exec helium-browser --app="https://www.typingclub.com"
+bindsym --release Mod1+c exec helium-browser --app="https://chatgpt.com"
+bindsym --release Mod1+Shift+c exec helium-browser --app="https://lichess.org/"
+bindsym --release Mod1+a exec helium-browser --app="https://hianime.lol/home"
+bindsym --release Mod1+Shift+n exec helium-browser --app="https://net11.cc"
+bindsym --release Mod1+y exec helium-browser --app="https://youtube.com"
+bindsym --release Mod1+x exec chromium --app="https://leetcode.com/problemset"
+bindsym --release Mod1+g exec helium-browser --app="https://github.com"
+
+
+# WhatsApp
+bindsym --release Mod1+w exec ~/.config/i3/scripts/whatsapp.sh
+
+# Apple Music
+bindsym --release Mod1+Shift+a exec ~/.config/i3/scripts/applemusic.sh
+
+# Scratchpad
+for_window [title="scratchpad"] floating enable, resize set 800 500, move position center
+for_window [title="scratchpad"] move scratchpad
+
+# Floating Windows
+for_window [floating] resize set 70 ppt 50 ppt move position center
+
+for_window [class="python3"] floating enable
+
+# Window Rules
+for_window [class="Brave-browser" instance="music.youtube.com"] move container to workspace "music"
+for_window [class="Brave-browser" instance="web.whatsapp.com"] move container to workspace "whatsapp"
+
+# Reload
+bindsym --release $mod+Shift+c reload
+
+# Restart
+bindsym --release $mod+Shift+r restart
