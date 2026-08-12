@@ -1,0 +1,191 @@
+#!/bin/bash
+
+set -e
+
+THEMES_DIR="$HOME/.config/themes"
+CURRENT="$THEMES_DIR/current"
+
+BERSERK="$THEMES_DIR/berserk"
+GRUVBOX="$THEMES_DIR/gruvbox"
+
+# --------------------------------------------------
+# Determine current theme
+# --------------------------------------------------
+
+CURRENT_THEME=$(basename "$(readlink -f "$CURRENT")")
+
+case "$CURRENT_THEME" in
+berserk)
+    NEXT_THEME="gruvbox"
+    ;;
+gruvbox)
+    NEXT_THEME="berserk"
+    ;;
+*)
+    echo "Unknown current theme: $CURRENT_THEME"
+    echo "Expected: berserk or gruvbox"
+    exit 1
+    ;;
+esac
+
+NEXT_DIR="$THEMES_DIR/$NEXT_THEME"
+
+if [[ ! -d "$NEXT_DIR" ]]; then
+    echo "Theme directory does not exist:"
+    echo "$NEXT_DIR"
+    exit 1
+fi
+
+echo "Switching: $CURRENT_THEME → $NEXT_THEME"
+
+# --------------------------------------------------
+# Change global theme
+# --------------------------------------------------
+
+ln -sfn "$NEXT_DIR" "$CURRENT"
+
+# Make sure symlink points to new theme
+
+CURRENT_THEME_PATH=$(readlink -f "$CURRENT")
+
+echo "Current theme path:"
+echo "  $CURRENT_THEME_PATH"
+
+# --------------------------------------------------
+# CAVA
+# --------------------------------------------------
+
+CAVA_CONFIG="$CURRENT/cava.conf"
+
+if [[ -f "$CAVA_CONFIG" ]]; then
+
+    echo "CAVA config:"
+    echo "  $CAVA_CONFIG"
+
+    # Make sure ~/.config/cava/config points to
+    # the current theme's cava.conf
+    ln -sfn "$CAVA_CONFIG" "$HOME/.config/cava/config"
+
+    # Reload every running CAVA instance
+    while read -r CAVA_PID; do
+        if [[ -n "$CAVA_PID" ]]; then
+            kill -USR1 "$CAVA_PID" 2>/dev/null || true
+        fi
+    done < <(pgrep -x cava)
+
+    echo "CAVA: configuration reloaded"
+
+else
+
+    echo "WARNING: CAVA config not found:"
+    echo "  $CAVA_CONFIG"
+
+fi
+
+# --------------------------------------------------
+# Default wallpaper
+# --------------------------------------------------
+
+WALLPAPER_DIR="$CURRENT/wallpapers"
+DEFAULT_FILE="$WALLPAPER_DIR/default"
+
+if [[ -f "$DEFAULT_FILE" ]]; then
+
+    DEFAULT_NAME=$(<"$DEFAULT_FILE")
+
+    # Remove whitespace / CRLF
+    DEFAULT_NAME="${DEFAULT_NAME//$'\r'/}"
+    DEFAULT_NAME="${DEFAULT_NAME#"${DEFAULT_NAME%%[![:space:]]*}"}"
+    DEFAULT_NAME="${DEFAULT_NAME%"${DEFAULT_NAME##*[![:space:]]}"}"
+
+    DEFAULT_WALL="$WALLPAPER_DIR/$DEFAULT_NAME"
+
+    if [[ -f "$DEFAULT_WALL" ]]; then
+
+        echo "Applying default wallpaper:"
+        echo "  $DEFAULT_WALL"
+
+        feh --bg-fill "$DEFAULT_WALL"
+
+    else
+
+        echo "WARNING: Default wallpaper does not exist:"
+        echo "  $DEFAULT_WALL"
+
+    fi
+
+else
+
+    echo "WARNING: Default wallpaper file not found:"
+    echo "  $DEFAULT_FILE"
+
+fi
+
+# --------------------------------------------------
+# Reset wallpaper toggle state
+# --------------------------------------------------
+
+WALL_STATE="$HOME/.cache/theme_wall_index"
+
+mkdir -p "$HOME/.cache"
+
+{
+    echo "$CURRENT_THEME_PATH"
+    echo "0"
+} >"$WALL_STATE"
+
+# --------------------------------------------------
+# Dunst
+# --------------------------------------------------
+
+if command -v dunstctl >/dev/null 2>&1; then
+    dunstctl reload
+fi
+
+# --------------------------------------------------
+# Polybar
+# --------------------------------------------------
+
+if command -v polybar-msg >/dev/null 2>&1; then
+    polybar-msg cmd restart >/dev/null 2>&1 || true
+fi
+
+# --------------------------------------------------
+# i3
+# --------------------------------------------------
+
+i3-msg reload >/dev/null 2>&1 || true
+
+# --------------------------------------------------
+# Kitty
+# --------------------------------------------------
+
+if command -v kitten >/dev/null 2>&1; then
+
+    KITTY_SOCKET=$(
+        find /tmp -maxdepth 1 -type s \
+            -name 'kitty-theme.sock-*' \
+            -print -quit
+    )
+
+    if [[ -n "$KITTY_SOCKET" ]]; then
+
+        kitten @ --to "unix:$KITTY_SOCKET" set-colors \
+            --all \
+            --configured \
+            "$CURRENT/kitty.conf" \
+            >/dev/null 2>&1 || true
+
+    fi
+
+fi
+
+# --------------------------------------------------
+# Done
+# --------------------------------------------------
+
+echo
+echo "Theme switched successfully:"
+echo "  $CURRENT_THEME → $NEXT_THEME"
+echo "  Wallpaper: ${DEFAULT_NAME:-none}"
+echo "  CAVA: reloaded"

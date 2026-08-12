@@ -148,26 +148,42 @@ alias neovim="nvim"
 alias leetcode="nvim +Leet"
 alias kallu="helium-browser https://youtube.com"
 
-#Bash directory color and icon
-PROMPT_COMMAND='printf "\n"'
-PS1='\[\e[38;5;255m\]  $( [[ "$PWD" == "$HOME" ]] && printf "  " || printf "%s" "${PWD#$HOME/}" )\[\e[0m\]\n ❯ '
-export LS_COLORS="\
-di=38;5;255:\
-fi=38;5;250:\
-ln=38;5;252:\
-pi=38;5;245:\
-so=38;5;248:\
-bd=38;5;255:\
-cd=38;5;255:\
-or=38;5;255:\
-ex=38;5;255:\
-tw=38;5;250:\
-ow=38;5;250:\
-st=38;5;255"
-
 fastfetch -c ~/.config/fastfetch/config.jsonc
 alias duck='~/.local/bin/appimages/DuckStation-x64.AppImage'
 alias leet='~/.config/i3/scripts/leet.sh'
 export PATH="$PATH:/usr/games"
 
+# ==================================================
+# Global Theme - Live Bash
+# ==================================================
+
+THEME_DIR="$HOME/.config/themes/current"
+THEME_LOADED=""
+
+load_current_theme() {
+    local current_theme
+
+    current_theme="$(readlink -f "$THEME_DIR")"
+
+    [[ -z "$current_theme" ]] && return
+    [[ ! -d "$current_theme" ]] && return
+    [[ ! -f "$current_theme/bash.sh" ]] && return
+
+    # Only reload when the global theme actually changes
+    if [[ "$current_theme" != "$THEME_LOADED" ]]; then
+        source "$current_theme/bash.sh"
+        THEME_LOADED="$current_theme"
+    fi
+}
+
+theme_prompt_hook() {
+    load_current_theme
+    printf '\n'
+}
+
+# Load immediately
+load_current_theme
+
+# Check theme before every prompt
+PROMPT_COMMAND=theme_prompt_hook
 alias exec:mvn='toofan'

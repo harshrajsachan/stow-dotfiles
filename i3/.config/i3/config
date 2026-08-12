@@ -16,7 +16,7 @@ exec --no-startup-id dex --autostart --environment i3
 exec_always --no-startup-id picom --backend glx --config ~/.config/picom/picom.conf
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec_always --no-startup-id feh --bg-fill ~/Pictures/201.jpg
+exec_always --no-startup-id ~/.config/i3/scripts/wall_toggle.sh default
 exec_always --no-startup-id killall dunst; dunst
 exec_always --no-startup-id setxkbmap -option caps:escape
 exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -25,7 +25,6 @@ exec --no-startup-id sh -c "sleep 0.75 && ~/.config/i3/scripts/lock.sh"
 exec_always --no-startup-id xrdb -merge ~/.Xresources
 exec_always xinput set-prop 16 "libinput Tapping Enabled" 1
 exec_always --no-startup-id xinput set-prop 16 "libinput Natural Scrolling Enabled" 1
-exec --no-startup-id ~/.config/i3/scripts/idle-lock.sh
 
 # Polybar
 bindsym --release Mod1+Shift+p exec --no-startup-id ~/.config/i3/scripts/polybar_toggle.sh
@@ -54,7 +53,7 @@ bindsym --release $mod+Shift+m exec ~/.config/i3/scripts/auto_mute.sh
 bindsym Mod1+Shift+e exec --no-startup-id rofi -show emoji
 
 # Lock
-bindsym $mod+Shift+x exec --no-startup-id ~/.config/i3/scripts/lock1.sh
+bindsym $mod+Shift+x exec --no-startup-id ~/.config/i3/scripts/lock.sh
 
 # Power
 bindsym --release Mod1+F4 exec poweroff
@@ -193,7 +192,7 @@ bindsym Mod1+F3 exec brightnessctl set +5%
 # Redshift
 bindsym $mod+Shift+Up exec "redshift -O 5500"
 bindsym $mod+Shift+Down exec "redshift -x"
-bindsym $mod+Shift+t exec --no-startup-id ~/.local/bin/theme-menu
+bindsym $mod+Shift+t exec --no-startup-id ~/.config/i3/scripts/theme-switch
 
 # MPD
 bindsym --release F8 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh toggle
