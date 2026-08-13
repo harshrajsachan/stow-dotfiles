@@ -5754,3 +5754,27 @@
 2026-08-13T10:16:38 player: played "1.Favorites/Shaayar_spotdown.org_1.mp3"
 2026-08-13T10:19:01 player: played "1.Favorites/Guess featuring billie eilish_spotdown.org.mp3"
 2026-08-13T10:23:09 player: played "1.Favorites/702_spotdown.org.mp3"
+2026-08-13T17:26:54 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-08-13T17:27:29 player: played "1.Favorites/Shaayar_spotdown.org_1.mp3"
+2026-08-13T17:27:30 player: played "1.Favorites/Daraaz Mein_spotdown.org.mp3"
+2026-08-13T17:31:51 player: played "2.HoneySingh/Payal_spotdown.org.mp3"
+2026-08-13T17:33:07 player: played "2.HoneySingh/Jatt Mehkma_spotdown.org.mp3"
+2026-08-13T17:36:07 player: played "2.HoneySingh/City Girl_spotdown.org.mp3"
+2026-08-13T17:39:02 player: played "2.HoneySingh/Al Saher Al Hindi_spotdown.org.mp3"
+2026-08-13T17:42:43 player: played "2.HoneySingh/Blue Eyes_spotdown.org.mp3"
+2026-08-13T17:45:53 player: played "2.HoneySingh/Majnoonh_spotdown.org.mp3"
+2026-08-13T17:49:23 player: played "2.HoneySingh/Punjabi Pablo_spotdown.org.mp3"
+2026-08-13T17:52:18 player: played "2.HoneySingh/High On Me_spotdown.org.mp3"
+2026-08-13T17:55:37 player: played "2.HoneySingh/Maybach_spotdown.org.mp3"
+2026-08-13T17:59:24 player: played "2.HoneySingh/Galbi_spotdown.org.mp3"
+2026-08-13T18:02:27 player: played "2.HoneySingh/Power Moves_spotdown.org.mp3"
+2026-08-13T18:05:21 player: played "2.HoneySingh/Sone Da Gulaab_spotdown.org.mp3"
+2026-08-13T18:05:21 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-08-13T18:05:36 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-08-13T18:07:39 player: played "1.Favorites/Adhura Hee Sahi_spotdown.org.mp3"
+2026-08-13T18:07:41 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-08-13T18:10:46 player: played "1.Favorites/Insane Drippin_spotdown.org.mp3"
+2026-08-13T18:12:55 output: Failed to play on "PulseAudio" (pulse): disconnected
+2026-08-13T18:12:55 exception: Failed to open audio output
+2026-08-13T18:15:26 player: played "1.Favorites/Shaayar_spotdown.org_1.mp3"
+2026-08-13T18:19:05 player: played "1.Favorites/Daraaz Mein_spotdown.org.mp3"
