@@ -10,9 +10,11 @@ tiling_drag modifier titlebar
 #theme
 include ~/.config/themes/current/i3.conf
 
+#Theme switcher
+bindsym $mod+Shift+t exec --no-startup-id ~/.config/i3/scripts/theme-switch
 
 # Autostart
-exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id dex --autostart --environment i3 
 exec_always --no-startup-id picom --backend glx --config ~/.config/picom/picom.conf
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id ~/.config/polybar/launch.sh
@@ -27,7 +29,7 @@ exec_always xinput set-prop 16 "libinput Tapping Enabled" 1
 exec_always --no-startup-id xinput set-prop 16 "libinput Natural Scrolling Enabled" 1
 
 # Polybar
-bindsym --release Mod1+Shift+p exec --no-startup-id ~/.config/i3/scripts/polybar_toggle.sh
+bindsym --release Mod1+Shift+p exec --no-startup-id killall polybar
 bindsym $mod+Shift+p exec --no-startup-id ~/.config/polybar/toggle_position.sh
 
 # Wallpaper
@@ -46,9 +48,6 @@ bindsym --release $mod+Shift+b exec --no-startup-id ~/.config/i3/scripts/bt-togg
 # Touchpad
 bindsym --release F12 exec ~/.config/i3/scripts/touchpad-toggle.sh
 
-# Auto Mute
-bindsym --release $mod+Shift+m exec ~/.config/i3/scripts/auto_mute.sh
-
 # Emoji Picker
 bindsym Mod1+Shift+e exec --no-startup-id rofi -show emoji
 
@@ -66,6 +65,7 @@ bindsym --release Mod1+5 exec --no-startup-id ~/.config/i3/scripts/typing-mode.s
 
 # Kill Mode
 bindsym --release Mod1+Shift+m exec --no-startup-id ~/.config/i3/scripts/kill-mode.sh
+
 # Scratchpad
 bindsym --release $mod+Shift+minus move scratchpad
 bindsym --release $mod+minus scratchpad show
@@ -131,14 +131,9 @@ bindsym --release $mod+Ctrl+8 move container to workspace $ws8; workspace $ws8
 bindsym --release $mod+Ctrl+9 move container to workspace $ws9; workspace $ws9
 bindsym --release $mod+Ctrl+0 move container to workspace $ws10; workspace $ws10
 
-# Toggle Workspace
-#bindsym --release $mod+Tab exec --no-startup-id ~/.config/i3/scripts/toggle_ws1.sh
-#bindsym --release $mod+grave exec --no-startup-id ~/.config/i3/scripts/toggle_ws2.sh
-
 # Previous / Next Workspace
 bindsym --release $mod+grave workspace prev
 bindsym --release $mod+Tab workspace next
-
 
 # Focus Windows
 bindsym --release $mod+h focus left
@@ -179,7 +174,6 @@ bindsym $mod+Down resize shrink height 1 px or 1 ppt
 bindsym $mod+Up resize grow height 1 px or 1 ppt
 bindsym $mod+Right resize shrink width 1 px or 1 ppt
 
-
 # Volume
 bindsym F2 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym F3 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -192,7 +186,6 @@ bindsym Mod1+F3 exec brightnessctl set +5%
 # Redshift
 bindsym $mod+Shift+Up exec "redshift -O 5500"
 bindsym $mod+Shift+Down exec "redshift -x"
-bindsym $mod+Shift+t exec --no-startup-id ~/.config/i3/scripts/theme-switch
 
 # MPD
 bindsym --release F8 exec --no-startup-id /home/harsh/.config/i3/scripts/mpd.sh toggle
@@ -233,8 +226,6 @@ bindsym --release Mod1+4 exec alacritty -e toofan
 bindsym --release Mod1+d exec alacritty -e discordo
 bindsym --release Mod1+q exec kitty -e btop
 bindsym --release Mod1+Shift+v exec code
-bindsym --release Mod1+8 exec antigravity
-bindsym --release Mod1+9 exec cursor
 bindsym --release Mod1+v exec kitty -e vim ~/Notes/todo
 
 
