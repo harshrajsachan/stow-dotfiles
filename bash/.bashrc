@@ -148,6 +148,7 @@ alias neovim="nvim"
 alias leetcode="nvim +Leet"
 alias kallu="helium-browser https://youtube.com"
 
+alias exec:mvn='toofan'
 fastfetch -c ~/.config/fastfetch/config.jsonc
 alias duck='~/.local/bin/appimages/DuckStation-x64.AppImage'
 alias leet='~/.config/i3/scripts/leet.sh'
@@ -163,27 +164,51 @@ THEME_LOADED=""
 load_current_theme() {
     local current_theme
 
-    current_theme="$(readlink -f "$THEME_DIR")"
+    # Resolve the current theme symlink
+    current_theme="$(readlink -f "$THEME_DIR" 2>/dev/null)"
 
+    # Validate theme directory and bash theme file
     [[ -z "$current_theme" ]] && return
     [[ ! -d "$current_theme" ]] && return
     [[ ! -f "$current_theme/bash.sh" ]] && return
 
-    # Only reload when the global theme actually changes
+    # Reload only when the theme actually changes
     if [[ "$current_theme" != "$THEME_LOADED" ]]; then
         source "$current_theme/bash.sh"
         THEME_LOADED="$current_theme"
     fi
 }
 
+# ==================================================
+# Prompt Hook
+# ==================================================
+
 theme_prompt_hook() {
     load_current_theme
     printf '\n'
 }
 
-# Load immediately
+# ==================================================
+# Initial Theme Load
+# ==================================================
+
 load_current_theme
 
-# Check theme before every prompt
-PROMPT_COMMAND=theme_prompt_hook
-alias exec:mvn='toofan'
+# ==================================================
+# Run before every prompt
+# ==================================================
+
+if [[ -z "${PROMPT_COMMAND:-}" ]]; then
+    PROMPT_COMMAND="theme_prompt_hook"
+else
+    PROMPT_COMMAND="theme_prompt_hook;$PROMPT_COMMAND"
+fi
+
+# ==================================================
+# Colored ls
+# ==================================================
+
+alias ls='ls --color=auto'
+alias ll='ls -lah --color=auto'
+alias la='ls -A --color=auto'
+alias l='ls -CF --color=auto'

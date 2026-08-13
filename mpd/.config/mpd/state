@@ -1,8 +1,8 @@
 sw_volume: 100
 audio_device_state:1:PulseAudio
-state: pause
-current: 11
-time: 15.466000000000001
+state: play
+current: 6
+time: 119.99000000000001
 random: 1
 repeat: 0
 single: 0
@@ -12,94 +12,19 @@ mixrampdb: 0
 mixrampdelay: -1
 lastloadedplaylist: 
 playlist_begin
-0:4.Seedhe Maut/101_spotdown.org.mp3
-1:4.Seedhe Maut/Bure Din_spotdown.org.mp3
-2:4.Seedhe Maut/Aadat_spotdown.org.mp3
-3:4.Seedhe Maut/Addict_spotdown.org.mp3
-4:4.Seedhe Maut/Akela_spotdown.org.mp3
-5:4.Seedhe Maut/Banda Down_spotdown.org.mp3
-6:4.Seedhe Maut/Barsaat_spotdown.org.mp3
-7:4.Seedhe Maut/Bas Jhut_spotdown.org.mp3
-8:4.Seedhe Maut/Bechara_spotdown.org.mp3
-9:4.Seedhe Maut/Bin Tere_spotdown.org.mp3
-10:4.Seedhe Maut/Capital Rap_spotdown.org.mp3
-11:4.Seedhe Maut/CD_spotdown.org.mp3
-12:4.Seedhe Maut/Cha Chi_spotdown.org.mp3
-13:4.Seedhe Maut/Dhoke_spotdown.org.mp3
-14:4.Seedhe Maut/Dil Se_spotdown.org.mp3
-15:4.Seedhe Maut/El Matador_spotdown.org.mp3
-16:4.Seedhe Maut/Guldasta_spotdown.org.mp3
-17:4.Seedhe Maut/Kehne Do_spotdown.org.mp3
-18:4.Seedhe Maut/Kilas_spotdown.org.mp3
-19:4.Seedhe Maut/KTMN_spotdown.org.mp3
-20:4.Seedhe Maut/Maar Kaat_spotdown.org.mp3
-21:4.Seedhe Maut/Madira_spotdown.org.mp3
-22:4.Seedhe Maut/MP3_spotdown.org.mp3
-23:4.Seedhe Maut/Mud_spotdown.org.mp3
-24:4.Seedhe Maut/Pancake_spotdown.org.mp3
-25:4.Seedhe Maut/Pickup_spotdown.org.mp3
-26:4.Seedhe Maut/Rahat_spotdown.org.mp3
-27:4.Seedhe Maut/Sike_spotdown.org.mp3
-28:4.Seedhe Maut/Video Games_spotdown.org.mp3
-29:4.Seedhe Maut/Wajah_spotdown.org.mp3
-30:4.Seedhe Maut/Do Guna_spotdown.org.mp3
-31:4.Seedhe Maut/ALL CAPS_spotdown.org.mp3
-32:4.Seedhe Maut/Crash Out_spotdown.org.mp3
-33:4.Seedhe Maut/Elevator Music_spotdown.org.mp3
-34:4.Seedhe Maut/Kya Mai Yaha_spotdown.org.mp3
-35:4.Seedhe Maut/Masti_spotdown.org.mp3
-36:4.Seedhe Maut/Neelam Aur Neeli_spotdown.org.mp3
-37:4.Seedhe Maut/Hola Amigo_spotdown.org.mp3
-38:4.Seedhe Maut/BEEN ON_spotdown.org.mp3
-39:4.Seedhe Maut/Brahamachari_spotdown.org.mp3
-40:4.Seedhe Maut/Gourmet Shit!_spotdown.org.mp3
-41:4.Seedhe Maut/ICE_spotdown.org.mp3
-42:4.Seedhe Maut/Moon Comes Up_spotdown.org.mp3
-43:4.Seedhe Maut/Naraaz_spotdown.org.mp3
-44:4.Seedhe Maut/RED_spotdown.org.mp3
-45:4.Seedhe Maut/Round 3_spotdown.org.mp3
-46:4.Seedhe Maut/Shakti Aur Kshama_spotdown.org.mp3
-47:4.Seedhe Maut/11K_spotdown.org.mp3
-48:4.Seedhe Maut/Akatsuki_spotdown.org.mp3
-49:4.Seedhe Maut/Asal G_spotdown.org.mp3
-50:4.Seedhe Maut/Baat Aisi Ghar Jaisi_spotdown.org.mp3
-51:4.Seedhe Maut/Brand New_spotdown.org.mp3
-52:4.Seedhe Maut/Champions_spotdown.org.mp3
-53:4.Seedhe Maut/Fanne Khan_spotdown.org.mp3
-54:4.Seedhe Maut/Focused Sedated_spotdown.org.mp3
-55:4.Seedhe Maut/Hausla_spotdown.org.mp3
-56:4.Seedhe Maut/I Don't Miss That Life_spotdown.org.mp3
-57:4.Seedhe Maut/Joint in the Booth_spotdown.org.mp3
-58:4.Seedhe Maut/Kavi_spotdown.org.mp3
-59:4.Seedhe Maut/Khatta Flow_spotdown.org.mp3
-60:4.Seedhe Maut/Khauf_spotdown.org.mp3
-61:4.Seedhe Maut/Kya Challa_spotdown.org.mp3
-62:4.Seedhe Maut/Luka Chippi_spotdown.org.mp3
-63:4.Seedhe Maut/Naam Kaam Sheher_spotdown.org.mp3
-64:4.Seedhe Maut/Off Beat_spotdown.org.mp3
-65:4.Seedhe Maut/Pain_spotdown.org.mp3
-66:4.Seedhe Maut/Pushpak Vimaan_spotdown.org.mp3
-67:4.Seedhe Maut/Sick & Proper_spotdown.org.mp3
-68:4.Seedhe Maut/Swah!_spotdown.org.mp3
-69:4.Seedhe Maut/Taakat_spotdown.org.mp3
-70:4.Seedhe Maut/W_spotdown.org.mp3
-71:4.Seedhe Maut/KODAK_spotdown.org.mp3
-72:4.Seedhe Maut/Seedhe Maut Interlude_spotdown.org.mp3
-73:4.Seedhe Maut/Chaand (Tu Jo Dekh Le)_spotdown.org.mp3
-74:4.Seedhe Maut/BAM BAM_spotdown.org.mp3
-75:4.Seedhe Maut/BUN MASKA_spotdown.org.mp3
-76:4.Seedhe Maut/KHO KHO_spotdown.org.mp3
-77:4.Seedhe Maut/PISHA_spotdown.org.mp3
-78:4.Seedhe Maut/RED CUP_spotdown.org.mp3
-79:4.Seedhe Maut/RELAX_spotdown.org.mp3
-80:4.Seedhe Maut/RINGTONE_spotdown.org.mp3
-81:4.Seedhe Maut/ROOTS_spotdown.org.mp3
-82:4.Seedhe Maut/WATCHU KNOW ABOUT ME_spotdown.org.mp3
-83:4.Seedhe Maut/Shaayar_spotdown.org.mp3
-84:4.Seedhe Maut/Khush Nahi_spotdown.org.mp3
-85:4.Seedhe Maut/Naksha_spotdown.org.mp3
-86:4.Seedhe Maut/Raat Ki Rani_spotdown.org.mp3
-87:4.Seedhe Maut/Tofa_spotdown.org.mp3
-88:4.Seedhe Maut/Tour Shit!_spotdown.org.mp3
-89:4.Seedhe Maut/नalla Freestyle_spotdown.org.mp3
+0:1.Favorites/Chris_Grey_-_LET_THE_WORLD_BURN_(mp3.pm).mp3
+1:1.Favorites/Tame Impala - Dracula (Official Video).mp3
+2:1.Favorites/Insane Drippin_spotdown.org.mp3
+3:1.Favorites/Adhura Hee Sahi_spotdown.org.mp3
+4:1.Favorites/Blue Eyes_spotdown.org.mp3
+5:1.Favorites/Desi Kalakaar_spotdown.org.mp3
+6:1.Favorites/702_spotdown.org.mp3
+7:1.Favorites/Guess featuring billie eilish_spotdown.org.mp3
+8:1.Favorites/Goliya_spotdown.org.mp3
+9:1.Favorites/Jaga Do (feat. Foosie Gang)_spotdown.org.mp3
+10:1.Favorites/Daraaz Mein_spotdown.org.mp3
+11:1.Favorites/Brahamachari_spotdown.org.mp3
+12:1.Favorites/Shaayar_spotdown.org_1.mp3
+13:1.Favorites/Ek_Tera_Pyar.mp3
+14:1.Favorites/Billie Jean_spotdown.org.mp3
 playlist_end

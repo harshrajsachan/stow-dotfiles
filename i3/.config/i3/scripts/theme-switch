@@ -1,191 +1,374 @@
 #!/bin/bash
 
-set -e
+set -Eeuo pipefail
+
+# ============================================================================
+# Ultimate Theme Switcher
+# ============================================================================
 
 THEMES_DIR="$HOME/.config/themes"
 CURRENT="$THEMES_DIR/current"
 
-BERSERK="$THEMES_DIR/berserk"
-GRUVBOX="$THEMES_DIR/gruvbox"
+YAZI_DIR="$HOME/.config/yazi"
+CAVA_DIR="$HOME/.config/cava"
+CACHE_DIR="$HOME/.cache"
 
-# --------------------------------------------------
-# Determine current theme
-# --------------------------------------------------
+# ============================================================================
+# Themes
+# ============================================================================
 
-CURRENT_THEME=$(basename "$(readlink -f "$CURRENT")")
+THEMES=(
+    "berserk"
+    "catppuccin"
+    "everforest"
+    "gruvbox"
+    "nord"
+    "sakura"
+    "twilight"
+)
 
-case "$CURRENT_THEME" in
-berserk)
-    NEXT_THEME="gruvbox"
-    ;;
-gruvbox)
-    NEXT_THEME="berserk"
-    ;;
-*)
-    echo "Unknown current theme: $CURRENT_THEME"
-    echo "Expected: berserk or gruvbox"
+# ============================================================================
+# Helpers
+# ============================================================================
+
+notify() {
+    if command -v notify-send >/dev/null 2>&1; then
+        notify-send "$@"
+    fi
+}
+
+die() {
+    notify \
+        -u critical \
+        "Theme Error" \
+        "$1"
+
+    echo "Theme Error: $1" >&2
     exit 1
-    ;;
-esac
+}
 
-NEXT_DIR="$THEMES_DIR/$NEXT_THEME"
+# ============================================================================
+# Validate Themes Directory
+# ============================================================================
 
-if [[ ! -d "$NEXT_DIR" ]]; then
-    echo "Theme directory does not exist:"
-    echo "$NEXT_DIR"
-    exit 1
+[[ -d "$THEMES_DIR" ]] || \
+    die "Themes directory does not exist: $THEMES_DIR"
+
+# ============================================================================
+# Current Theme
+# ============================================================================
+
+if [[ -L "$CURRENT" ]]; then
+    CURRENT_THEME="$(basename "$(readlink -f "$CURRENT")")"
+else
+    CURRENT_THEME=""
 fi
 
-echo "Switching: $CURRENT_THEME → $NEXT_THEME"
+# ============================================================================
+# Build Rofi Menu
+# ============================================================================
 
-# --------------------------------------------------
-# Change global theme
-# --------------------------------------------------
+MENU=""
 
-ln -sfn "$NEXT_DIR" "$CURRENT"
+for theme in "${THEMES[@]}"; do
+    if [[ "$theme" == "$CURRENT_THEME" ]]; then
+        MENU+="● $theme"$'\n'
+    else
+        MENU+="  $theme"$'\n'
+    fi
+done
 
-# Make sure symlink points to new theme
+# ============================================================================
+# Rofi
+# ============================================================================
 
-CURRENT_THEME_PATH=$(readlink -f "$CURRENT")
+SELECTED="$(
+    printf '%s' "$MENU" |
+        rofi \
+            -dmenu \
+            -i \
+            -p "Theme" \
+            -no-custom \
+            -theme-str '
+                window {
+                    width: 30%;
+                }
 
-echo "Current theme path:"
-echo "  $CURRENT_THEME_PATH"
+                listview {
+                    lines: 7;
+                }
 
-# --------------------------------------------------
-# CAVA
-# --------------------------------------------------
+                element {
+                    padding: 8px;
+                }
+            '
+)"
+
+# ============================================================================
+# Escape
+# ============================================================================
+
+[[ -n "$SELECTED" ]] || exit 0
+
+# ============================================================================
+# Clean Selection
+# ============================================================================
+
+SELECTED="${SELECTED#● }"
+SELECTED="${SELECTED#  }"
+
+NEXT_THEME="$SELECTED"
+NEXT_DIR="$THEMES_DIR/$NEXT_THEME"
+
+# ============================================================================
+# Validate Selected Theme
+# ============================================================================
+
+[[ -d "$NEXT_DIR" ]] || \
+    die "Theme directory does not exist: $NEXT_DIR"
+
+[[ -r "$NEXT_DIR" ]] || \
+    die "Theme directory is not readable: $NEXT_DIR"
+
+# ============================================================================
+# Same Theme
+# ============================================================================
+
+if [[ "$NEXT_THEME" == "$CURRENT_THEME" ]]; then
+    exit 0
+fi
+
+echo
+echo "============================================================"
+echo " Theme Switch"
+echo "============================================================"
+echo " Old : ${CURRENT_THEME:-none}"
+echo " New : $NEXT_THEME"
+echo " Path: $NEXT_DIR"
+echo "============================================================"
+echo
+
+# ============================================================================
+# 1. Change Global Theme
+# ============================================================================
+
+ln -sfnT "$NEXT_DIR" "$CURRENT"
+
+CURRENT_THEME_PATH="$(readlink -f "$CURRENT")"
+
+# ============================================================================
+# 2. CAVA
+# ============================================================================
 
 CAVA_CONFIG="$CURRENT/cava.conf"
 
 if [[ -f "$CAVA_CONFIG" ]]; then
 
-    echo "CAVA config:"
-    echo "  $CAVA_CONFIG"
+    mkdir -p "$CAVA_DIR"
 
-    # Make sure ~/.config/cava/config points to
-    # the current theme's cava.conf
-    ln -sfn "$CAVA_CONFIG" "$HOME/.config/cava/config"
+    ln -sfnT \
+        "$CAVA_CONFIG" \
+        "$CAVA_DIR/config"
 
-    # Reload every running CAVA instance
-    while read -r CAVA_PID; do
-        if [[ -n "$CAVA_PID" ]]; then
-            kill -USR1 "$CAVA_PID" 2>/dev/null || true
-        fi
-    done < <(pgrep -x cava)
+    while read -r PID; do
 
-    echo "CAVA: configuration reloaded"
+        [[ -n "$PID" ]] || continue
 
-else
+        kill -USR2 "$PID" 2>/dev/null || true
 
-    echo "WARNING: CAVA config not found:"
-    echo "  $CAVA_CONFIG"
+    done < <(pgrep -x cava || true)
 
 fi
 
-# --------------------------------------------------
-# Default wallpaper
-# --------------------------------------------------
+# ============================================================================
+# 3. Yazi
+# ============================================================================
+
+YAZI_CONFIG="$CURRENT/yazi.toml"
+YAZI_THEME="$CURRENT/theme.toml"
+
+mkdir -p "$YAZI_DIR"
+
+# --------------------------------------------------------------------------
+# yazi.toml
+# --------------------------------------------------------------------------
+
+if [[ -f "$YAZI_CONFIG" ]]; then
+
+    ln -sfnT \
+        "$YAZI_CONFIG" \
+        "$YAZI_DIR/yazi.toml"
+
+fi
+
+# --------------------------------------------------------------------------
+# theme.toml
+# --------------------------------------------------------------------------
+
+if [[ -f "$YAZI_THEME" ]]; then
+
+    ln -sfnT \
+        "$YAZI_THEME" \
+        "$YAZI_DIR/theme.toml"
+
+fi
+
+# --------------------------------------------------------------------------
+# Live Yazi Theme Reload
+# --------------------------------------------------------------------------
+
+if command -v ya >/dev/null 2>&1 &&
+    pgrep -x yazi >/dev/null 2>&1 &&
+    [[ -f "$YAZI_THEME" ]]; then
+
+    if ! ya emit-to 0 app:theme >/dev/null 2>&1; then
+        echo "Warning: failed to hot-reload Yazi theme" >&2
+    fi
+
+fi
+
+# ============================================================================
+# 4. Wallpaper
+# ============================================================================
 
 WALLPAPER_DIR="$CURRENT/wallpapers"
 DEFAULT_FILE="$WALLPAPER_DIR/default"
 
 if [[ -f "$DEFAULT_FILE" ]]; then
 
-    DEFAULT_NAME=$(<"$DEFAULT_FILE")
+    DEFAULT_NAME="$(<"$DEFAULT_FILE")"
 
-    # Remove whitespace / CRLF
+    # Remove CRLF
     DEFAULT_NAME="${DEFAULT_NAME//$'\r'/}"
+
+    # Remove leading whitespace
     DEFAULT_NAME="${DEFAULT_NAME#"${DEFAULT_NAME%%[![:space:]]*}"}"
+
+    # Remove trailing whitespace
     DEFAULT_NAME="${DEFAULT_NAME%"${DEFAULT_NAME##*[![:space:]]}"}"
 
     DEFAULT_WALL="$WALLPAPER_DIR/$DEFAULT_NAME"
 
     if [[ -f "$DEFAULT_WALL" ]]; then
 
-        echo "Applying default wallpaper:"
-        echo "  $DEFAULT_WALL"
-
-        feh --bg-fill "$DEFAULT_WALL"
-
-    else
-
-        echo "WARNING: Default wallpaper does not exist:"
-        echo "  $DEFAULT_WALL"
+        feh \
+            --no-fehbg \
+            --bg-fill \
+            "$DEFAULT_WALL"
 
     fi
 
-else
-
-    echo "WARNING: Default wallpaper file not found:"
-    echo "  $DEFAULT_FILE"
-
 fi
 
-# --------------------------------------------------
-# Reset wallpaper toggle state
-# --------------------------------------------------
+# ============================================================================
+# 5. Wallpaper State
+# ============================================================================
 
-WALL_STATE="$HOME/.cache/theme_wall_index"
+WALL_STATE="$CACHE_DIR/theme_wall_index"
 
-mkdir -p "$HOME/.cache"
+mkdir -p "$CACHE_DIR"
 
 {
     echo "$CURRENT_THEME_PATH"
     echo "0"
-} >"$WALL_STATE"
+} > "$WALL_STATE"
 
-# --------------------------------------------------
-# Dunst
-# --------------------------------------------------
+# ============================================================================
+# 6. Dunst
+# ============================================================================
 
 if command -v dunstctl >/dev/null 2>&1; then
-    dunstctl reload
+
+    dunstctl reload \
+        >/dev/null 2>&1 || true
+
 fi
 
-# --------------------------------------------------
-# Polybar
-# --------------------------------------------------
+# ============================================================================
+# 7. Polybar
+# ============================================================================
 
 if command -v polybar-msg >/dev/null 2>&1; then
-    polybar-msg cmd restart >/dev/null 2>&1 || true
+
+    polybar-msg cmd restart \
+        >/dev/null 2>&1 || true
+
 fi
 
-# --------------------------------------------------
-# i3
-# --------------------------------------------------
+# ============================================================================
+# 8. i3
+# ============================================================================
 
-i3-msg reload >/dev/null 2>&1 || true
+if command -v i3-msg >/dev/null 2>&1; then
 
-# --------------------------------------------------
-# Kitty
-# --------------------------------------------------
+    i3-msg reload \
+        >/dev/null 2>&1 || true
 
-if command -v kitten >/dev/null 2>&1; then
+fi
 
-    KITTY_SOCKET=$(
-        find /tmp -maxdepth 1 -type s \
+# ============================================================================
+# 9. Kitty
+#
+# Live color update for all running Kitty instances.
+# ============================================================================
+
+if command -v kitten >/dev/null 2>&1 &&
+    [[ -f "$CURRENT/kitty.conf" ]]; then
+
+    mapfile -t KITTY_SOCKETS < <(
+        find /tmp \
+            -maxdepth 1 \
+            -type s \
             -name 'kitty-theme.sock-*' \
-            -print -quit
+            2>/dev/null || true
     )
 
-    if [[ -n "$KITTY_SOCKET" ]]; then
+    for KITTY_SOCKET in "${KITTY_SOCKETS[@]}"; do
 
-        kitten @ --to "unix:$KITTY_SOCKET" set-colors \
+        kitten @ \
+            --to "unix:$KITTY_SOCKET" \
+            set-colors \
             --all \
             --configured \
             "$CURRENT/kitty.conf" \
             >/dev/null 2>&1 || true
 
-    fi
+    done
 
 fi
 
-# --------------------------------------------------
-# Done
-# --------------------------------------------------
+# ============================================================================
+# 10. Optional Theme Configurations
+#
+# Add mappings for additional applications here.
+# ============================================================================
+
+# Example:
+#
+# if [[ -f "$CURRENT/starship.toml" ]]; then
+#     ln -sfnT \
+#         "$CURRENT/starship.toml" \
+#         "$HOME/.config/starship.toml"
+# fi
+
+# ============================================================================
+# 11. Current Theme Marker
+# ============================================================================
+
+printf '%s\n' "$NEXT_THEME" \
+    > "$CACHE_DIR/current-theme"
+
+# ============================================================================
+# 12. Success Notification
+# ============================================================================
+
+notify \
+    -t 2000 \
+    "Theme Changed" \
+    "Now using $NEXT_THEME"
 
 echo
 echo "Theme switched successfully:"
 echo "  $CURRENT_THEME → $NEXT_THEME"
-echo "  Wallpaper: ${DEFAULT_NAME:-none}"
-echo "  CAVA: reloaded"
+echo
+

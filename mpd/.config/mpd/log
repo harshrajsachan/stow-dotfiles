@@ -5749,3 +5749,8 @@
 2026-08-12T19:35:25 player: played "4.Seedhe Maut/Do Guna_spotdown.org.mp3"
 2026-08-12T19:38:25 player: played "4.Seedhe Maut/Baat Aisi Ghar Jaisi_spotdown.org.mp3"
 2026-08-12T19:38:40 update: added Favorites/Bad - 2012 Remaster_spotdown.org.mp3
+2026-08-13T10:01:12 exception: Failed to open "/home/harsh/.config/mpd/state": No such file or directory
+2026-08-13T10:12:04 player: played "1.Favorites/Daraaz Mein_spotdown.org.mp3"
+2026-08-13T10:16:38 player: played "1.Favorites/Shaayar_spotdown.org_1.mp3"
+2026-08-13T10:19:01 player: played "1.Favorites/Guess featuring billie eilish_spotdown.org.mp3"
+2026-08-13T10:23:09 player: played "1.Favorites/702_spotdown.org.mp3"
