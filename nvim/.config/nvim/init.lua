@@ -1,6 +1,7 @@
 require 'core.options' -- Load general options
 require 'core.keymaps' -- Load general keymaps
 require 'core.snippets' -- Custom code snippets
+require 'core.theme' -- Custom themes
 
 -- Set up the Lazy plugin manager
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -24,15 +25,22 @@ require('lazy').setup {
   require 'plugins.noice',
   require 'plugins.new-file',
   require 'plugins.leet',
-  require 'plugins.colortheme',
   require 'plugins.bufferline',
   require 'plugins.lualine',
   require 'plugins.autocompletion',
   require 'plugins.gitsigns',
   require 'plugins.alpha',
   require 'plugins.snacks',
-  require 'plugins.misc',
   require 'plugins.comment',
+  require 'plugins.markdown',
+  require 'plugins.rhubarb',
+  require 'plugins.sleuth',
+  require 'plugins.to-do',
+  require 'plugins.image',
+  require 'plugins.autopair',
+  require 'plugins.colorizer',
+  require 'plugins.fugitive',
+  require 'plugins.tmux-nav',
   require 'plugins.yazi',
 
   -- LSP
