@@ -2,17 +2,11 @@ return {
   {
     'nvim-neo-tree/neo-tree.nvim',
 
-    -- Stable Neo-tree release.
     branch = 'v3.x',
 
     dependencies = {
-      -- Required utility library.
       'nvim-lua/plenary.nvim',
-
-      -- File icons.
       'nvim-tree/nvim-web-devicons',
-
-      -- Neo-tree UI components.
       'MunifTanjim/nui.nvim',
     },
 
@@ -22,63 +16,76 @@ return {
       -----------------------------------------------------------
 
       require('neo-tree').setup {
-
         ---------------------------------------------------------
         -- GENERAL
         ---------------------------------------------------------
 
-        -- Close Neo-tree when it becomes the last remaining window.
         close_if_last_window = true,
 
-        -- Rounded floating-window borders.
         popup_border_style = 'rounded',
 
-        -- KEEP Git integration enabled.
         enable_git_status = true,
 
-        -- Keep diagnostics disabled inside Neo-tree.
         enable_diagnostics = false,
 
-        -- Don't replace special windows.
+        ---------------------------------------------------------
+        -- ONLY FILESYSTEM SOURCE
+        --
+        -- Prevents Buffers / Git Status from becoming
+        -- Neo-tree sources.
+        ---------------------------------------------------------
+
+        sources = {
+          'filesystem',
+        },
+
+        ---------------------------------------------------------
+        -- DON'T REPLACE SPECIAL WINDOWS
+        ---------------------------------------------------------
+
         open_files_do_not_replace_types = {
           'terminal',
           'trouble',
           'qf',
+          'help',
+          'nofile',
         },
 
-        -- Normal case-sensitive sorting.
+        ---------------------------------------------------------
+        -- SORTING
+        ---------------------------------------------------------
+
         sort_case_insensitive = false,
 
-        -- Use Neo-tree's default sorting.
         sort_function = nil,
 
-        -----------------------------------------------------------
+        ---------------------------------------------------------
         -- DEFAULT COMPONENTS
-        -----------------------------------------------------------
+        ---------------------------------------------------------
 
         default_component_configs = {
 
-          ---------------------------------------------------------
+          -------------------------------------------------------
           -- CONTAINER
-          ---------------------------------------------------------
+          -------------------------------------------------------
 
           container = {
-            -- Don't fade indentation characters.
             enable_character_fade = false,
           },
 
-          ---------------------------------------------------------
+          -------------------------------------------------------
           -- INDENT
-          ---------------------------------------------------------
+          -------------------------------------------------------
 
           indent = {
             indent_size = 2,
+
             padding = 1,
 
-            -- Show indentation markers.
             with_markers = true,
 
             indent_marker = '│',
+
             last_indent_marker = '└',
 
             highlight = 'NeoTreeIndentMarker',
@@ -86,18 +93,21 @@ return {
             with_expanders = nil,
 
             expander_collapsed = '',
+
             expander_expanded = '',
 
             expander_highlight = 'NeoTreeExpander',
           },
 
-          ---------------------------------------------------------
+          -------------------------------------------------------
           -- FILE ICONS
-          ---------------------------------------------------------
+          -------------------------------------------------------
 
           icon = {
             folder_closed = '',
+
             folder_open = '',
+
             folder_empty = '󰜌',
 
             default = '*',
@@ -105,140 +115,189 @@ return {
             highlight = 'NeoTreeFileIcon',
           },
 
-          ---------------------------------------------------------
-          -- MODIFIED FILES
-          ---------------------------------------------------------
+          -------------------------------------------------------
+          -- UNSAVED FILE
+          --
+          -- [+] means the current Neovim buffer has unsaved
+          -- changes.
+          -------------------------------------------------------
 
           modified = {
             symbol = '[+]',
+
             highlight = 'NeoTreeModified',
           },
 
-          ---------------------------------------------------------
+          -------------------------------------------------------
           -- FILE NAME
-          ---------------------------------------------------------
+          -------------------------------------------------------
 
           name = {
             trailing_slash = false,
 
-            -- Let Git status affect filename highlighting.
-            use_git_status_colors = true,
+            -----------------------------------------------------
+            -- IMPORTANT:
+            --
+            -- Keep Git signs but DON'T let Neo-tree recolor
+            -- the entire filename orange.
+            -----------------------------------------------------
+
+            use_git_status_colors = false,
 
             highlight = 'NeoTreeFileName',
           },
 
-          ---------------------------------------------------------
+          -------------------------------------------------------
           -- GIT STATUS
-          ---------------------------------------------------------
+          -------------------------------------------------------
 
           git_status = {
-
             symbols = {
-              -- File was added.
+
+              ---------------------------------------------------
+              -- ADDED
+              ---------------------------------------------------
+
               added = '✚',
 
-              -- File was modified.
+              ---------------------------------------------------
+              -- MODIFIED
+              ---------------------------------------------------
+
               modified = '',
 
-              -- File was deleted.
+              ---------------------------------------------------
+              -- DELETED
+              ---------------------------------------------------
+
               deleted = '✖',
 
-              -- File was renamed.
+              ---------------------------------------------------
+              -- RENAMED
+              ---------------------------------------------------
+
               renamed = '󰁕',
 
-              -- Untracked file.
+              ---------------------------------------------------
+              -- UNTRACKED
+              ---------------------------------------------------
+
               untracked = '',
 
-              -- Ignored file.
+              ---------------------------------------------------
+              -- IGNORED
+              ---------------------------------------------------
+
               ignored = '',
 
-              -- Unstaged changes.
+              ---------------------------------------------------
+              -- UNSTAGED
+              ---------------------------------------------------
+
               unstaged = '󰄱',
 
-              -- Staged changes.
+              ---------------------------------------------------
+              -- STAGED
+              ---------------------------------------------------
+
               staged = '',
 
-              -- Merge conflict.
+              ---------------------------------------------------
+              -- CONFLICT
+              ---------------------------------------------------
+
               conflict = '',
             },
           },
 
-          ---------------------------------------------------------
+          -------------------------------------------------------
           -- FILE SIZE
-          ---------------------------------------------------------
+          -------------------------------------------------------
 
           file_size = {
             enabled = false,
+
             required_width = 64,
           },
 
-          ---------------------------------------------------------
+          -------------------------------------------------------
           -- FILE TYPE
-          ---------------------------------------------------------
+          -------------------------------------------------------
 
           type = {
             enabled = false,
+
             required_width = 122,
           },
 
-          ---------------------------------------------------------
+          -------------------------------------------------------
           -- LAST MODIFIED
-          ---------------------------------------------------------
+          -------------------------------------------------------
 
           last_modified = {
             enabled = false,
+
             required_width = 88,
           },
 
-          ---------------------------------------------------------
+          -------------------------------------------------------
           -- CREATED
-          ---------------------------------------------------------
+          -------------------------------------------------------
 
           created = {
             enabled = false,
+
             required_width = 110,
           },
 
-          ---------------------------------------------------------
+          -------------------------------------------------------
           -- SYMLINK
-          ---------------------------------------------------------
+          -------------------------------------------------------
 
           symlink_target = {
             enabled = false,
           },
         },
 
-        -----------------------------------------------------------
+        ---------------------------------------------------------
         -- GLOBAL COMMANDS
-        -----------------------------------------------------------
+        ---------------------------------------------------------
 
         commands = {},
 
-        -----------------------------------------------------------
+        ---------------------------------------------------------
         -- MAIN WINDOW
-        -----------------------------------------------------------
+        ---------------------------------------------------------
 
         window = {
 
-          -- Neo-tree on the left.
+          -------------------------------------------------------
+          -- KEEP YOUR ORIGINAL POSITION
+          -------------------------------------------------------
+
           position = 'right',
 
-          -- Your original width.
+          -------------------------------------------------------
+          -- KEEP YOUR ORIGINAL WIDTH
+          -------------------------------------------------------
+
           width = 30,
 
           mapping_options = {
             noremap = true,
+
             nowait = true,
           },
 
           mappings = {
 
-            -------------------------------------------------------
+            -----------------------------------------------------
             -- NAVIGATION
-            -------------------------------------------------------
+            -----------------------------------------------------
 
             ['<space>'] = {
               'toggle_node',
+
               nowait = false,
             },
 
@@ -250,9 +309,9 @@ return {
 
             ['h'] = 'close_node',
 
-            -------------------------------------------------------
+            -----------------------------------------------------
             -- OPENING
-            -------------------------------------------------------
+            -----------------------------------------------------
 
             ['S'] = 'open_split',
 
@@ -260,20 +319,21 @@ return {
 
             ['t'] = 'open_tabnew',
 
-            -------------------------------------------------------
+            -----------------------------------------------------
             -- DIRECTORY
-            -------------------------------------------------------
+            -----------------------------------------------------
 
             ['C'] = 'close_node',
 
             ['z'] = 'close_all_nodes',
 
-            -------------------------------------------------------
+            -----------------------------------------------------
             -- FILE OPERATIONS
-            -------------------------------------------------------
+            -----------------------------------------------------
 
             ['a'] = {
               'add',
+
               config = {
                 show_path = 'none',
               },
@@ -295,9 +355,9 @@ return {
 
             ['m'] = 'move',
 
-            -------------------------------------------------------
+            -----------------------------------------------------
             -- WINDOW
-            -------------------------------------------------------
+            -----------------------------------------------------
 
             ['q'] = 'close_window',
 
@@ -307,43 +367,56 @@ return {
 
             ['i'] = 'show_file_details',
 
-            -------------------------------------------------------
+            -----------------------------------------------------
             -- GIT NAVIGATION
-            -------------------------------------------------------
+            -----------------------------------------------------
 
-            -- Previous modified Git file.
             ['[g'] = 'prev_git_modified',
 
-            -- Next modified Git file.
             [']g'] = 'next_git_modified',
           },
         },
 
-        -----------------------------------------------------------
+        ---------------------------------------------------------
         -- FILESYSTEM
-        -----------------------------------------------------------
+        ---------------------------------------------------------
 
         filesystem = {
 
-          ---------------------------------------------------------
+          -------------------------------------------------------
           -- FILTERED ITEMS
-          ---------------------------------------------------------
+          -------------------------------------------------------
 
           filtered_items = {
 
-            -- Don't show filtered files unless toggled.
+            -----------------------------------------------------
+            -- Don't show filtered files by default
+            -----------------------------------------------------
+
             visible = false,
 
-            -- Show dotfiles.
+            -----------------------------------------------------
+            -- Show dotfiles
+            -----------------------------------------------------
+
             hide_dotfiles = false,
 
-            -- Show Git-ignored files.
+            -----------------------------------------------------
+            -- Show Git ignored files
+            -----------------------------------------------------
+
             hide_gitignored = false,
 
-            -- Show hidden files.
+            -----------------------------------------------------
+            -- Show hidden files
+            -----------------------------------------------------
+
             hide_hidden = false,
 
-            -- Hide generated/unnecessary files.
+            -----------------------------------------------------
+            -- Files/directories we don't need in the tree
+            -----------------------------------------------------
+
             hide_by_name = {
               '.DS_Store',
               'thumbs.db',
@@ -364,85 +437,280 @@ return {
             never_show_by_pattern = {},
           },
 
-          ---------------------------------------------------------
+          -------------------------------------------------------
           -- FOLLOW CURRENT FILE
-          ---------------------------------------------------------
+          -------------------------------------------------------
 
           follow_current_file = {
-
-            -- Automatically reveal the file currently being edited.
             enabled = true,
 
-            -- Don't leave manually opened directories expanded.
             leave_dirs_open = false,
           },
 
-          ---------------------------------------------------------
+          -------------------------------------------------------
           -- DIRECTORY GROUPING
-          ---------------------------------------------------------
+          -------------------------------------------------------
 
           group_empty_dirs = false,
 
-          ---------------------------------------------------------
+          -------------------------------------------------------
           -- NETRW
-          ---------------------------------------------------------
+          -------------------------------------------------------
 
-          -- Don't hijack Neovim's working directory through netrw.
           hijack_netrw_behavior = 'disabled',
 
-          ---------------------------------------------------------
+          -------------------------------------------------------
           -- FILE WATCHER
-          ---------------------------------------------------------
+          -------------------------------------------------------
 
           use_libuv_file_watcher = false,
 
-          ---------------------------------------------------------
+          -------------------------------------------------------
           -- FILESYSTEM WINDOW
-          ---------------------------------------------------------
+          -------------------------------------------------------
 
           window = {
             mappings = {
 
-              -- Go to parent directory.
+              ---------------------------------------------------
+              -- GO TO PARENT DIRECTORY
+              ---------------------------------------------------
+
               ['<bs>'] = 'navigate_up',
 
-              -- Make current directory the Neo-tree root.
+              ---------------------------------------------------
+              -- SET CURRENT DIRECTORY AS ROOT
+              ---------------------------------------------------
+
               ['.'] = 'set_root',
 
-              -- Toggle hidden files.
+              ---------------------------------------------------
+              -- TOGGLE HIDDEN FILES
+              ---------------------------------------------------
+
               ['H'] = 'toggle_hidden',
 
-              -----------------------------------------------------
-              -- GIT MODIFICATIONS
-              -----------------------------------------------------
+              ---------------------------------------------------
+              -- GIT NAVIGATION
+              ---------------------------------------------------
 
-              -- Previous changed file.
               ['[g'] = 'prev_git_modified',
 
-              -- Next changed file.
               [']g'] = 'next_git_modified',
             },
           },
 
           commands = {},
         },
-
-        -----------------------------------------------------------
-        -- BUFFER SOURCE
-        -----------------------------------------------------------
-
-        -- Keep this disabled because Telescope handles
-        -- buffer searching and Snacks handles buffer utilities.
-
-        -----------------------------------------------------------
-        -- GIT STATUS SOURCE
-        -----------------------------------------------------------
-
-        -- Git operations themselves are handled by LazyGit.
-        --
-        -- Neo-tree still shows Git status signs in the filesystem
-        -- tree, but we don't need a separate Git-status panel.
       }
+
+      -----------------------------------------------------------
+      -- NEO-TREE COLORS
+      --
+      -- IMPORTANT:
+      --
+      -- We don't hard-code orange/yellow/red colors here.
+      --
+      -- Neo-tree follows the currently active colorscheme.
+      -- This is especially important because your theme system
+      -- can switch colors dynamically.
+      -----------------------------------------------------------
+
+      local function setup_neotree_colors()
+        ---------------------------------------------------------
+        -- Main background
+        ---------------------------------------------------------
+
+        vim.api.nvim_set_hl(0, 'NeoTreeNormal', {
+          link = 'Normal',
+        })
+
+        vim.api.nvim_set_hl(0, 'NeoTreeNormalNC', {
+          link = 'NormalNC',
+        })
+
+        vim.api.nvim_set_hl(0, 'NeoTreeEndOfBuffer', {
+          link = 'EndOfBuffer',
+        })
+
+        ---------------------------------------------------------
+        -- Window separator
+        ---------------------------------------------------------
+
+        vim.api.nvim_set_hl(0, 'NeoTreeWinSeparator', {
+          link = 'WinSeparator',
+        })
+
+        vim.api.nvim_set_hl(0, 'NeoTreeVertSplit', {
+          link = 'WinSeparator',
+        })
+
+        ---------------------------------------------------------
+        -- Cursor line
+        ---------------------------------------------------------
+
+        vim.api.nvim_set_hl(0, 'NeoTreeCursorLine', {
+          link = 'CursorLine',
+        })
+
+        ---------------------------------------------------------
+        -- File names
+        ---------------------------------------------------------
+
+        vim.api.nvim_set_hl(0, 'NeoTreeFileName', {
+          link = 'Normal',
+        })
+
+        vim.api.nvim_set_hl(0, 'NeoTreeDirectoryName', {
+          link = 'Normal',
+        })
+
+        vim.api.nvim_set_hl(0, 'NeoTreeFileNameOpened', {
+          link = 'Normal',
+        })
+
+        vim.api.nvim_set_hl(0, 'NeoTreeDirectoryNameOpened', {
+          link = 'Normal',
+        })
+
+        ---------------------------------------------------------
+        -- Icons
+        ---------------------------------------------------------
+
+        vim.api.nvim_set_hl(0, 'NeoTreeFileIcon', {
+          link = 'Normal',
+        })
+
+        vim.api.nvim_set_hl(0, 'NeoTreeDirectoryIcon', {
+          link = 'Normal',
+        })
+
+        ---------------------------------------------------------
+        -- Unsaved [+]
+        ---------------------------------------------------------
+
+        vim.api.nvim_set_hl(0, 'NeoTreeModified', {
+          link = 'Normal',
+        })
+
+        ---------------------------------------------------------
+        -- Indentation
+        ---------------------------------------------------------
+
+        vim.api.nvim_set_hl(0, 'NeoTreeIndentMarker', {
+          link = 'NonText',
+        })
+
+        vim.api.nvim_set_hl(0, 'NeoTreeExpander', {
+          link = 'NonText',
+        })
+
+        ---------------------------------------------------------
+        -- Git signs
+        --
+        -- Symbols remain visible.
+        -- Their colors follow the current colorscheme instead
+        -- of becoming orange.
+        ---------------------------------------------------------
+
+        vim.api.nvim_set_hl(0, 'NeoTreeGitAdded', {
+          link = 'Normal',
+        })
+
+        vim.api.nvim_set_hl(0, 'NeoTreeGitModified', {
+          link = 'Normal',
+        })
+
+        vim.api.nvim_set_hl(0, 'NeoTreeGitDeleted', {
+          link = 'Normal',
+        })
+
+        vim.api.nvim_set_hl(0, 'NeoTreeGitRenamed', {
+          link = 'Normal',
+        })
+
+        vim.api.nvim_set_hl(0, 'NeoTreeGitUntracked', {
+          link = 'Normal',
+        })
+
+        vim.api.nvim_set_hl(0, 'NeoTreeGitIgnored', {
+          link = 'Normal',
+        })
+
+        vim.api.nvim_set_hl(0, 'NeoTreeGitUnstaged', {
+          link = 'Normal',
+        })
+
+        vim.api.nvim_set_hl(0, 'NeoTreeGitStaged', {
+          link = 'Normal',
+        })
+
+        vim.api.nvim_set_hl(0, 'NeoTreeGitConflict', {
+          link = 'Normal',
+        })
+
+        ---------------------------------------------------------
+        -- Root
+        ---------------------------------------------------------
+
+        vim.api.nvim_set_hl(0, 'NeoTreeRootName', {
+          link = 'Normal',
+        })
+
+        ---------------------------------------------------------
+        -- Message / dimmed text
+        ---------------------------------------------------------
+
+        vim.api.nvim_set_hl(0, 'NeoTreeMessage', {
+          link = 'Comment',
+        })
+
+        vim.api.nvim_set_hl(0, 'NeoTreeDimText', {
+          link = 'Comment',
+        })
+      end
+
+      -----------------------------------------------------------
+      -- APPLY COLORS
+      -----------------------------------------------------------
+
+      setup_neotree_colors()
+
+      -----------------------------------------------------------
+      -- REAPPLY AFTER COLORScheme CHANGES
+      --
+      -- This is important for your live theme switching.
+      -----------------------------------------------------------
+
+      vim.api.nvim_create_autocmd('ColorScheme', {
+        callback = function()
+          vim.schedule(function()
+            setup_neotree_colors()
+          end)
+        end,
+      })
+
+      -----------------------------------------------------------
+      -- NEO-TREE BUFFER CLEANUP
+      --
+      -- Neo-tree is a UI window, not a normal editing buffer.
+      --
+      -- Don't let Neo-tree appear in :ls.
+      --
+      -- bufhidden = wipe means when the Neo-tree window is
+      -- actually closed, its buffer is destroyed instead of
+      -- being left around.
+      -----------------------------------------------------------
+
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = 'neo-tree',
+        callback = function(args)
+          vim.bo[args.buf].buflisted = false
+          vim.bo[args.buf].bufhidden = 'wipe'
+          vim.bo[args.buf].swapfile = false
+          vim.bo[args.buf].undofile = false
+        end,
+      })
 
       -----------------------------------------------------------
       -- TOGGLE NEO-TREE
@@ -450,6 +718,7 @@ return {
 
       vim.keymap.set('n', '<leader>e', function()
         local manager = require 'neo-tree.sources.manager'
+
         local state = manager.get_state 'filesystem'
 
         if state and state.winid and vim.api.nvim_win_is_valid(state.winid) then
@@ -459,7 +728,9 @@ return {
         end
       end, {
         noremap = true,
+
         silent = true,
+
         desc = 'Toggle Neo-tree',
       })
 
@@ -471,7 +742,9 @@ return {
         vim.cmd 'Neotree filesystem reveal position=right'
       end, {
         noremap = true,
+
         silent = true,
+
         desc = 'Reveal current file',
       })
     end,
