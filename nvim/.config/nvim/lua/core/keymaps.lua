@@ -175,3 +175,9 @@ end, {
   silent = true,
   desc = 'Buffer List',
 })
+
+vim.keymap.set('n', '<leader>zn', function()
+  require('core.ramsaver').toggle()
+end, {
+  desc = 'Toggle Low RAM Mode',
+})
