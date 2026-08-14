@@ -1,34 +1,29 @@
 return {
   {
-    -- Fuzzy finder for files, buffers, grep, diagnostics, etc.
+    -- Primary search / fuzzy-finding engine.
     'nvim-telescope/telescope.nvim',
 
-    -- Load Telescope when Neovim starts.
     event = 'VimEnter',
 
     branch = 'master',
 
     dependencies = {
-      -- Required by Telescope.
       'nvim-lua/plenary.nvim',
 
       -- Native FZF sorter.
       {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make',
-
-        -- Only use it if make is installed.
         cond = function()
           return vim.fn.executable 'make' == 1
         end,
       },
 
-      -- Use Telescope for vim.ui.select().
+      -- Telescope replacement for vim.ui.select().
       {
         'nvim-telescope/telescope-ui-select.nvim',
       },
 
-      -- Icons.
       {
         'nvim-tree/nvim-web-devicons',
         enabled = vim.g.have_nerd_font,
@@ -42,62 +37,84 @@ return {
       local themes = require 'telescope.themes'
 
       -----------------------------------------------------------
-      -- TELESCOPE SETUP
+      -- TELESCOPE
       -----------------------------------------------------------
 
       telescope.setup {
-
         defaults = {
-          -- Use horizontal layout.
+
+          -------------------------------------------------------
+          -- LAYOUT
+          -------------------------------------------------------
+
           layout_strategy = 'horizontal',
 
           layout_config = {
             horizontal = {
-              -- Results = roughly 50%
-              -- Preview = roughly 50%
-              preview_width = 0.5,
+              -- Give the preview more room.
+              preview_width = 0.58,
 
-              -- Search prompt at bottom.
+              -- Search prompt at the bottom.
               prompt_position = 'bottom',
 
-              width = 0.95,
-              height = 0.90,
+              -- Almost full screen.
+              width = 0.96,
+              height = 0.92,
+
+              -- Small gap between results and preview.
+              preview_cutoff = 40,
             },
           },
 
+          -- Results from top to bottom.
           sorting_strategy = 'ascending',
 
-          -- Selected item icon.
-          selection_caret = ' ',
-
-          -- Search icon.
-          prompt_prefix = '   ',
-
-          -- Shorten long paths.
+          -- Better for long source-code paths.
           path_display = {
             'truncate',
           },
 
-          -- Don't search these.
+          -- Search prompt.
+          prompt_prefix = '   ',
+
+          -- Selected result.
+          selection_caret = ' ',
+
+          -------------------------------------------------------
+          -- FILE FILTERING
+          -------------------------------------------------------
+
           file_ignore_patterns = {
             'node_modules',
             '%.git',
             '%.venv',
             '__pycache__',
             '%.cache',
+            'target',
+            'dist',
+            'build',
           },
 
           -------------------------------------------------------
-          -- TELESCOPE KEYMAPS
+          -- PREVIEW
+          -------------------------------------------------------
+
+          preview = {
+            treesitter = true,
+          },
+
+          -------------------------------------------------------
+          -- INSERT MODE
           -------------------------------------------------------
 
           mappings = {
             i = {
-              -- Move selection.
-              ['<C-k>'] = actions.move_selection_previous,
-              ['<C-j>'] = actions.move_selection_next,
 
-              -- Open.
+              -- Move selection.
+              ['<C-j>'] = actions.move_selection_next,
+              ['<C-k>'] = actions.move_selection_previous,
+
+              -- Confirm.
               ['<C-l>'] = actions.select_default,
 
               -- Close.
@@ -115,11 +132,16 @@ return {
               ['<C-s>'] = actions.select_horizontal,
               ['<C-v>'] = actions.select_vertical,
 
-              -- New tab.
+              -- Tab.
               ['<C-t>'] = actions.select_tab,
             },
 
+            -----------------------------------------------------
+            -- NORMAL MODE
+            -----------------------------------------------------
+
             n = {
+
               ['j'] = actions.move_selection_next,
               ['k'] = actions.move_selection_previous,
 
@@ -132,6 +154,11 @@ return {
               ['<C-d>'] = actions.preview_scrolling_down,
 
               ['<C-x>'] = actions.send_selected_to_qflist,
+
+              ['<C-s>'] = actions.select_horizontal,
+              ['<C-v>'] = actions.select_vertical,
+
+              ['<C-t>'] = actions.select_tab,
             },
           },
         },
@@ -142,9 +169,11 @@ return {
 
         pickers = {
 
-          -- Find files.
+          -------------------------------------------------------
+          -- FILES
+          -------------------------------------------------------
+
           find_files = {
-            -- Include hidden files.
             hidden = true,
 
             file_ignore_patterns = {
@@ -153,59 +182,158 @@ return {
               '%.venv',
               '__pycache__',
               '%.cache',
+              'target',
+              'dist',
+              'build',
             },
+
+            -- Keep preview useful.
+            previewer = true,
           },
 
-          -- Live grep.
+          -------------------------------------------------------
+          -- LIVE GREP
+          -------------------------------------------------------
+
           live_grep = {
+
+            -- Search hidden files.
             additional_args = function()
               return {
                 '--hidden',
 
-                -- Don't grep node_modules.
                 '--glob',
                 '!node_modules',
 
-                -- Don't grep .git.
                 '--glob',
                 '!*.git/*',
 
-                -- Don't grep Python virtual environments.
                 '--glob',
                 '!*.venv/*',
+
+                '--glob',
+                '!__pycache__/*',
+
+                '--glob',
+                '!target/*',
+
+                '--glob',
+                '!dist/*',
+
+                '--glob',
+                '!build/*',
               }
             end,
+
+            -- Large preview for source code.
+            layout_config = {
+              horizontal = {
+                preview_width = 0.62,
+                width = 0.98,
+                height = 0.94,
+              },
+            },
+
+            previewer = true,
           },
 
-          -- Recent files.
+          -------------------------------------------------------
+          -- GREP STRING
+          -------------------------------------------------------
+
+          grep_string = {
+            additional_args = function()
+              return {
+                '--hidden',
+
+                '--glob',
+                '!node_modules',
+
+                '--glob',
+                '!*.git/*',
+
+                '--glob',
+                '!*.venv/*',
+
+                '--glob',
+                '!target/*',
+              }
+            end,
+
+            layout_config = {
+              horizontal = {
+                preview_width = 0.62,
+              },
+            },
+          },
+
+          -------------------------------------------------------
+          -- RECENT FILES
+          -------------------------------------------------------
+
           oldfiles = {
-            -- Include recent files from all directories.
             cwd_only = false,
           },
 
-          -- Buffers.
-          buffers = {
-            -- Most recently used first.
-            sort_mru = true,
+          -------------------------------------------------------
+          -- BUFFERS
+          -------------------------------------------------------
 
-            -- Include current buffer.
+          buffers = {
+            sort_mru = true,
             ignore_current_buffer = false,
           },
 
-          -- Diagnostics.
+          -------------------------------------------------------
+          -- DIAGNOSTICS
+          -------------------------------------------------------
+
           diagnostics = {
             initial_mode = 'normal',
+          },
+
+          -------------------------------------------------------
+          -- HELP
+          -------------------------------------------------------
+
+          help_tags = {
+            layout_config = {
+              horizontal = {
+                preview_width = 0.60,
+              },
+            },
+          },
+
+          -------------------------------------------------------
+          -- KEYMAPS
+          -------------------------------------------------------
+
+          keymaps = {
+            layout_config = {
+              horizontal = {
+                preview_width = 0.55,
+              },
+            },
+          },
+
+          -------------------------------------------------------
+          -- GIT FILES
+          -------------------------------------------------------
+
+          git_files = {
+            show_untracked = true,
           },
         },
 
         ---------------------------------------------------------
-        -- TELESCOPE EXTENSIONS
+        -- EXTENSIONS
         ---------------------------------------------------------
 
         extensions = {
-          -- Use Telescope for vim.ui.select().
           ['ui-select'] = themes.get_dropdown {
             previewer = false,
+            width = 0.55,
+            preview = false,
           },
         },
       }
@@ -214,32 +342,29 @@ return {
       -- LOAD EXTENSIONS
       -----------------------------------------------------------
 
-      -- Faster FZF sorting.
       pcall(telescope.load_extension, 'fzf')
-
-      -- Telescope-powered UI select.
       pcall(telescope.load_extension, 'ui-select')
 
       -----------------------------------------------------------
       -- SEARCH
       -----------------------------------------------------------
 
-      -- Help.
+      -- Help
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, {
         desc = '[S]earch [H]elp',
       })
 
-      -- Keymaps.
+      -- Keymaps
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, {
         desc = '[S]earch [K]eymaps',
       })
 
-      -- Files.
+      -- Files
       vim.keymap.set('n', '<leader>sf', builtin.find_files, {
         desc = '[S]earch [F]iles',
       })
 
-      -- Telescope picker list.
+      -- Telescope's own picker selector.
       vim.keymap.set('n', '<leader>ss', builtin.builtin, {
         desc = '[S]earch [S]elect Telescope',
       })
@@ -259,31 +384,29 @@ return {
         desc = '[S]earch [D]iagnostics',
       })
 
-      -- Resume previous Telescope picker.
+      -- Resume.
       vim.keymap.set('n', '<leader>sr', builtin.resume, {
         desc = '[S]earch [R]esume',
       })
 
       -----------------------------------------------------------
-      -- RECENT FILES
+      -- FILES
       -----------------------------------------------------------
 
       vim.keymap.set('n', '<leader>fr', builtin.oldfiles, {
         desc = '[F]ind [R]ecent files',
       })
 
-      -----------------------------------------------------------
-      -- BUFFERS
-      -----------------------------------------------------------
-
       vim.keymap.set('n', '<leader>fb', builtin.buffers, {
         desc = '[F]ind [B]uffers',
       })
 
       -----------------------------------------------------------
-      -- GIT FILES
+      -- GIT FILE SEARCH
       -----------------------------------------------------------
 
+      -- Telescope handles finding files tracked by Git.
+      -- Actual Git operations are handled by Snacks/LazyGit.
       vim.keymap.set('n', '<leader>gf', builtin.git_files, {
         desc = '[G]it [F]iles',
       })
@@ -296,9 +419,11 @@ return {
         builtin.current_buffer_fuzzy_find(themes.get_dropdown {
           winblend = 10,
           previewer = false,
+          width = 0.80,
+          height = 0.70,
         })
       end, {
-        desc = '[/] Search current buffer',
+        desc = 'Search Current Buffer',
       })
 
       -----------------------------------------------------------
@@ -309,9 +434,17 @@ return {
         builtin.live_grep {
           grep_open_files = true,
           prompt_title = 'Live Grep in Open Files',
+
+          layout_config = {
+            horizontal = {
+              preview_width = 0.62,
+              width = 0.98,
+              height = 0.94,
+            },
+          },
         }
       end, {
-        desc = '[S]earch [/] in Open Files',
+        desc = '[S]earch [/] Open Files',
       })
 
       -----------------------------------------------------------
@@ -336,7 +469,7 @@ return {
           search = vim.fn.expand '<cword>',
         }
       end, {
-        desc = '[F]ind current [W]ord',
+        desc = '[F]ind Current [W]ord',
       })
     end,
   },

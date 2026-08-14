@@ -1,12 +1,164 @@
 return {
   {
+    -- Neovim utilities.
     'folke/snacks.nvim',
 
-    -- Load Snacks immediately.
-    lazy = false,
+    event = 'VeryLazy',
 
-    -- Load Snacks early.
-    priority = 1000,
+    keys = {
+
+      ---------------------------------------------------------
+      -- LAZYGIT
+      ---------------------------------------------------------
+
+      {
+        '<leader>gg',
+        function()
+          Snacks.lazygit()
+        end,
+        desc = 'LazyGit',
+      },
+
+      {
+        '<leader>gl',
+        function()
+          Snacks.lazygit.log()
+        end,
+        desc = 'LazyGit Logs',
+      },
+
+      ---------------------------------------------------------
+      -- GIT WORKFLOW
+      ---------------------------------------------------------
+
+      -- What has changed?
+      {
+        '<leader>gs',
+        function()
+          Snacks.picker.git_status()
+        end,
+        desc = 'Git Status',
+      },
+
+      -- See changes/diffs.
+      {
+        '<leader>gd',
+        function()
+          Snacks.picker.git_diff()
+        end,
+        desc = 'Git Diff',
+      },
+
+      -- Branch management.
+      {
+        '<leader>gb',
+        function()
+          Snacks.picker.git_branches()
+        end,
+        desc = 'Git Branches',
+      },
+
+      -- Stashes.
+      {
+        '<leader>gS',
+        function()
+          Snacks.picker.git_stash()
+        end,
+        desc = 'Git Stash',
+      },
+
+      -- History of current file.
+      {
+        '<leader>gF',
+        function()
+          Snacks.picker.git_log_file()
+        end,
+        desc = 'Git File History',
+      },
+
+      -- History of current line.
+      {
+        '<leader>gL',
+        function()
+          Snacks.picker.git_log_line()
+        end,
+        desc = 'Git Line History',
+      },
+
+      ---------------------------------------------------------
+      -- NEOVIM UTILITIES
+      ---------------------------------------------------------
+
+      -- Undo tree/history.
+      {
+        '<leader>su',
+        function()
+          Snacks.picker.undo()
+        end,
+        desc = 'Undo History',
+      },
+
+      -- Marks.
+      {
+        '<leader>sm',
+        function()
+          Snacks.picker.marks()
+        end,
+        desc = 'Marks',
+      },
+
+      -- Jump history.
+      {
+        '<leader>sj',
+        function()
+          Snacks.picker.jumps()
+        end,
+        desc = 'Jumps',
+      },
+
+      -- Projects.
+      {
+        '<leader>fp',
+        function()
+          Snacks.picker.projects()
+        end,
+        desc = 'Projects',
+      },
+
+      ---------------------------------------------------------
+      -- FILE OPERATIONS
+      ---------------------------------------------------------
+
+      {
+        '<leader>rN',
+        function()
+          Snacks.rename.rename_file()
+        end,
+        desc = 'Rename Current File',
+      },
+
+      {
+        '<leader>dB',
+        function()
+          Snacks.bufdelete()
+        end,
+        desc = 'Delete Buffer',
+      },
+
+      ---------------------------------------------------------
+      -- COLORSCHEME
+      ---------------------------------------------------------
+
+      {
+        '<leader>th',
+        function()
+          Snacks.picker.colorschemes {
+            layout = 'ivy',
+          }
+        end,
+        desc = 'Pick Color Scheme',
+      },
+    },
 
     opts = {
 
@@ -17,71 +169,46 @@ return {
       picker = {
         enabled = true,
 
-        -- Show hidden files by default.
+        -- These are useful for the Git/utility pickers.
         hidden = true,
-
-        -- Show Git-ignored files by default.
         ignored = true,
 
-        -- Configure fuzzy matching.
+        -- Snacks handles vim.ui.select().
+        ui_select = true,
+
         matcher = {
-          -- Enable fuzzy matching.
           fuzzy = true,
-
-          -- Make uppercase searches case-sensitive.
           smartcase = true,
-
-          -- Ignore case for normal searches.
           ignorecase = true,
-
-          -- Give filenames more matching priority.
           filename_bonus = true,
-
-          -- Support file:line:column searches.
           file_pos = true,
+          frecency = true,
         },
 
-        -- Configure file display.
         formatters = {
           file = {
-            -- Keep filename and path together.
             filename_first = false,
-
-            -- Truncate long paths from the center.
             truncate = 'center',
-
-            -- Set minimum path width.
             min_width = 40,
-
-            -- Set Nerd Font icon width.
             icon_width = 2,
-
-            -- Use Git highlight groups.
             git_status_hl = true,
           },
         },
 
-        -- Configure preview behavior.
         previewers = {
           file = {
-            -- Don't preview files larger than 1 MB.
             max_size = 1024 * 1024,
-
-            -- Limit extremely long lines.
             max_line_length = 500,
           },
 
           diff = {
-            -- Use the fancy diff preview.
             style = 'fancy',
           },
         },
 
-        -- Configure picker layout.
         layout = {
           cycle = true,
 
-          -- Use horizontal layout on wide screens.
           preset = function()
             if vim.o.columns >= 120 then
               return 'default'
@@ -91,83 +218,74 @@ return {
           end,
         },
 
-        -- Configure picker windows.
+        ---------------------------------------------------------
+        -- PICKER WINDOWS
+        ---------------------------------------------------------
+
         win = {
           input = {
             keys = {
-              -- Move to the next result.
+
               ['<C-j>'] = {
                 'list_down',
                 mode = { 'i', 'n' },
               },
 
-              -- Move to the previous result.
               ['<C-k>'] = {
                 'list_up',
                 mode = { 'i', 'n' },
               },
 
-              -- Scroll the preview down.
               ['<C-d>'] = {
                 'preview_scroll_down',
                 mode = { 'i', 'n' },
               },
 
-              -- Scroll the preview up.
               ['<C-u>'] = {
                 'preview_scroll_up',
                 mode = { 'i', 'n' },
               },
 
-              -- Open in horizontal split.
               ['<C-s>'] = {
                 'edit_split',
                 mode = { 'i', 'n' },
               },
 
-              -- Open in vertical split.
               ['<C-v>'] = {
                 'edit_vsplit',
                 mode = { 'i', 'n' },
               },
 
-              -- Open in a new tab.
               ['<C-t>'] = {
                 'tab',
                 mode = { 'i', 'n' },
               },
 
-              -- Send selected items to quickfix.
               ['<C-q>'] = {
                 'qflist',
                 mode = { 'i', 'n' },
               },
 
-              -- Select item and move down.
               ['<Tab>'] = {
                 'select_and_next',
                 mode = { 'i', 'n' },
               },
 
-              -- Select item and move up.
               ['<S-Tab>'] = {
                 'select_and_prev',
                 mode = { 'i', 'n' },
               },
 
-              -- Toggle the preview window.
               ['<A-p>'] = {
                 'toggle_preview',
                 mode = { 'i', 'n' },
               },
 
-              -- Toggle hidden files.
               ['<A-h>'] = {
                 'toggle_hidden',
                 mode = { 'i', 'n' },
               },
 
-              -- Toggle Git-ignored files.
               ['<A-i>'] = {
                 'toggle_ignored',
                 mode = { 'i', 'n' },
@@ -177,105 +295,98 @@ return {
 
           list = {
             keys = {
-              -- Move to the next result.
               ['j'] = 'list_down',
-
-              -- Move to the previous result.
               ['k'] = 'list_up',
 
-              -- Move to the next result.
               ['<C-j>'] = 'list_down',
-
-              -- Move to the previous result.
               ['<C-k>'] = 'list_up',
 
-              -- Scroll the preview down.
               ['<C-d>'] = 'preview_scroll_down',
-
-              -- Scroll the preview up.
               ['<C-u>'] = 'preview_scroll_up',
 
-              -- Open the selected item.
               ['<CR>'] = 'confirm',
-
-              -- Close the picker.
               ['q'] = 'cancel',
 
-              -- Open in horizontal split.
               ['<C-s>'] = 'edit_split',
-
-              -- Open in vertical split.
               ['<C-v>'] = 'edit_vsplit',
-
-              -- Open in a new tab.
               ['<C-t>'] = 'tab',
 
-              -- Send selected items to quickfix.
               ['<C-q>'] = 'qflist',
 
-              -- Select item and move down.
               ['<Tab>'] = 'select_and_next',
-
-              -- Select item and move up.
               ['<S-Tab>'] = 'select_and_prev',
 
-              -- Toggle the preview window.
               ['<A-p>'] = 'toggle_preview',
             },
           },
         },
       },
 
-      -- Enable the Snacks file explorer.
+      -----------------------------------------------------------
+      -- EXPLORER
+      -----------------------------------------------------------
+
       explorer = {
         enabled = true,
 
-        -- Use system trash when deleting.
         trash = true,
 
-        -- Keep netrw unchanged for now.
+        -- Don't replace netrw.
         replace_netrw = false,
       },
 
-      -- Enable Snacks indent guides.
+      -----------------------------------------------------------
+      -- INDENT
+      -----------------------------------------------------------
+
       indent = {
         enabled = true,
       },
 
-      -- Enable the improved input UI.
+      -----------------------------------------------------------
+      -- INPUT
+      -----------------------------------------------------------
+
       input = {
         enabled = true,
       },
 
-      -- Enable the notification system.
-      notifier = {
-        enabled = true,
+      -----------------------------------------------------------
+      -- SCOPE
+      -----------------------------------------------------------
 
-        -- Keep notifications visible for 3 seconds.
-        timeout = 3000,
-      },
-
-      -- Enable code scope indicators.
       scope = {
         enabled = true,
       },
 
-      -- Enable smooth scrolling.
+      -----------------------------------------------------------
+      -- SCROLL
+      -----------------------------------------------------------
+
       scroll = {
         enabled = true,
       },
 
-      -- Enable word reference navigation.
+      -----------------------------------------------------------
+      -- WORDS
+      -----------------------------------------------------------
+
       words = {
         enabled = true,
       },
 
-      -- Enable faster file opening.
+      -----------------------------------------------------------
+      -- QUICKFILE
+      -----------------------------------------------------------
+
       quickfile = {
-        enabled = true,
+        enabled = false,
       },
 
-      -- Enable the Snacks terminal.
+      -----------------------------------------------------------
+      -- TERMINAL
+      -----------------------------------------------------------
+
       terminal = {
         enabled = true,
       },

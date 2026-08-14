@@ -123,3 +123,55 @@ vim.keymap.set('n', '<leader>ff', function()
 end, {
   desc = 'Find Files',
 })
+
+-- BUFFER CONTROL
+
+-- Delete current buffer.
+vim.keymap.set('n', '<leader>bd', function()
+  Snacks.bufdelete()
+end, {
+  noremap = true,
+  silent = true,
+  desc = 'Delete Current Buffer',
+})
+
+-- Go to previous buffer.
+vim.keymap.set('n', '<leader>bl', function()
+  vim.cmd 'bprevious'
+end, {
+  noremap = true,
+  silent = true,
+  desc = 'Previous Buffer',
+})
+
+-- Go to next buffer.
+vim.keymap.set('n', '<leader>br', function()
+  vim.cmd 'bnext'
+end, {
+  noremap = true,
+  silent = true,
+  desc = 'Next Buffer',
+})
+
+-- Delete all buffers except the current one.
+vim.keymap.set('n', '<leader>bo', function()
+  local current = vim.api.nvim_get_current_buf()
+
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if buf ~= current and vim.api.nvim_buf_is_valid(buf) and vim.bo[buf].buflisted then
+      vim.api.nvim_buf_delete(buf, { force = false })
+    end
+  end
+end, {
+  noremap = true,
+  silent = true,
+  desc = 'Delete Other Buffers',
+})
+
+vim.keymap.set('n', '<leader>ba', function()
+  require('telescope.builtin').buffers()
+end, {
+  noremap = true,
+  silent = true,
+  desc = 'Buffer List',
+})
