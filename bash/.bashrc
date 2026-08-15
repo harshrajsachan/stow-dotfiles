@@ -149,15 +149,12 @@ alias leetcode="nvim +Leet"
 alias kallu="helium-browser https://youtube.com"
 
 alias exec:mvn='toofan'
-fastfetch -c ~/.config/fastfetch/config.jsonc
 alias duck='~/.local/bin/appimages/DuckStation-x64.AppImage'
 alias leet='~/.config/i3/scripts/leet.sh'
+alias lz='lazygit'
 export PATH="$PATH:/usr/games"
 
-# ==================================================
 # Global Theme - Live Bash
-# ==================================================
-
 THEME_DIR="$HOME/.config/themes/current"
 THEME_LOADED=""
 
@@ -179,31 +176,20 @@ load_current_theme() {
     fi
 }
 
-# ==================================================
 # Prompt Hook
-# ==================================================
-
 theme_prompt_hook() {
     load_current_theme
     printf '\n'
 }
 
-# ==================================================
 # Initial Theme Load
-# ==================================================
-
 load_current_theme
 
-# ==================================================
 # Run before every prompt
-# ==================================================
-
 if [[ -z "${PROMPT_COMMAND:-}" ]]; then
     PROMPT_COMMAND="theme_prompt_hook"
 else
     PROMPT_COMMAND="theme_prompt_hook;$PROMPT_COMMAND"
 fi
 
-# ==================================================
-# Colored ls
-# ==================================================
+fastfetch -c ~/.config/fastfetch/config.jsonc
