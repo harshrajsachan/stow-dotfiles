@@ -1,0 +1,21 @@
+#!/bin/bash
+
+PICOM="$HOME/.config/picom"
+STATE="$HOME/.cache/picom-mode"
+
+mkdir -p "$HOME/.cache"
+
+if [[ -f "$STATE" ]]; then
+    # NORMAL MODE
+    rm "$STATE"
+
+    pkill picom
+    picom --config "$PICOM/picom.conf" &
+
+else
+    # BLUR MODE
+    touch "$STATE"
+
+    pkill picom
+    picom --config "$PICOM/picom-blur.conf" &
+fi
