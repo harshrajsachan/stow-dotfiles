@@ -1,0 +1,55 @@
+# =========================
+# Twilight Theme
+# =========================
+
+# =========================
+# Background / Foreground
+# =========================
+
+[colors.primary]
+background = "#000000"
+foreground = "#FFFEDB"
+
+# =========================
+# Normal Colors
+# =========================
+
+[colors.normal]
+black   = "#303030"
+red     = "#C34143"
+green   = "#A2A970"
+yellow  = "#DEBF7C"
+blue    = "#8B9698"
+magenta = "#AA9AAC"
+cyan    = "#C1C88D"
+white   = "#D6D2C8"
+
+# =========================
+# Bright Colors
+# =========================
+
+[colors.bright]
+black   = "#555555"
+red     = "#C34143"
+green   = "#C1C88D"
+yellow  = "#E3D896"
+blue    = "#8B9698"
+magenta = "#AA9AAC"
+cyan    = "#A2A970"
+white   = "#FFFEDB"
+
+# =========================
+# Cursor
+# =========================
+
+[colors.cursor]
+cursor = "#FFFEDB"
+text = "#000000"
+
+# =========================
+# Selection
+# =========================
+
+[colors.selection]
+background = "#C1C88D"
+text = "#000000"

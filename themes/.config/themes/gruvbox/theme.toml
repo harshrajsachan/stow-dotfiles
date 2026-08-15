@@ -1,43 +1,38 @@
 # ============================================================
-# TWILIGHT — YAZI
-# Dark cinematic / lavender / blue / mauve
+# GRUVBOX DARK — YAZI
+# Warm / earthy / retro
 # ============================================================
-#
+
+
+# ============================================================
 # PALETTE
-#
-# Background
-#   #15161C
-#
-# Surface
-#   #1D1F27
-#   #252834
-#   #303440
-#
-# Foreground
-#   #D7D9E0
-#   #A8ABB5
-#   #747784
-#   #50535E
-#
-# Cool
-#   #B4A7D6  Lavender
-#   #899CCB  Blue
-#   #8DB4C7  Sky
-#   #86B8AD  Teal
-#   #C39BBE  Mauve
-#   #9B8DB8  Purple
-#
-# Warm
-#   #D5B47A  Amber
-#   #C48C9A  Rose
-#   #C97C86  Red
-#   #9BB88B  Green
-#
-# Selection
-#   #AFA5C8
-#   #77758A
-#
 # ============================================================
+
+# Background
+# bg         #282828
+# bg0        #1D2021
+# bg1        #3C3836
+# bg2        #504945
+# bg3        #665C54
+
+# Foreground
+# fg         #EBDBB2
+# fg1        #D5C4A1
+# fg2        #BDAE93
+# gray       #928374
+
+# Gruvbox
+# red        #FB4934
+# green      #B8BB26
+# yellow     #FABD2F
+# blue       #83A598
+# purple     #D3869B
+# aqua       #8EC07C
+# orange     #FE8019
+
+# Selection
+# select     #D79921
+# select_dim #665C54
 
 
 # ============================================================
@@ -47,7 +42,7 @@
 [app]
 
 overall = {
-    fg = "#D7D9E0",
+    fg = "#EBDBB2",
 }
 
 
@@ -58,92 +53,90 @@ overall = {
 [mgr]
 
 cwd = {
-    fg = "#B4A7D6",
+    fg = "#FABD2F",
     bold = true,
 }
 
 find_keyword = {
-    fg = "#D5B47A",
+    fg = "#FABD2F",
     bold = true,
 }
 
 find_position = {
-    fg = "#C39BBE",
+    fg = "#D3869B",
     italic = true,
 }
 
 symlink_target = {
-    fg = "#8DB4C7",
+    fg = "#8EC07C",
 }
 
 marker_copied = {
-    fg = "#15161C",
-    bg = "#9BB88B",
+    fg = "#282828",
+    bg = "#B8BB26",
 }
 
 marker_cut = {
-    fg = "#15161C",
-    bg = "#C97C86",
+    fg = "#282828",
+    bg = "#FB4934",
 }
 
 marker_marked = {
-    fg = "#15161C",
-    bg = "#D5B47A",
+    fg = "#282828",
+    bg = "#FABD2F",
 }
 
 marker_selected = {
-    fg = "#15161C",
-    bg = "#AFA5C8",
+    fg = "#282828",
+    bg = "#D79921",
 }
 
 count_copied = {
-    fg = "#15161C",
-    bg = "#9BB88B",
+    fg = "#282828",
+    bg = "#B8BB26",
 }
 
 count_cut = {
-    fg = "#15161C",
-    bg = "#C97C86",
+    fg = "#282828",
+    bg = "#FB4934",
 }
 
 count_selected = {
-    fg = "#15161C",
-    bg = "#AFA5C8",
+    fg = "#282828",
+    bg = "#D79921",
 }
 
 border_symbol = "│"
 
 border_style = {
-    fg = "#303440",
+    fg = "#504945",
 }
 
 
 # ============================================================
 # INDICATOR
-#
-# Strong moving active-row highlight.
 # ============================================================
 
 [indicator]
 
 # Parent pane
 parent = {
-    fg = "#15161C",
-    bg = "#899CCB",
+    fg = "#282828",
+    bg = "#83A598",
     bold = true,
 }
 
 # Current pane
 current = {
-    fg = "#15161C",
-    bg = "#AFA5C8",
+    fg = "#282828",
+    bg = "#FABD2F",
     bold = true,
 }
 
 # Preview pane
 preview = {
-    fg = "#15161C",
-    bg = "#86B8AD",
+    fg = "#282828",
+    bg = "#8EC07C",
     bold = true,
 }
 
@@ -160,13 +153,13 @@ padding = {
 [tabs]
 
 active = {
-    fg = "#15161C",
-    bg = "#AFA5C8",
+    fg = "#282828",
+    bg = "#FABD2F",
     bold = true,
 }
 
 inactive = {
-    fg = "#747784",
+    fg = "#928374",
 }
 
 sep_inner = {
@@ -187,35 +180,35 @@ sep_outer = {
 [mode]
 
 normal_main = {
-    fg = "#15161C",
-    bg = "#AFA5C8",
+    fg = "#282828",
+    bg = "#FABD2F",
     bold = true,
 }
 
 normal_alt = {
-    fg = "#AFA5C8",
+    fg = "#FABD2F",
     bold = true,
 }
 
 select_main = {
-    fg = "#15161C",
-    bg = "#9BB88B",
+    fg = "#282828",
+    bg = "#B8BB26",
     bold = true,
 }
 
 select_alt = {
-    fg = "#9BB88B",
+    fg = "#B8BB26",
     bold = true,
 }
 
 unset_main = {
-    fg = "#15161C",
-    bg = "#C97C86",
+    fg = "#282828",
+    bg = "#FB4934",
     bold = true,
 }
 
 unset_alt = {
-    fg = "#C97C86",
+    fg = "#FB4934",
     bold = true,
 }
 
@@ -227,7 +220,7 @@ unset_alt = {
 [status]
 
 overall = {
-    fg = "#A8ABB5",
+    fg = "#D5C4A1",
 }
 
 sep_left = {
@@ -241,35 +234,35 @@ sep_right = {
 }
 
 perm_type = {
-    fg = "#8DB4C7",
+    fg = "#83A598",
 }
 
 perm_read = {
-    fg = "#9BB88B",
+    fg = "#B8BB26",
 }
 
 perm_write = {
-    fg = "#C48C9A",
+    fg = "#FB4934",
 }
 
 perm_exec = {
-    fg = "#D5B47A",
+    fg = "#FE8019",
 }
 
 perm_sep = {
-    fg = "#50535E",
+    fg = "#665C54",
 }
 
 progress_label = {
-    fg = "#A8ABB5",
+    fg = "#D5C4A1",
 }
 
 progress_normal = {
-    fg = "#899CCB",
+    fg = "#FABD2F",
 }
 
 progress_error = {
-    fg = "#C97C86",
+    fg = "#FB4934",
 }
 
 
@@ -287,7 +280,7 @@ rules = [
 
     {
         url = "*/",
-        fg = "#B4A7D6",
+        fg = "#FABD2F",
         bold = true,
     },
 
@@ -297,7 +290,7 @@ rules = [
 
     {
         mime = "image/*",
-        fg = "#C39BBE",
+        fg = "#D3869B",
     },
 
     # --------------------------------------------------------
@@ -306,7 +299,7 @@ rules = [
 
     {
         mime = "video/*",
-        fg = "#C48C9A",
+        fg = "#FB4934",
     },
 
     # --------------------------------------------------------
@@ -315,7 +308,7 @@ rules = [
 
     {
         mime = "audio/*",
-        fg = "#86B8AD",
+        fg = "#8EC07C",
     },
 
     # --------------------------------------------------------
@@ -324,22 +317,22 @@ rules = [
 
     {
         mime = "application/zip",
-        fg = "#D5B47A",
+        fg = "#FE8019",
     },
 
     {
         mime = "application/x-tar",
-        fg = "#D5B47A",
+        fg = "#FE8019",
     },
 
     {
         mime = "application/x-7z-compressed",
-        fg = "#D5B47A",
+        fg = "#FE8019",
     },
 
     {
         mime = "application/x-rar",
-        fg = "#D5B47A",
+        fg = "#FE8019",
     },
 
     # --------------------------------------------------------
@@ -349,7 +342,7 @@ rules = [
     {
         url = "*",
         is = "exec",
-        fg = "#D5B47A",
+        fg = "#B8BB26",
         bold = true,
     },
 
@@ -360,7 +353,7 @@ rules = [
     {
         url = "*",
         is = "link",
-        fg = "#8DB4C7",
+        fg = "#8EC07C",
     },
 
     # --------------------------------------------------------
@@ -370,17 +363,17 @@ rules = [
     {
         url = "*",
         is = "orphan",
-        fg = "#C97C86",
+        fg = "#FB4934",
         crossed = true,
     },
 
     # --------------------------------------------------------
-    # EMPTY FILES
+    # EMPTY
     # --------------------------------------------------------
 
     {
         mime = "inode/empty",
-        fg = "#747784",
+        fg = "#928374",
     },
 
     # --------------------------------------------------------
@@ -389,7 +382,7 @@ rules = [
 
     {
         url = "*",
-        fg = "#D7D9E0",
+        fg = "#EBDBB2",
     },
 ]
 
@@ -400,6 +393,7 @@ rules = [
 
 [icon]
 
+
 # ------------------------------------------------------------
 # DIRECTORIES
 # ------------------------------------------------------------
@@ -408,7 +402,7 @@ prepend_dirs = [
     {
         name = "*",
         text = "",
-        fg = "#B4A7D6",
+        fg = "#FABD2F",
     },
 ]
 
@@ -423,11 +417,12 @@ prepend_exts = [
     # C / C++
     # --------------------------------------------------------
 
-    { name = "c",   text = "", fg = "#899CCB" },
-    { name = "h",   text = "", fg = "#899CCB" },
-    { name = "cpp", text = "", fg = "#899CCB" },
-    { name = "cc",  text = "", fg = "#899CCB" },
-    { name = "hpp", text = "", fg = "#899CCB" },
+    { name = "c",   text = "", fg = "#83A598" },
+    { name = "h",   text = "", fg = "#83A598" },
+    { name = "cpp", text = "", fg = "#83A598" },
+    { name = "cc",  text = "", fg = "#83A598" },
+    { name = "hpp", text = "", fg = "#83A598" },
+
 
     # --------------------------------------------------------
     # Java
@@ -436,8 +431,9 @@ prepend_exts = [
     {
         name = "java",
         text = "",
-        fg = "#D5B47A",
+        fg = "#FE8019",
     },
+
 
     # --------------------------------------------------------
     # Python
@@ -446,8 +442,9 @@ prepend_exts = [
     {
         name = "py",
         text = "",
-        fg = "#D5B47A",
+        fg = "#FABD2F",
     },
+
 
     # --------------------------------------------------------
     # JavaScript
@@ -456,20 +453,21 @@ prepend_exts = [
     {
         name = "js",
         text = "",
-        fg = "#D5B47A",
+        fg = "#FABD2F",
     },
 
     {
         name = "mjs",
         text = "",
-        fg = "#D5B47A",
+        fg = "#FABD2F",
     },
 
     {
         name = "cjs",
         text = "",
-        fg = "#D5B47A",
+        fg = "#FABD2F",
     },
+
 
     # --------------------------------------------------------
     # TypeScript
@@ -478,14 +476,15 @@ prepend_exts = [
     {
         name = "ts",
         text = "",
-        fg = "#899CCB",
+        fg = "#83A598",
     },
 
     {
         name = "tsx",
         text = "",
-        fg = "#899CCB",
+        fg = "#83A598",
     },
+
 
     # --------------------------------------------------------
     # Lua
@@ -494,8 +493,9 @@ prepend_exts = [
     {
         name = "lua",
         text = "",
-        fg = "#899CCB",
+        fg = "#83A598",
     },
+
 
     # --------------------------------------------------------
     # Rust
@@ -504,8 +504,9 @@ prepend_exts = [
     {
         name = "rs",
         text = "",
-        fg = "#D5B47A",
+        fg = "#FE8019",
     },
+
 
     # --------------------------------------------------------
     # Go
@@ -514,8 +515,9 @@ prepend_exts = [
     {
         name = "go",
         text = "",
-        fg = "#86B8AD",
+        fg = "#8EC07C",
     },
+
 
     # --------------------------------------------------------
     # HTML
@@ -524,8 +526,9 @@ prepend_exts = [
     {
         name = "html",
         text = "",
-        fg = "#C97C86",
+        fg = "#FB4934",
     },
+
 
     # --------------------------------------------------------
     # CSS
@@ -534,8 +537,9 @@ prepend_exts = [
     {
         name = "css",
         text = "",
-        fg = "#899CCB",
+        fg = "#83A598",
     },
+
 
     # --------------------------------------------------------
     # JSON
@@ -544,8 +548,9 @@ prepend_exts = [
     {
         name = "json",
         text = "",
-        fg = "#D5B47A",
+        fg = "#FABD2F",
     },
+
 
     # --------------------------------------------------------
     # YAML
@@ -554,14 +559,15 @@ prepend_exts = [
     {
         name = "yaml",
         text = "",
-        fg = "#C97C86",
+        fg = "#FB4934",
     },
 
     {
         name = "yml",
         text = "",
-        fg = "#C97C86",
+        fg = "#FB4934",
     },
+
 
     # --------------------------------------------------------
     # Markdown
@@ -570,8 +576,9 @@ prepend_exts = [
     {
         name = "md",
         text = "",
-        fg = "#C39BBE",
+        fg = "#D3869B",
     },
+
 
     # --------------------------------------------------------
     # Shell
@@ -580,20 +587,21 @@ prepend_exts = [
     {
         name = "sh",
         text = "",
-        fg = "#9BB88B",
+        fg = "#B8BB26",
     },
 
     {
         name = "bash",
         text = "",
-        fg = "#9BB88B",
+        fg = "#B8BB26",
     },
 
     {
         name = "zsh",
         text = "",
-        fg = "#9BB88B",
+        fg = "#B8BB26",
     },
+
 
     # --------------------------------------------------------
     # SQL
@@ -602,8 +610,9 @@ prepend_exts = [
     {
         name = "sql",
         text = "",
-        fg = "#8DB4C7",
+        fg = "#8EC07C",
     },
+
 
     # --------------------------------------------------------
     # TOML
@@ -612,18 +621,20 @@ prepend_exts = [
     {
         name = "toml",
         text = "",
-        fg = "#C39BBE",
+        fg = "#D3869B",
     },
 
+
     # --------------------------------------------------------
-    # Text
+    # TEXT
     # --------------------------------------------------------
 
     {
         name = "txt",
         text = "",
-        fg = "#747784",
+        fg = "#928374",
     },
+
 
     # --------------------------------------------------------
     # PDF
@@ -632,41 +643,42 @@ prepend_exts = [
     {
         name = "pdf",
         text = "",
-        fg = "#C48C9A",
+        fg = "#FB4934",
     },
 
+
     # --------------------------------------------------------
-    # Archives
+    # ARCHIVES
     # --------------------------------------------------------
 
     {
         name = "zip",
         text = "",
-        fg = "#D5B47A",
+        fg = "#FE8019",
     },
 
     {
         name = "tar",
         text = "",
-        fg = "#D5B47A",
+        fg = "#FE8019",
     },
 
     {
         name = "gz",
         text = "",
-        fg = "#D5B47A",
+        fg = "#FE8019",
     },
 
     {
         name = "7z",
         text = "",
-        fg = "#D5B47A",
+        fg = "#FE8019",
     },
 
     {
         name = "rar",
         text = "",
-        fg = "#D5B47A",
+        fg = "#FE8019",
     },
 ]
 
@@ -680,25 +692,25 @@ prepend_files = [
     {
         name = ".gitignore",
         text = "",
-        fg = "#C97C86",
+        fg = "#FB4934",
     },
 
     {
         name = ".gitmodules",
         text = "",
-        fg = "#C97C86",
+        fg = "#FB4934",
     },
 
     {
         name = "Dockerfile",
         text = "",
-        fg = "#8DB4C7",
+        fg = "#83A598",
     },
 
     {
         name = "Makefile",
         text = "",
-        fg = "#D5B47A",
+        fg = "#FE8019",
     },
 ]
 
@@ -709,39 +721,78 @@ prepend_files = [
 
 prepend_conds = [
 
-    # Hidden directories
-    {
-        if = "hidden & dir",
-        text = "",
-        fg = "#50535E",
-    },
+    # --------------------------------------------------------
+    # BROKEN SYMLINKS
+    # --------------------------------------------------------
 
-    # Hidden files
-    {
-        if = "hidden",
-        text = "",
-        fg = "#50535E",
-    },
-
-    # Executables
-    {
-        if = "exec",
-        text = "",
-        fg = "#D5B47A",
-    },
-
-    # Symlinks
-    {
-        if = "link",
-        text = "",
-        fg = "#8DB4C7",
-    },
-
-    # Broken symlinks
     {
         if = "orphan",
         text = "",
-        fg = "#C97C86",
+        fg = "#FB4934",
+    },
+
+
+    # --------------------------------------------------------
+    # SYMLINKS
+    # --------------------------------------------------------
+
+    {
+        if = "link",
+        text = "",
+        fg = "#8EC07C",
+    },
+
+
+    # --------------------------------------------------------
+    # HIDDEN DIRECTORIES
+    # --------------------------------------------------------
+
+    {
+        if = "hidden & dir",
+        text = "",
+        fg = "#928374",
+    },
+
+
+    # --------------------------------------------------------
+    # DIRECTORIES
+    #
+    # IMPORTANT:
+    # Explicitly match directories so they never receive
+    # the executable/terminal icon.
+    # --------------------------------------------------------
+
+    {
+        if = "dir",
+        text = "",
+        fg = "#FABD2F",
+    },
+
+
+    # --------------------------------------------------------
+    # HIDDEN FILES
+    # --------------------------------------------------------
+
+    {
+        if = "hidden & !dir",
+        text = "",
+        fg = "#928374",
+    },
+
+
+    # --------------------------------------------------------
+    # EXECUTABLE FILES
+    #
+    # IMPORTANT:
+    # !dir prevents directories from being treated as
+    # executable files simply because they have the execute
+    # permission.
+    # --------------------------------------------------------
+
+    {
+        if = "exec & !dir",
+        text = "",
+        fg = "#B8BB26",
     },
 ]
 
@@ -755,27 +806,27 @@ prepend_conds = [
 cols = 2
 
 mask = {
-    fg = "#15161C",
-    bg = "#B4A7D6",
+    fg = "#282828",
+    bg = "#D79921",
 }
 
 cand = {
-    fg = "#899CCB",
+    fg = "#FABD2F",
     bold = true,
 }
 
 rest = {
-    fg = "#747784",
+    fg = "#928374",
 }
 
 desc = {
-    fg = "#A8ABB5",
+    fg = "#D5C4A1",
 }
 
 separator = " → "
 
 separator_style = {
-    fg = "#303440",
+    fg = "#504945",
 }
 
 
@@ -786,31 +837,31 @@ separator_style = {
 [confirm]
 
 border = {
-    fg = "#50535E",
+    fg = "#665C54",
 }
 
 title = {
-    fg = "#B4A7D6",
+    fg = "#FABD2F",
     bold = true,
 }
 
 body = {
-    fg = "#D7D9E0",
+    fg = "#EBDBB2",
 }
 
 list = {
-    fg = "#A8ABB5",
+    fg = "#D5C4A1",
 }
 
 btn_yes = {
-    fg = "#15161C",
-    bg = "#9BB88B",
+    fg = "#282828",
+    bg = "#B8BB26",
     bold = true,
 }
 
 btn_no = {
-    fg = "#15161C",
-    bg = "#C97C86",
+    fg = "#282828",
+    bg = "#FB4934",
     bold = true,
 }
 
@@ -827,21 +878,21 @@ btn_labels = [
 [spot]
 
 border = {
-    fg = "#50535E",
+    fg = "#665C54",
 }
 
 title = {
-    fg = "#B4A7D6",
+    fg = "#FABD2F",
     bold = true,
 }
 
 tbl_col = {
-    fg = "#899CCB",
+    fg = "#83A598",
     bold = true,
 }
 
 tbl_cell = {
-    fg = "#D7D9E0",
+    fg = "#EBDBB2",
 }
 
 
@@ -852,17 +903,17 @@ tbl_cell = {
 [pick]
 
 border = {
-    fg = "#50535E",
+    fg = "#665C54",
 }
 
 active = {
-    fg = "#15161C",
-    bg = "#AFA5C8",
+    fg = "#282828",
+    bg = "#FABD2F",
     bold = true,
 }
 
 inactive = {
-    fg = "#D7D9E0",
+    fg = "#EBDBB2",
 }
 
 
@@ -873,21 +924,21 @@ inactive = {
 [input]
 
 border = {
-    fg = "#50535E",
+    fg = "#665C54",
 }
 
 title = {
-    fg = "#B4A7D6",
+    fg = "#FABD2F",
     bold = true,
 }
 
 value = {
-    fg = "#D7D9E0",
+    fg = "#EBDBB2",
 }
 
 selected = {
-    fg = "#15161C",
-    bg = "#AFA5C8",
+    fg = "#282828",
+    bg = "#FABD2F",
 }
 
 
@@ -898,17 +949,17 @@ selected = {
 [cmp]
 
 border = {
-    fg = "#50535E",
+    fg = "#665C54",
 }
 
 active = {
-    fg = "#15161C",
-    bg = "#AFA5C8",
+    fg = "#282828",
+    bg = "#FABD2F",
     bold = true,
 }
 
 inactive = {
-    fg = "#D7D9E0",
+    fg = "#EBDBB2",
 }
 
 icon_file = ""
@@ -923,17 +974,17 @@ icon_command = ""
 [tasks]
 
 border = {
-    fg = "#50535E",
+    fg = "#665C54",
 }
 
 title = {
-    fg = "#B4A7D6",
+    fg = "#FABD2F",
     bold = true,
 }
 
 hovered = {
-    fg = "#15161C",
-    bg = "#AFA5C8",
+    fg = "#282828",
+    bg = "#FABD2F",
 }
 
 
@@ -944,17 +995,17 @@ hovered = {
 [notify]
 
 title_info = {
-    fg = "#86B8AD",
+    fg = "#8EC07C",
     bold = true,
 }
 
 title_warn = {
-    fg = "#D5B47A",
+    fg = "#FABD2F",
     bold = true,
 }
 
 title_error = {
-    fg = "#C97C86",
+    fg = "#FB4934",
     bold = true,
 }
 
@@ -966,25 +1017,25 @@ title_error = {
 [help]
 
 on = {
-    fg = "#B4A7D6",
+    fg = "#FABD2F",
     bold = true,
 }
 
 run = {
-    fg = "#8DB4C7",
+    fg = "#8EC07C",
 }
 
 desc = {
-    fg = "#A8ABB5",
+    fg = "#D5C4A1",
 }
 
 hovered = {
-    fg = "#15161C",
-    bg = "#AFA5C8",
+    fg = "#282828",
+    bg = "#FABD2F",
 }
 
 footer = {
-    fg = "#50535E",
+    fg = "#928374",
 }
 
 icon_info = ""

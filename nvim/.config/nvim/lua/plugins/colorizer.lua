@@ -1,7 +1,22 @@
 return {
-  -- High-performance color highlighter
-  'norcalli/nvim-colorizer.lua',
-  config = function()
-    require('colorizer').setup()
-  end,
+  'brenoprata10/nvim-highlight-colors',
+
+  event = { 'BufReadPost', 'BufNewFile' },
+
+  opts = {
+    render = 'background',
+    enable_named_colors = true,
+    enable_tailwind = false,
+
+    exclude_filetypes = {
+      'lazy',
+      'mason',
+      'TelescopePrompt',
+      'TelescopeResults',
+      'neo-tree',
+      'NvimTree',
+      'alpha',
+      'dashboard',
+    },
+  },
 }

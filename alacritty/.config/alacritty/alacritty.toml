@@ -1,38 +1,25 @@
-[window.padding]
-x = 0
-y = 0
+# ============================================================
+# THEME
+# ============================================================
 
-[colors.primary]
-background = "#050505"
-foreground = "#e8e8e8"
+[general]
+import = [
+    "~/.config/themes/current/alacritty.toml"
+]
 
-[colors.normal]
-black   = "#1a1a1a"
-red     = "#707070"
-green   = "#c0c0c0"
-yellow  = "#a0a0a0"
-blue    = "#b0b0b0"
-magenta = "#d0d0d0"
-cyan    = "#e0e0e0"
-white   = "#ffffff"
+live_config_reload = true
 
-[colors.bright]
-black   = "#555555"
-red     = "#909090"
-green   = "#ffffff"
-yellow  = "#d9d9d9"
-blue    = "#e8e8e8"
-magenta = "#f0f0f0"
-cyan    = "#ffffff"
-white   = "#ffffff"
 
-#JetBrains font and SizeControl
+# ============================================================
+# FONT
+# ============================================================
+
 [font]
 size = 10.75
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
-style = "SemiBold"
+style = "Bold"
 
 [font.bold]
 family = "JetBrainsMono Nerd Font"
@@ -51,20 +38,67 @@ key = "Plus"
 mods = "Control"
 action = "IncreaseFontSize"
 
+
+# ============================================================
+# WINDOW
+# ============================================================
+
+[window]
+padding = { x = 0, y = 0 }
+dynamic_padding = false
+
+
+# ============================================================
+# CURSOR
+# ============================================================
+
+[cursor]
+style = { shape = "Underline", blinking = "Always" }
+blink_interval = 500
+blink_timeout = 0
+unfocused_hollow = true
+
+
+# ============================================================
+# BELL
+# ============================================================
+
+[bell]
+duration = 0
+
+
+# ============================================================
+# SELECTION
+# ============================================================
+
+[selection]
+save_to_clipboard = true
+
+
+# ============================================================
+# SCROLLBACK
+# ============================================================
+
+[scrolling]
+history = 1000
+multiplier = 3
+
+
+# ============================================================
+# KEYBINDINGS
+# ============================================================
+
+[[keyboard.bindings]]
+key = "Equals"
+mods = "Control"
+action = "IncreaseFontSize"
+
 [[keyboard.bindings]]
 key = "Minus"
 mods = "Control"
 action = "DecreaseFontSize"
 
 [[keyboard.bindings]]
-key = "Key0"
+key = "0"
 mods = "Control"
 action = "ResetFontSize"
-
-#UnderLine Cursor
-[cursor]
-style = { shape = "Underline", blinking = "On" }
-thickness = 0.25
-
-[window]
-opacity = 0.63

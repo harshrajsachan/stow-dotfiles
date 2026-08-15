@@ -1,0 +1,55 @@
+# =========================
+# Catppuccin Mocha Theme
+# =========================
+
+# =========================
+# Background / Foreground
+# =========================
+
+[colors.primary]
+background = "#000000"
+foreground = "#CDD6F4"
+
+# =========================
+# Normal Colors
+# =========================
+
+[colors.normal]
+black   = "#313244"
+red     = "#F38BA8"
+green   = "#A6E3A1"
+yellow  = "#F9E2AF"
+blue    = "#89B4FA"
+magenta = "#CBA6F7"
+cyan    = "#94E2D5"
+white   = "#BAC2DE"
+
+# =========================
+# Bright Colors
+# =========================
+
+[colors.bright]
+black   = "#45475A"
+red     = "#EBA0AC"
+green   = "#A6E3A1"
+yellow  = "#F9E2AF"
+blue    = "#89B4FA"
+magenta = "#CBA6F7"
+cyan    = "#94E2D5"
+white   = "#CDD6F4"
+
+# =========================
+# Cursor
+# =========================
+
+[colors.cursor]
+cursor = "#CDD6F4"
+text = "#1E1E2E"
+
+# =========================
+# Selection
+# =========================
+
+[colors.selection]
+background = "#CBA6F7"
+text = "#1E1E2E"

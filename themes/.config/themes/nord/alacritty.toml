@@ -1,0 +1,55 @@
+# =========================
+# Nord Theme
+# =========================
+
+# =========================
+# Background / Foreground
+# =========================
+
+[colors.primary]
+background = "#000000"
+foreground = "#D8DEE9"
+
+# =========================
+# Normal Colors
+# =========================
+
+[colors.normal]
+black   = "#3B4252"
+red     = "#BF616A"
+green   = "#A3BE8C"
+yellow  = "#EBCB8B"
+blue    = "#5E81AC"
+magenta = "#B48EAD"
+cyan    = "#8FBCBB"
+white   = "#D8DEE9"
+
+# =========================
+# Bright Colors
+# =========================
+
+[colors.bright]
+black   = "#4C566A"
+red     = "#D08770"
+green   = "#A3BE8C"
+yellow  = "#EBCB8B"
+blue    = "#81A1C1"
+magenta = "#B48EAD"
+cyan    = "#8FBCBB"
+white   = "#ECEFF4"
+
+# =========================
+# Cursor
+# =========================
+
+[colors.cursor]
+cursor = "#D8DEE9"
+text = "#2E3440"
+
+# =========================
+# Selection
+# =========================
+
+[colors.selection]
+background = "#88C0D0"
+text = "#2E3440"

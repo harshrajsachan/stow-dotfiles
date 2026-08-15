@@ -1,8 +1,8 @@
 sw_volume: 100
 audio_device_state:1:PulseAudio
 state: play
-current: 7
-time: 76.396
+current: 47
+time: 2.098
 random: 1
 repeat: 0
 single: 0
@@ -12,19 +12,80 @@ mixrampdb: 0
 mixrampdelay: -1
 lastloadedplaylist: 
 playlist_begin
-0:1.Favorites/Chris_Grey_-_LET_THE_WORLD_BURN_(mp3.pm).mp3
-1:1.Favorites/Tame Impala - Dracula (Official Video).mp3
-2:1.Favorites/Insane Drippin_spotdown.org.mp3
-3:1.Favorites/Adhura Hee Sahi_spotdown.org.mp3
-4:1.Favorites/Blue Eyes_spotdown.org.mp3
-5:1.Favorites/Desi Kalakaar_spotdown.org.mp3
-6:1.Favorites/702_spotdown.org.mp3
-7:1.Favorites/Guess featuring billie eilish_spotdown.org.mp3
-8:1.Favorites/Goliya_spotdown.org.mp3
-9:1.Favorites/Jaga Do (feat. Foosie Gang)_spotdown.org.mp3
-10:1.Favorites/Daraaz Mein_spotdown.org.mp3
-11:1.Favorites/Brahamachari_spotdown.org.mp3
-12:1.Favorites/Shaayar_spotdown.org_1.mp3
-13:1.Favorites/Ek_Tera_Pyar.mp3
-14:1.Favorites/Billie Jean_spotdown.org.mp3
+0:2.HoneySingh/Bichhudo_spotdown.org.mp3
+1:2.HoneySingh/Birds_spotdown.org.mp3
+2:2.HoneySingh/Candy Sugar_spotdown.org.mp3
+3:2.HoneySingh/Chillgum_spotdown.org.mp3
+4:2.HoneySingh/Flex Balam_spotdown.org.mp3
+5:2.HoneySingh/Galbi_spotdown.org.mp3
+6:2.HoneySingh/Glorious Days_spotdown.org.mp3
+7:2.HoneySingh/I'm In Love With You_spotdown.org.mp3
+8:2.HoneySingh/Insane Drippin_spotdown.org.mp3
+9:2.HoneySingh/Jaan_spotdown.org.mp3
+10:2.HoneySingh/Ki Ho Gaya_spotdown.org.mp3
+11:2.HoneySingh/Mafia_spotdown.org.mp3
+12:2.HoneySingh/Maybach_spotdown.org.mp3
+13:2.HoneySingh/Mile High_spotdown.org.mp3
+14:2.HoneySingh/Naam Honey Singh_spotdown.org.mp3
+15:2.HoneySingh/Never Cried_spotdown.org.mp3
+16:2.HoneySingh/Papi_spotdown.org.mp3
+17:2.HoneySingh/Power Moves_spotdown.org.mp3
+18:2.HoneySingh/Premium Dikhawa_spotdown.org.mp3
+19:2.HoneySingh/Punjabi Pablo_spotdown.org.mp3
+20:2.HoneySingh/Raat_spotdown.org.mp3
+21:2.HoneySingh/Rollie_spotdown.org.mp3
+22:2.HoneySingh/Saelaab_spotdown.org.mp3
+23:2.HoneySingh/Santorini Beach_spotdown.org.mp3
+24:2.HoneySingh/Sawaal Puchdi (Feat. Bohemia)_spotdown.org.mp3
+25:2.HoneySingh/Tring Tring_spotdown.org.mp3
+26:2.HoneySingh/Wedding Ring_spotdown.org.mp3
+27:2.HoneySingh/Blue Eyes_spotdown.org.mp3
+28:2.HoneySingh/Dope Shope_spotdown.org.mp3
+29:2.HoneySingh/Desi Kalakaar_spotdown.org.mp3
+30:2.HoneySingh/Love Dose_spotdown.org.mp3
+31:2.HoneySingh/One Thousand Miles_spotdown.org.mp3
+32:2.HoneySingh/Dheeth (From _Honey 3.0_)_spotdown.org.mp3
+33:2.HoneySingh/4bottlevodka.mp3
+34:2.HoneySingh/Beeba_spotdown.org.mp3
+35:2.HoneySingh/Bonita_spotdown.org.mp3
+36:2.HoneySingh/Payal_spotdown.org.mp3
+37:2.HoneySingh/Sheeshe Wali Chunni_spotdown.org.mp3
+38:2.HoneySingh/6 Am_spotdown.org.mp3
+39:2.HoneySingh/Aadat (Feat. AP Dhillon)_spotdown.org.mp3
+40:2.HoneySingh/High On Me_spotdown.org.mp3
+41:2.HoneySingh/Jatt Mehkma_spotdown.org.mp3
+42:2.HoneySingh/l.mp3
+43:2.HoneySingh/Lapata_spotdown.org.mp3
+44:2.HoneySingh/Majnoonh_spotdown.org.mp3
+45:2.HoneySingh/Malamaal_spotdown.org.mp3
+46:2.HoneySingh/Millionaire_spotdown.org.mp3
+47:2.HoneySingh/Rap God_spotdown.org.mp3
+48:2.HoneySingh/Rounds N Ring_spotdown.org.mp3
+49:2.HoneySingh/Shamaan De Vele_spotdown.org.mp3
+50:2.HoneySingh/uww.mp3
+51:2.HoneySingh/Accounts_spotdown.org.mp3
+52:2.HoneySingh/Vigdiyan Heeran (From _Honey 3.0_)_spotdown.org.mp3
+53:2.HoneySingh/Brown Rang_spotdown.org.mp3
+54:2.HoneySingh/Goliya_spotdown.org.mp3
+55:2.HoneySingh/Kalaastar (From _Honey 3.0_)_spotdown.org.mp3
+56:2.HoneySingh/Kuley Kuley (From _Honey 3.0_)_spotdown.org.mp3
+57:2.HoneySingh/Maniac - Bonus Track [From _Glory_]_spotdown.org.mp3
+58:2.HoneySingh/Together Forever_spotdown.org.mp3
+59:2.HoneySingh/Al Saher Al Hindi_spotdown.org.mp3
+60:2.HoneySingh/Barsaat Mein_spotdown.org.mp3
+61:2.HoneySingh/Bhagoliyo_spotdown.org.mp3
+62:2.HoneySingh/Bro Code_spotdown.org.mp3
+63:2.HoneySingh/City Girl_spotdown.org.mp3
+64:2.HoneySingh/Felony_spotdown.org.mp3
+65:2.HoneySingh/Habibti (From _Honey 3.0_)_spotdown.org.mp3
+66:2.HoneySingh/Jiyara_spotdown.org.mp3
+67:2.HoneySingh/Kalli Kittey_spotdown.org.mp3
+68:2.HoneySingh/Mashooqa_spotdown.org.mp3
+69:2.HoneySingh/Money And My Miss_spotdown.org.mp3
+70:2.HoneySingh/My Wish_spotdown.org.mp3
+71:2.HoneySingh/Sexual_spotdown.org.mp3
+72:2.HoneySingh/Sone Da Gulaab_spotdown.org.mp3
+73:2.HoneySingh/YAAR VEHLI_spotdown.org.mp3
+74:2.HoneySingh/Zubaida (Jungle Remix)_spotdown.org.mp3
+75:2.HoneySingh/Chaar Botal Vodka (From _Ragini Mms 2_)_spotdown.org.mp3
 playlist_end

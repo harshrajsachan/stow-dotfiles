@@ -1,0 +1,51 @@
+# =========================
+# Berserk Theme
+# =========================
+
+[colors.primary]
+background = "#000000"
+foreground = "#e8e8e8"
+
+# =========================
+# Normal Colors
+# =========================
+
+[colors.normal]
+black   = "#1a1a1a"
+red     = "#a0a0a0"
+green   = "#c0c0c0"
+yellow  = "#d0d0d0"
+blue    = "#b0b0b0"
+magenta = "#d8d8d8"
+cyan    = "#e0e0e0"
+white   = "#ffffff"
+
+# =========================
+# Bright Colors
+# =========================
+
+[colors.bright]
+black   = "#555555"
+red     = "#c0c0c0"
+green   = "#ffffff"
+yellow  = "#f0f0f0"
+blue    = "#d9d9d9"
+magenta = "#ffffff"
+cyan    = "#ffffff"
+white   = "#ffffff"
+
+# =========================
+# Cursor
+# =========================
+
+[colors.cursor]
+text = "#000000"
+cursor = "#ffffff"
+
+# =========================
+# Selection
+# =========================
+
+[colors.selection]
+text = "#000000"
+background = "#ffffff"

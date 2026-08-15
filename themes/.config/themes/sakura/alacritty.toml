@@ -1,0 +1,55 @@
+# =========================
+# Sakura Night Theme
+# =========================
+
+# =========================
+# Background / Foreground
+# =========================
+
+[colors.primary]
+background = "#000000"
+foreground = "#FDF1B2"
+
+# =========================
+# Normal Colors
+# =========================
+
+[colors.normal]
+black   = "#0D1A2E"
+red     = "#BD4667"
+green   = "#27859A"
+yellow  = "#DEBF7C"
+blue    = "#4D6F82"
+magenta = "#731C46"
+cyan    = "#F99C8F"
+white   = "#D6D2C8"
+
+# =========================
+# Bright Colors
+# =========================
+
+[colors.bright]
+black   = "#4D6F82"
+red     = "#EA4865"
+green   = "#39A6B8"
+yellow  = "#FDF1B2"
+blue    = "#6B8FA3"
+magenta = "#A94B70"
+cyan    = "#FFB0A3"
+white   = "#FDF1B2"
+
+# =========================
+# Cursor
+# =========================
+
+[colors.cursor]
+cursor = "#FDF1B2"
+text = "#0D1A2E"
+
+# =========================
+# Selection
+# =========================
+
+[colors.selection]
+background = "#EA4865"
+text = "#0D1A2E"

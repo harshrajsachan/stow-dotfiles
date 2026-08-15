@@ -1,0 +1,55 @@
+# =========================
+# Everforest Theme
+# =========================
+
+# =========================
+# Background / Foreground
+# =========================
+
+[colors.primary]
+background = "#000000"
+foreground = "#D3C6AA"
+
+# =========================
+# Normal Colors
+# =========================
+
+[colors.normal]
+black   = "#3A454A"
+red     = "#E67E80"
+green   = "#A7C080"
+yellow  = "#DBBC7F"
+blue    = "#7FBBB3"
+magenta = "#D699B6"
+cyan    = "#83C092"
+white   = "#D3C6AA"
+
+# =========================
+# Bright Colors
+# =========================
+
+[colors.bright]
+black   = "#4A555B"
+red     = "#F85552"
+green   = "#B8D48C"
+yellow  = "#F0DFA0"
+blue    = "#9CCFD8"
+magenta = "#E0AFC7"
+cyan    = "#9DCCAA"
+white   = "#F2E5BC"
+
+# =========================
+# Cursor
+# =========================
+
+[colors.cursor]
+cursor = "#D3C6AA"
+text = "#2D353B"
+
+# =========================
+# Selection
+# =========================
+
+[colors.selection]
+background = "#A7C080"
+text = "#2D353B"
