@@ -1,6 +1,8 @@
 return {
   'kawre/leetcode.nvim',
+
   build = ':TSUpdate',
+
   dependencies = {
     'nvim-lua/plenary.nvim',
     'MunifTanjim/nui.nvim',
@@ -8,7 +10,6 @@ return {
   },
 
   config = function()
-    -- Disable swap files
     vim.opt.swapfile = false
     vim.opt.backup = false
     vim.opt.writebackup = false
@@ -18,7 +19,10 @@ return {
       image_support = true,
     }
 
-    -- Global keymaps
+    ---------------------------------------------------------------------------
+    -- GLOBAL KEYMAPS
+    ---------------------------------------------------------------------------
+
     vim.keymap.set('n', '<leader>lc', '<cmd>Leet cookie update<CR>', {
       desc = 'Update LeetCode Cookie',
       silent = true,
@@ -29,42 +33,116 @@ return {
       silent = true,
     })
 
-    vim.keymap.set('n', '<leader>lk', function()
-      local prev = vim.fn.bufnr '#'
-      if prev > 0 and vim.api.nvim_buf_is_valid(prev) then
-        vim.cmd('bdelete ' .. prev)
-      end
-    end, {
-      desc = 'Delete previous buffer',
-      silent = true,
-    })
+    ---------------------------------------------------------------------------
+    -- LEETCODE
+    ---------------------------------------------------------------------------
 
     local aug = vim.api.nvim_create_augroup('LeetLocal', { clear = true })
 
+    local function is_leetcode(bufnr)
+      local file = vim.api.nvim_buf_get_name(bufnr)
+      return file:lower():match 'leetcode' ~= nil
+    end
+
+    local function disable_lsp(bufnr)
+      -- Diagnostics
+      vim.diagnostic.enable(false, {
+        bufnr = bufnr,
+      })
+
+      -- Inlay hints
+      pcall(vim.lsp.inlay_hint.enable, false, {
+        bufnr = bufnr,
+      })
+
+      -- Detach every currently attached LSP
+      for _, client in
+        ipairs(vim.lsp.get_clients {
+          bufnr = bufnr,
+        })
+      do
+        pcall(vim.lsp.buf_detach_client, bufnr, client.id)
+      end
+
+      -- Prevent formatting
+      vim.b[bufnr].autoformat = false
+    end
+
+    ---------------------------------------------------------------------------
+    -- LEETCODE BUFFER ENTER
+    ---------------------------------------------------------------------------
+
     vim.api.nvim_create_autocmd('BufEnter', {
       group = aug,
-      callback = function(args)
-        local file = vim.api.nvim_buf_get_name(args.buf)
 
-        if not file:lower():match 'leetcode' then
+      callback = function(args)
+        if not is_leetcode(args.buf) then
           return
         end
 
-        -- Disable diagnostics
-        vim.diagnostic.enable(false, { bufnr = args.buf })
+        -----------------------------------------------------------------------
+        -- Remove previous buffer
+        -----------------------------------------------------------------------
 
-        -- Disable inlay hints
-        pcall(vim.lsp.inlay_hint.enable, false, { bufnr = args.buf })
+        local prev = vim.fn.bufnr '#'
 
-        -- Disable LazyVim autoformat
-        vim.b[args.buf].autoformat = false
-
-        -- Detach every LSP from this buffer
-        for _, client in ipairs(vim.lsp.get_clients { bufnr = args.buf }) do
-          vim.lsp.buf_detach_client(args.buf, client.id)
+        if prev > 0 and prev ~= args.buf and vim.api.nvim_buf_is_valid(prev) and not is_leetcode(prev) then
+          pcall(vim.cmd, 'bdelete! ' .. prev)
         end
 
-        local opts = { buffer = args.buf, silent = true }
+        -----------------------------------------------------------------------
+        -- Disable LSP
+        -----------------------------------------------------------------------
+
+        disable_lsp(args.buf)
+
+        -----------------------------------------------------------------------
+        -- Close Mason if it is open
+        -----------------------------------------------------------------------
+
+        pcall(vim.cmd, 'MasonClose')
+      end,
+    })
+
+    ---------------------------------------------------------------------------
+    -- CATCH LSP ATTACHMENT
+    ---------------------------------------------------------------------------
+
+    vim.api.nvim_create_autocmd('LspAttach', {
+      group = aug,
+
+      callback = function(args)
+        if not is_leetcode(args.buf) then
+          return
+        end
+
+        -- Immediately detach anything trying to attach
+        vim.schedule(function()
+          if vim.api.nvim_buf_is_valid(args.buf) then
+            pcall(vim.lsp.buf_detach_client, args.buf, args.data.client_id)
+
+            disable_lsp(args.buf)
+          end
+        end)
+      end,
+    })
+
+    ---------------------------------------------------------------------------
+    -- LEETCODE KEYMAPS
+    ---------------------------------------------------------------------------
+
+    vim.api.nvim_create_autocmd('BufEnter', {
+      group = aug,
+
+      callback = function(args)
+        if not is_leetcode(args.buf) then
+          return
+        end
+
+        local opts = {
+          buffer = args.buf,
+          silent = true,
+        }
 
         vim.keymap.set('n', '<leader>la', '<cmd>Leet test<CR>', opts)
         vim.keymap.set('n', '<leader>ls', '<cmd>Leet submit<CR>', opts)

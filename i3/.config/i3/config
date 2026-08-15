@@ -28,6 +28,9 @@ exec_always --no-startup-id xrdb -merge ~/.Xresources
 exec_always xinput set-prop 16 "libinput Tapping Enabled" 1
 exec_always --no-startup-id xinput set-prop 16 "libinput Natural Scrolling Enabled" 1
 
+# Picom
+bindsym Mod1+Shift+o exec --no-startup-id ~/.config/picom/toggle-blur
+
 # Polybar
 bindsym --release Mod1+Shift+p exec --no-startup-id killall polybar
 bindsym $mod+Shift+p exec --no-startup-id ~/.config/polybar/toggle_position.sh
