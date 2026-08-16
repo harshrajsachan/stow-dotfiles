@@ -63,9 +63,6 @@ bindsym --release Mod1+F4 exec poweroff
 # Gap Toggle
 bindsym --release Mod1+Shift+q exec --no-startup-id ~/.config/i3/scripts/gap.sh
 
-# Typing Mode
-bindsym --release Mod1+5 exec --no-startup-id ~/.config/i3/scripts/typing-mode.sh
-
 # Kill Mode
 bindsym --release Mod1+Shift+m exec --no-startup-id ~/.config/i3/scripts/kill-mode.sh
 
@@ -214,7 +211,7 @@ bindsym --release Mod1+t exec kitty
 bindsym --release Mod1+Return exec alacritty
 
 # App Launcher
-bindsym --release $mod+d exec rofi -show drun
+bindsym --release $mod+d exec ~/.config/rofi/launch.sh
 
 # Applications
 bindsym --release Mod1+b exec helium-browser
@@ -222,28 +219,15 @@ bindsym --release Mod1+z exec obsidian
 bindsym --release Mod1+Shift+g exec gtk-launch tekken3
 bindsym --release Mod1+Shift+b exec helium-browser --incognito
 bindsym --release Mod1+e exec alacritty -e yazi
-bindsym --release Mod1+Shift+l exec --no-startup-id kitty -e nvim +"Leet"
 bindsym --release Mod1+n exec --no-startup-id kitty -e nvim
 bindsym --release Mod1+r exec localsend
-bindsym --release Mod1+4 exec alacritty -e toofan
-bindsym --release Mod1+d exec alacritty -e discordo
 bindsym --release Mod1+q exec kitty -e btop
 bindsym --release Mod1+Shift+v exec code
 bindsym --release Mod1+v exec alacritty -e vim ~/Notes/todo
 
 
 # PWAs
-bindsym --release Mod1+1 exec helium-browser --app="https://monkeytype.com"
-bindsym --release Mod1+2 exec helium-browser --app="https://keybr.com"
-bindsym --release Mod1+3 exec helium-browser --app="https://www.typingclub.com"
 bindsym --release Mod1+c exec helium-browser --app="https://chatgpt.com"
-bindsym --release Mod1+Shift+c exec helium-browser --app="https://lichess.org/"
-bindsym --release Mod1+a exec helium-browser --app="https://hianime.lol/home"
-bindsym --release Mod1+Shift+n exec helium-browser --app="https://net11.cc"
-bindsym --release Mod1+y exec helium-browser --app="https://youtube.com"
-bindsym --release Mod1+x exec chromium --app="https://leetcode.com/problemset"
-bindsym --release Mod1+g exec helium-browser --app="https://github.com"
-
 
 # WhatsApp
 bindsym --release Mod1+w exec ~/.config/i3/scripts/whatsapp.sh

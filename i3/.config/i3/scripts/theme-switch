@@ -11,21 +11,10 @@ CURRENT="$THEMES_DIR/current"
 
 YAZI_DIR="$HOME/.config/yazi"
 CAVA_DIR="$HOME/.config/cava"
+ROFI_DIR="$HOME/.config/rofi"
 CACHE_DIR="$HOME/.cache"
 
-# ============================================================================
-# Themes
-# ============================================================================
-
-THEMES=(
-    "berserk"
-    "catppuccin"
-    "everforest"
-    "gruvbox"
-    "nord"
-    "sakura"
-    "twilight"
-)
+ROFI_LAUNCHER="$ROFI_DIR/launch.sh"
 
 # ============================================================================
 # Helpers
@@ -48,60 +37,36 @@ die() {
 }
 
 # ============================================================================
-# Validate Themes Directory
+# Validate
 # ============================================================================
 
-[[ -d "$THEMES_DIR" ]] || \
+[[ -d "$THEMES_DIR" ]] ||
     die "Themes directory does not exist: $THEMES_DIR"
+
+[[ -d "$ROFI_DIR" ]] ||
+    die "Rofi directory does not exist: $ROFI_DIR"
+
+[[ -x "$ROFI_LAUNCHER" ]] ||
+    die "Rofi launcher does not exist or is not executable: $ROFI_LAUNCHER"
 
 # ============================================================================
 # Current Theme
 # ============================================================================
 
+CURRENT_THEME=""
+
 if [[ -L "$CURRENT" ]]; then
+
     CURRENT_THEME="$(basename "$(readlink -f "$CURRENT")")"
-else
-    CURRENT_THEME=""
+
 fi
 
 # ============================================================================
-# Build Rofi Menu
-# ============================================================================
-
-MENU=""
-
-for theme in "${THEMES[@]}"; do
-    if [[ "$theme" == "$CURRENT_THEME" ]]; then
-        MENU+="● $theme"$'\n'
-    else
-        MENU+="  $theme"$'\n'
-    fi
-done
-
-# ============================================================================
-# Rofi
+# Open Theme Launcher
 # ============================================================================
 
 SELECTED="$(
-    printf '%s' "$MENU" |
-        rofi \
-            -dmenu \
-            -i \
-            -p "Theme" \
-            -no-custom \
-            -theme-str '
-                window {
-                    width: 30%;
-                }
-
-                listview {
-                    lines: 7;
-                }
-
-                element {
-                    padding: 8px;
-                }
-            '
+    "$ROFI_LAUNCHER" theme
 )"
 
 # ============================================================================
@@ -113,9 +78,36 @@ SELECTED="$(
 # ============================================================================
 # Clean Selection
 # ============================================================================
+#
+# Handles:
+#
+#   "catppuccin"
+#   "  catppuccin"
+#   "catppuccin  "
+#   "  catppuccin  "
+#   "● catppuccin"
+#   CRLF
+#
+# ============================================================================
 
+# Remove CR
+SELECTED="${SELECTED//$'\r'/}"
+
+# Remove old selection marker
 SELECTED="${SELECTED#● }"
-SELECTED="${SELECTED#  }"
+
+# Remove leading whitespace
+SELECTED="${SELECTED#"${SELECTED%%[![:space:]]*}"}"
+
+# Remove trailing whitespace
+SELECTED="${SELECTED%"${SELECTED##*[![:space:]]}"}"
+
+# ============================================================================
+# Validate Selection
+# ============================================================================
+
+[[ -n "$SELECTED" ]] ||
+    exit 0
 
 NEXT_THEME="$SELECTED"
 NEXT_DIR="$THEMES_DIR/$NEXT_THEME"
@@ -124,11 +116,17 @@ NEXT_DIR="$THEMES_DIR/$NEXT_THEME"
 # Validate Selected Theme
 # ============================================================================
 
-[[ -d "$NEXT_DIR" ]] || \
+if [[ ! -d "$NEXT_DIR" ]]; then
+
     die "Theme directory does not exist: $NEXT_DIR"
 
-[[ -r "$NEXT_DIR" ]] || \
+fi
+
+if [[ ! -r "$NEXT_DIR" ]]; then
+
     die "Theme directory is not readable: $NEXT_DIR"
+
+fi
 
 # ============================================================================
 # Same Theme
@@ -137,6 +135,10 @@ NEXT_DIR="$THEMES_DIR/$NEXT_THEME"
 if [[ "$NEXT_THEME" == "$CURRENT_THEME" ]]; then
     exit 0
 fi
+
+# ============================================================================
+# Information
+# ============================================================================
 
 echo
 echo "============================================================"
@@ -152,12 +154,33 @@ echo
 # 1. Change Global Theme
 # ============================================================================
 
-ln -sfnT "$NEXT_DIR" "$CURRENT"
+ln -sfnT \
+    "$NEXT_DIR" \
+    "$CURRENT"
 
 CURRENT_THEME_PATH="$(readlink -f "$CURRENT")"
 
 # ============================================================================
-# 2. CAVA
+# 2. Rofi Palette
+# ============================================================================
+
+ROFI_PALETTE="$CURRENT/rofi.rasi"
+
+if [[ -f "$ROFI_PALETTE" ]]; then
+
+    ln -sfnT \
+        "$ROFI_PALETTE" \
+        "$ROFI_DIR/rofi.rasi"
+
+else
+
+    echo "Warning: Rofi palette not found:"
+    echo "  $ROFI_PALETTE"
+
+fi
+
+# ============================================================================
+# 3. CAVA
 # ============================================================================
 
 CAVA_CONFIG="$CURRENT/cava.conf"
@@ -181,7 +204,7 @@ if [[ -f "$CAVA_CONFIG" ]]; then
 fi
 
 # ============================================================================
-# 3. Yazi
+# 4. Yazi
 # ============================================================================
 
 YAZI_CONFIG="$CURRENT/yazi.toml"
@@ -228,7 +251,7 @@ if command -v ya >/dev/null 2>&1 &&
 fi
 
 # ============================================================================
-# 4. Wallpaper
+# 5. Wallpaper
 # ============================================================================
 
 WALLPAPER_DIR="$CURRENT/wallpapers"
@@ -256,12 +279,17 @@ if [[ -f "$DEFAULT_FILE" ]]; then
             --bg-fill \
             "$DEFAULT_WALL"
 
+    else
+
+        echo "Warning: wallpaper does not exist:"
+        echo "  $DEFAULT_WALL"
+
     fi
 
 fi
 
 # ============================================================================
-# 5. Wallpaper State
+# 6. Wallpaper State
 # ============================================================================
 
 WALL_STATE="$CACHE_DIR/theme_wall_index"
@@ -271,10 +299,10 @@ mkdir -p "$CACHE_DIR"
 {
     echo "$CURRENT_THEME_PATH"
     echo "0"
-} > "$WALL_STATE"
+} >"$WALL_STATE"
 
 # ============================================================================
-# 6. Dunst
+# 7. Dunst
 # ============================================================================
 
 if command -v dunstctl >/dev/null 2>&1; then
@@ -285,7 +313,7 @@ if command -v dunstctl >/dev/null 2>&1; then
 fi
 
 # ============================================================================
-# 7. Polybar
+# 8. Polybar
 # ============================================================================
 
 if command -v polybar-msg >/dev/null 2>&1; then
@@ -296,7 +324,7 @@ if command -v polybar-msg >/dev/null 2>&1; then
 fi
 
 # ============================================================================
-# 8. i3
+# 9. i3
 # ============================================================================
 
 if command -v i3-msg >/dev/null 2>&1; then
@@ -307,9 +335,7 @@ if command -v i3-msg >/dev/null 2>&1; then
 fi
 
 # ============================================================================
-# 9. Kitty
-#
-# Live color update for all running Kitty instances.
+# 10. Kitty
 # ============================================================================
 
 if command -v kitten >/dev/null 2>&1 &&
@@ -338,25 +364,11 @@ if command -v kitten >/dev/null 2>&1 &&
 fi
 
 # ============================================================================
-# 10. Optional Theme Configurations
-#
-# Add mappings for additional applications here.
-# ============================================================================
-
-# Example:
-#
-# if [[ -f "$CURRENT/starship.toml" ]]; then
-#     ln -sfnT \
-#         "$CURRENT/starship.toml" \
-#         "$HOME/.config/starship.toml"
-# fi
-
-# ============================================================================
 # 11. Current Theme Marker
 # ============================================================================
 
 printf '%s\n' "$NEXT_THEME" \
-    > "$CACHE_DIR/current-theme"
+    >"$CACHE_DIR/current-theme"
 
 # ============================================================================
 # 12. Success Notification
@@ -368,7 +380,9 @@ notify \
     "Now using $NEXT_THEME"
 
 echo
-echo "Theme switched successfully:"
-echo "  $CURRENT_THEME → $NEXT_THEME"
+echo "============================================================"
+echo " Theme switched successfully"
+echo "============================================================"
+echo "  ${CURRENT_THEME:-none} → $NEXT_THEME"
+echo "============================================================"
 echo
-

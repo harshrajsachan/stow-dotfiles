@@ -1,0 +1,29 @@
+* {
+    /* ================================================================
+       Twilight
+       ================================================================ */
+
+    /* Base */
+    background: #202020;
+    foreground: #FEFEFE;
+
+    /* Normal elements */
+    active-background: #262626;
+    active-foreground: #d6d2c8;
+
+    /* Selected */
+    selected-normal-background: #34383C;
+    selected-normal-foreground: #FEFEFE;
+
+    /* Active selected */
+    selected-active-background: #454545;
+    selected-active-foreground: #FFFEDB;
+
+    /* Urgent */
+    urgent-background: #303030;
+    urgent-foreground: #FFFEDB;
+
+    /* Selected urgent */
+    selected-urgent-background: #454545;
+    selected-urgent-foreground: #FEFEFE;
+}

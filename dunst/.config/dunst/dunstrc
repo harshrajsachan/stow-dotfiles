@@ -44,7 +44,7 @@ separator_height = 0
 frame_width = 2
 corner_radius = 14
 
-transparency = 0
+transparency = 10
 
 # =========================
 # Theme
