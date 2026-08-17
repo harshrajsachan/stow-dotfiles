@@ -167,15 +167,14 @@ return {
           -------------------------------------------------------
 
           section_separators = {
-            left = '',
-            right = '',
+            left = '',
+            right = '',
           },
 
           component_separators = {
-            left = '│',
-            right = '│',
+            left = '',
+            right = '',
           },
-
           -------------------------------------------------------
           -- Don't show Lualine inside these windows.
           -------------------------------------------------------
@@ -316,6 +315,39 @@ return {
           'fugitive',
         },
       }
+
+      -----------------------------------------------------------
+      -- STATUSLINE TOGGLE
+      -----------------------------------------------------------
+
+      -- false = completely hidden by default
+      local statusline_enabled = false
+
+      local function toggle_statusline()
+        statusline_enabled = not statusline_enabled
+
+        if statusline_enabled then
+          -- Show statusline
+          vim.opt.laststatus = 3
+        else
+          -- Completely remove statusline
+          vim.opt.laststatus = 0
+        end
+
+        vim.cmd 'redrawstatus'
+      end
+
+      vim.keymap.set('n', '<leader>st', toggle_statusline, {
+        desc = 'Toggle Statusline',
+        silent = true,
+      })
+
+      vim.api.nvim_create_user_command('StatuslineToggle', toggle_statusline, {
+        desc = 'Toggle Statusline',
+      })
+
+      -- Start with statusline completely hidden
+      vim.opt.laststatus = 0
 
       -----------------------------------------------------------
       -- SPLIT SEPARATOR

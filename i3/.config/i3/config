@@ -215,15 +215,12 @@ bindsym --release $mod+d exec ~/.config/rofi/launch.sh
 
 # Applications
 bindsym --release Mod1+b exec helium-browser
-bindsym --release Mod1+z exec obsidian
-bindsym --release Mod1+Shift+g exec gtk-launch tekken3
 bindsym --release Mod1+Shift+b exec helium-browser --incognito
 bindsym --release Mod1+e exec alacritty -e yazi
 bindsym --release Mod1+n exec --no-startup-id kitty -e nvim
 bindsym --release Mod1+r exec localsend
 bindsym --release Mod1+q exec kitty -e btop
-bindsym --release Mod1+Shift+v exec code
-bindsym --release Mod1+v exec alacritty -e vim ~/Notes/todo
+bindsym --release Mod1+v exec alacritty -e nvim ~/Notes/todo
 
 
 # PWAs

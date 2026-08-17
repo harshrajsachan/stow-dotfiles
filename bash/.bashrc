@@ -192,4 +192,4 @@ else
     PROMPT_COMMAND="theme_prompt_hook;$PROMPT_COMMAND"
 fi
 
-fastfetch -c ~/.config/fastfetch/config.jsonc
+#fastfetch -c ~/.config/fastfetch/config.jsonc

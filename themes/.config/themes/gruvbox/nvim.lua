@@ -1057,21 +1057,6 @@ set(0, "leetcode_hard_alt", {
 	fg = palette.dim,
 })
 
--- ============================================================================
--- LeetCode dynamic highlights
--- ============================================================================
-
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "WinEnter" }, {
-	callback = function()
-		vim.schedule(function()
-			for _, hl in ipairs(vim.fn.getcompletion("leetcode_dyn_", "highlight")) do
-				set(0, hl, {
-					fg = palette.muted,
-				})
-			end
-		end)
-	end,
-})
 -- LSP References
 
 set(0, "LspReferenceText", {
