@@ -5,17 +5,37 @@ STATE="$HOME/.cache/picom-mode"
 
 mkdir -p "$HOME/.cache"
 
-if [[ -f "$STATE" ]]; then
-    # NORMAL MODE
-    rm "$STATE"
+current_mode="normal"
 
+[[ -f "$STATE" ]] && current_mode=$(cat "$STATE")
+
+case "$current_mode" in
+
+normal)
+    echo "blur" >"$STATE"
     pkill picom
-    picom --config "$PICOM/picom.conf" &
-
-else
-    # BLUR MODE
-    touch "$STATE"
-
-    pkill picom
+    sleep 0.2
     picom --config "$PICOM/picom-blur.conf" &
-fi
+    ;;
+
+blur)
+    echo "animation" >"$STATE"
+    pkill picom
+    sleep 0.2
+    picom --config "$PICOM/picom-animation.conf" &
+    ;;
+
+animation)
+    rm -f "$STATE"
+    pkill picom
+    sleep 0.2
+    picom --config "$PICOM/picom.conf" &
+    ;;
+
+*)
+    rm -f "$STATE"
+    pkill picom
+    sleep 0.2
+    picom --config "$PICOM/picom.conf" &
+    ;;
+esac
