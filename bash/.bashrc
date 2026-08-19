@@ -178,11 +178,15 @@ load_current_theme() {
 
 # Prompt Hook
 theme_prompt_hook() {
-    load_current_theme
-    printf '\n'
+    if [[ $i -eq 0 ]]; then
+        i=1
+    else
+        printf '\n'
+    fi
 }
-
+i=0
 # Initial Theme Load
+
 load_current_theme
 
 # Run before every prompt

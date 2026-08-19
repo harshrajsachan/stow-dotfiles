@@ -4,7 +4,9 @@ local themes_dir = vim.fn.expand '~/.config/themes'
 local current_link = themes_dir .. '/current'
 
 local loaded_theme = nil
-local timer = nil
+
+local watcher = nil
+local debounce_timer = nil
 
 -----------------------------------------------------------
 -- Get current theme directory
@@ -25,23 +27,6 @@ local function get_current_theme()
 end
 
 -----------------------------------------------------------
--- Fire ColorScheme event
------------------------------------------------------------
-
-local function trigger_colorscheme()
-  local colorscheme = vim.g.colors_name
-
-  if not colorscheme or colorscheme == '' then
-    return
-  end
-
-  vim.api.nvim_exec_autocmds('ColorScheme', {
-    pattern = colorscheme,
-    modeline = false,
-  })
-end
-
------------------------------------------------------------
 -- Load current global theme
 -----------------------------------------------------------
 
@@ -52,18 +37,22 @@ function M.reload()
     return
   end
 
-  local theme_file = current_dir .. '/nvim.lua'
-
-  if vim.fn.filereadable(theme_file) == 0 then
-    vim.notify('Neovim theme not found:\n' .. theme_file, vim.log.levels.ERROR, { title = 'Global Theme' })
-    return
-  end
-
   ---------------------------------------------------------
   -- Don't reload if theme hasn't changed
   ---------------------------------------------------------
 
   if current_dir == loaded_theme then
+    return
+  end
+
+  ---------------------------------------------------------
+  -- Theme file
+  ---------------------------------------------------------
+
+  local theme_file = current_dir .. '/nvim.lua'
+
+  if vim.fn.filereadable(theme_file) == 0 then
+    vim.notify('Neovim theme not found:\n' .. theme_file, vim.log.levels.ERROR, { title = 'Global Theme' })
     return
   end
 
@@ -77,12 +66,6 @@ function M.reload()
     vim.notify('Failed to load theme:\n' .. err, vim.log.levels.ERROR, { title = 'Global Theme' })
     return
   end
-
-  ---------------------------------------------------------
-  -- Tell Neovim that the colorscheme changed
-  ---------------------------------------------------------
-
-  trigger_colorscheme()
 
   ---------------------------------------------------------
   -- Remember loaded theme
@@ -109,7 +92,7 @@ end, {
 })
 
 -----------------------------------------------------------
--- Check when Neovim gains focus
+-- Focus fallback
 -----------------------------------------------------------
 
 vim.api.nvim_create_autocmd('FocusGained', {
@@ -119,17 +102,59 @@ vim.api.nvim_create_autocmd('FocusGained', {
 })
 
 -----------------------------------------------------------
--- Live watcher
+-- Filesystem watcher
 -----------------------------------------------------------
 
-timer = vim.uv.new_timer()
+watcher = vim.uv.new_fs_event()
 
-timer:start(
-  1000,
-  1000,
+-----------------------------------------------------------
+-- Debounce timer
+-----------------------------------------------------------
+
+debounce_timer = vim.uv.new_timer()
+
+local function schedule_reload()
+  debounce_timer:stop()
+
+  debounce_timer:start(
+    50,
+    0,
+    vim.schedule_wrap(function()
+      M.reload()
+    end)
+  )
+end
+
+-----------------------------------------------------------
+-- Watch themes directory
+-----------------------------------------------------------
+
+watcher:start(
+  themes_dir,
+  {},
   vim.schedule_wrap(function()
-    M.reload()
+    schedule_reload()
   end)
 )
+
+-----------------------------------------------------------
+-- Cleanup
+-----------------------------------------------------------
+
+vim.api.nvim_create_autocmd('VimLeavePre', {
+  callback = function()
+    if watcher then
+      watcher:stop()
+      watcher:close()
+      watcher = nil
+    end
+
+    if debounce_timer then
+      debounce_timer:stop()
+      debounce_timer:close()
+      debounce_timer = nil
+    end
+  end,
+})
 
 return M

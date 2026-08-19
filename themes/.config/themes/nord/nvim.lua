@@ -13,7 +13,7 @@ local set = vim.api.nvim_set_hl
 local palette = {
 
 	-- Backgrounds
-	-- bg = '#2E3440', -- nord0
+	-- bg = "#2E3440", -- nord0
 	bg = "#000000", -- nord0
 	bg1 = "#3B4252", -- nord1
 	bg2 = "#434C5E", -- nord2
