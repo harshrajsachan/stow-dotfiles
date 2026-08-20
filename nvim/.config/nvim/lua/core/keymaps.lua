@@ -54,8 +54,8 @@ vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts)
 -- Tabs
 vim.keymap.set('n', '<leader>to', ':tabnew<CR>', opts) -- open new tab
 vim.keymap.set('n', '<leader>tx', ':tabclose<CR>', opts) -- close current tab
-vim.keymap.set('n', '<leader>tn', ':tabn<CR>', opts) --  go to next tab
-vim.keymap.set('n', '<leader>tp', ':tabp<CR>', opts) --  go to previous tab
+vim.keymap.set('n', '<leader>tn', ':tabn<CR>', opts) -- go to next tab
+vim.keymap.set('n', '<leader>tp', ':tabp<CR>', opts) -- go to previous tab
 
 -- Toggle line wrapping
 vim.keymap.set('n', '<leader>lw', '<cmd>set wrap!<CR>', opts)
@@ -76,29 +76,43 @@ vim.keymap.set('n', ']d', function()
   vim.diagnostic.jump { count = 1, float = true }
 end, { desc = 'Go to next diagnostic message' })
 
-vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, {
+  desc = 'Open floating diagnostic message',
+})
 
---dashboard
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, {
+  desc = 'Open diagnostics list',
+})
+
+-- Dashboard
 vim.keymap.set('n', '<leader>ba', function()
   local alpha = require 'alpha'
 
   vim.cmd 'enew'
   alpha.start(false)
-end, { desc = 'Open dashboard' })
---silent l key
+end, {
+  desc = 'Open dashboard',
+})
+
+-- silent l key
 vim.keymap.set('n', '<leader>l', '<Nop>', { silent = true })
 
 -- move Lazy to <leader>L
-vim.keymap.set('n', '<leader>L', '<cmd>Lazy<CR>', { desc = 'Lazy' })
+vim.keymap.set('n', '<leader>L', '<cmd>Lazy<CR>', {
+  desc = 'Lazy',
+})
 
---yank whole file
+-- yank whole file
 vim.keymap.set('n', '<leader>yy', function()
   vim.cmd '%y'
-end, { desc = 'Yank entire file' })
+end, {
+  desc = 'Yank entire file',
+})
 
---delete whole file
-vim.keymap.set('n', '<leader>dd', '<cmd>%d+<cr>', { desc = 'Cut entire file to clipboard' })
+-- delete whole file
+vim.keymap.set('n', '<leader>dd', '<cmd>%d+<cr>', {
+  desc = 'Cut entire file to clipboard',
+})
 
 -- Move selected lines down
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
@@ -110,12 +124,16 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 vim.keymap.set('n', '<leader>+', '<C-a>')
 vim.keymap.set('n', '<leader>-', '<C-x>')
 
---go to normal with ij
+-- go to normal with ij
 vim.keymap.set('i', 'jk', '<Esc>')
 vim.keymap.set('i', 'kj', '<Esc>')
 
---find and replace
+-- find and replace
 vim.keymap.set('n', '<leader>rw', [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]])
+
+-----------------------------------------------------------
+-- SNACKS
+-----------------------------------------------------------
 
 -- Open the Snacks file finder.
 vim.keymap.set('n', '<leader>ff', function()
@@ -124,7 +142,9 @@ end, {
   desc = 'Find Files',
 })
 
+-----------------------------------------------------------
 -- BUFFER CONTROL
+-----------------------------------------------------------
 
 -- Delete current buffer.
 vim.keymap.set('n', '<leader>bd', function()
@@ -168,13 +188,19 @@ end, {
   desc = 'Delete Other Buffers',
 })
 
-vim.keymap.set('n', '<leader>ba', function()
-  require('telescope.builtin').buffers()
+-- Buffer list
+-- Telescope removed; Snacks handles this now.
+vim.keymap.set('n', '<leader>bb', function()
+  Snacks.picker.buffers()
 end, {
   noremap = true,
   silent = true,
   desc = 'Buffer List',
 })
+
+-----------------------------------------------------------
+-- LOW RAM MODE
+-----------------------------------------------------------
 
 vim.keymap.set('n', '<leader>zn', function()
   require('core.ramsaver').toggle()

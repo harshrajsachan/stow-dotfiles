@@ -16,6 +16,7 @@ normal)
     pkill picom
     sleep 0.2
     picom --config "$PICOM/picom-blur.conf" &
+    notify-send "Picom" "Blur mode enabled"
     ;;
 
 blur)
@@ -23,6 +24,7 @@ blur)
     pkill picom
     sleep 0.2
     picom --config "$PICOM/picom-animation.conf" &
+    notify-send "Picom" "Animation mode enabled"
     ;;
 
 animation)
@@ -30,6 +32,7 @@ animation)
     pkill picom
     sleep 0.2
     picom --config "$PICOM/picom.conf" &
+    notify-send "Picom" "Normal mode enabled"
     ;;
 
 *)
@@ -37,5 +40,6 @@ animation)
     pkill picom
     sleep 0.2
     picom --config "$PICOM/picom.conf" &
+    notify-send "Picom" "Normal mode enabled"
     ;;
 esac

@@ -126,6 +126,82 @@ return {
       },
 
       ---------------------------------------------------------
+      -- TELESCOPE → SNACKS
+      ---------------------------------------------------------
+
+      -- Help
+      {
+        '<leader>sh',
+        function()
+          Snacks.picker.help()
+        end,
+        desc = '[S]earch [H]elp',
+      },
+
+      -- Keymaps
+      {
+        '<leader>sk',
+        function()
+          Snacks.picker.keymaps()
+        end,
+        desc = '[S]earch [K]eymaps',
+      },
+
+      -- Files
+      {
+        '<leader>sf',
+        function()
+          Snacks.picker.files()
+        end,
+        desc = '[S]earch [F]iles',
+      },
+
+      -- Picker selector
+      {
+        '<leader>ss',
+        function()
+          Snacks.picker.pickers()
+        end,
+        desc = '[S]earch [S]elect Picker',
+      },
+
+      -- Current word
+      {
+        '<leader>sw',
+        function()
+          Snacks.picker.grep_word()
+        end,
+        desc = '[S]earch current [W]ord',
+      },
+
+      -- Live grep
+      {
+        '<leader>sg',
+        function()
+          Snacks.picker.grep()
+        end,
+        desc = '[S]earch by [G]rep',
+      },
+
+      -- Diagnostics
+      {
+        '<leader>sd',
+        function()
+          Snacks.picker.diagnostics()
+        end,
+        desc = '[S]earch [D]iagnostics',
+      },
+
+      -- Resume
+      {
+        '<leader>sr',
+        function()
+          Snacks.picker.resume()
+        end,
+        desc = '[S]earch [R]esume',
+      },
+
+      ---------------------------------------------------------
       -- FILE OPERATIONS
       ---------------------------------------------------------
 
@@ -143,6 +219,90 @@ return {
           Snacks.bufdelete()
         end,
         desc = 'Delete Buffer',
+      },
+
+      ---------------------------------------------------------
+      -- FILE SEARCH
+      ---------------------------------------------------------
+
+      -- Recent files
+      {
+        '<leader>fr',
+        function()
+          Snacks.picker.recent()
+        end,
+        desc = '[F]ind [R]ecent files',
+      },
+
+      -- Buffers
+      {
+        '<leader>fb',
+        function()
+          Snacks.picker.buffers()
+        end,
+        desc = '[F]ind [B]uffers',
+      },
+
+      -- Git files
+      {
+        '<leader>gf',
+        function()
+          Snacks.picker.git_files()
+        end,
+        desc = '[G]it [F]iles',
+      },
+
+      ---------------------------------------------------------
+      -- CURRENT BUFFER SEARCH
+      ---------------------------------------------------------
+
+      {
+        '<leader>/',
+        function()
+          Snacks.picker.grep_buf()
+        end,
+        desc = 'Search Current Buffer',
+      },
+
+      ---------------------------------------------------------
+      -- GREP OPEN FILES
+      ---------------------------------------------------------
+
+      {
+        '<leader>s/',
+        function()
+          Snacks.picker.grep_buffers()
+        end,
+        desc = '[S]earch [/] Open Files',
+      },
+
+      ---------------------------------------------------------
+      -- NEOVIM CONFIG
+      ---------------------------------------------------------
+
+      {
+        '<leader>fc',
+        function()
+          Snacks.picker.files {
+            cwd = vim.fn.stdpath 'config',
+            hidden = true,
+          }
+        end,
+        desc = '[F]ind [C]onfig File',
+      },
+
+      ---------------------------------------------------------
+      -- WORD UNDER CURSOR
+      ---------------------------------------------------------
+
+      {
+        '<leader>fw',
+        function()
+          Snacks.picker.grep_word {
+            search = vim.fn.expand '<cword>',
+          }
+        end,
+        desc = '[F]ind Current [W]ord',
       },
 
       ---------------------------------------------------------
@@ -225,9 +385,10 @@ return {
         layout = {
           cycle = true,
 
+          -- Use the Telescope-like layout on wide screens.
           preset = function()
             if vim.o.columns >= 120 then
-              return 'default'
+              return 'telescope'
             end
 
             return 'vertical'
@@ -241,13 +402,62 @@ return {
         layouts = {
 
           -------------------------------------------------------
-          -- DEFAULT
+          -- TELESCOPE STYLE
           -------------------------------------------------------
 
-          default = {
+          telescope = {
+            reverse = false,
+
             layout = {
-              width = 0.92,
+              box = 'horizontal',
+              backdrop = false,
+
+              -- Overall size.
+              width = 0.95,
               height = 0.90,
+
+              -- No large outer border.
+              border = 'none',
+
+              ---------------------------------------------------
+              -- LEFT: FILES + SEARCH
+              ---------------------------------------------------
+
+              {
+                box = 'vertical',
+
+                -- File list.
+                {
+                  win = 'list',
+                  border = 'rounded',
+                  title = ' Files ',
+                  title_pos = 'center',
+                },
+
+                -- Search at the bottom.
+                {
+                  win = 'input',
+                  height = 1,
+                  border = 'rounded',
+                  title = '{title} {live} {flags}',
+                  title_pos = 'center',
+                },
+              },
+
+              ---------------------------------------------------
+              -- RIGHT: PREVIEW
+              ---------------------------------------------------
+
+              {
+                win = 'preview',
+                title = '{preview:Preview}',
+                title_pos = 'center',
+
+                -- 60% preview.
+                width = 0.60,
+
+                border = 'rounded',
+              },
             },
           },
 

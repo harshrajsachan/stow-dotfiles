@@ -22,7 +22,6 @@ require('lazy').setup {
   require 'plugins.lazygit',
   require 'plugins.smartrunner',
   require 'plugins.flash',
-  require 'plugins.telescope',
   require 'plugins.persistence',
   require 'plugins.which-key',
   require 'plugins.noice',

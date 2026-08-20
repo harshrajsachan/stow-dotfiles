@@ -16,6 +16,7 @@ bindsym $mod+Shift+t exec --no-startup-id ~/.config/i3/scripts/theme-switch
 # Autostart
 exec --no-startup-id dex --autostart --environment i3 
 exec_always --no-startup-id picom --backend glx --config ~/.config/picom/picom.conf
+exec_always --no-startup-id i3-swallow
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id ~/.config/i3/scripts/wall_toggle.sh default

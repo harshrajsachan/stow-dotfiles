@@ -38,8 +38,6 @@ return {
 
       dashboard.button('l', '  LeetCode', '<cmd>Leet<CR>'),
 
-      dashboard.button('g', '  Git Status', '<cmd>LazyGit<CR>'),
-
       dashboard.button('c', '  Config', "<cmd>lua Snacks.picker.files({ cwd = vim.fn.stdpath('config') })<CR>"),
 
       dashboard.button('q', '  Quit', '<cmd>qa<CR>'),
