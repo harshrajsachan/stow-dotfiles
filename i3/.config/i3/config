@@ -251,3 +251,4 @@ bindsym --release $mod+Shift+c reload
 
 # Restart
 bindsym --release $mod+Shift+r restart
+
