@@ -58,8 +58,6 @@ bindsym Mod1+Shift+e exec --no-startup-id rofi -show emoji
 # Lock
 bindsym $mod+Shift+x exec --no-startup-id ~/.config/i3/scripts/lock.sh
 
-# Power
-bindsym --release Mod1+F4 exec poweroff
 
 # Gap Toggle
 bindsym --release Mod1+Shift+q exec --no-startup-id ~/.config/i3/scripts/gap.sh
