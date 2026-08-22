@@ -207,3 +207,8 @@ vim.keymap.set('n', '<leader>zn', function()
 end, {
   desc = 'Toggle Low RAM Mode',
 })
+
+-- Custom movement mappings
+vim.keymap.set({ 'n', 'v', 'o' }, 'gh', '^', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v', 'o' }, 'gl', '$', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v', 'o' }, 'gm', '%', { noremap = true, silent = true })
