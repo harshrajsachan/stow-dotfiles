@@ -55,21 +55,21 @@ return {
         -- Navigation
         -------------------------------------------------------
 
-        map('gd', Snacks.picker.lsp_definitions, '[G]oto [D]efinition')
+        map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
 
-        map('gr', Snacks.picker.lsp_references, '[G]oto [R]eferences')
+        map('gr', vim.lsp.buf.references, '[G]oto [R]eferences')
 
-        map('gI', Snacks.picker.lsp_implementations, '[G]oto [I]mplementation')
+        map('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
 
-        map('<leader>D', Snacks.picker.lsp_type_definitions, 'Type [D]efinition')
+        map('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
 
         -------------------------------------------------------
         -- Symbols
         -------------------------------------------------------
 
-        map('<leader>ds', Snacks.picker.lsp_symbols, '[D]ocument [S]ymbols')
+        map('<leader>ds', vim.lsp.buf.document_symbol, '[D]ocument [S]ymbols')
 
-        map('<leader>ws', Snacks.picker.lsp_workspace_symbols, '[W]orkspace [S]ymbols')
+        map('<leader>ws', vim.lsp.buf.workspace_symbol, '[W]orkspace [S]ymbols')
 
         -------------------------------------------------------
         -- Rename
@@ -162,20 +162,6 @@ return {
 
     -----------------------------------------------------------
     -- LANGUAGE SERVERS
-    --
-    -- These are Neovim LSP names, NOT Mason package names.
-    --
-    -- Mason:
-    --   clangd                     -> clangd
-    --   pyright                    -> pyright
-    --   bash-language-server       -> bashls
-    --   lua-language-server        -> lua_ls
-    --   typescript-language-server -> ts_ls
-    --   html-lsp                   -> html
-    --   css-lsp                    -> cssls
-    --   json-lsp                   -> jsonls
-    --
-    -- JDTLS is intentionally handled separately.
     -----------------------------------------------------------
 
     local servers = {
@@ -309,3 +295,12 @@ return {
     end
   end,
 }
+
+-- | Mapping      | Before                                | Now                            |
+-- | ------------ | ------------------------------------- | ------------------------------ |
+-- | `gd`         | `Snacks.picker.lsp_definitions`       | `vim.lsp.buf.definition`       |
+-- | `gr`         | `Snacks.picker.lsp_references`        | `vim.lsp.buf.references`       |
+-- | `gI`         | `Snacks.picker.lsp_implementations`   | `vim.lsp.buf.implementation`   |
+-- | `<leader>D`  | `Snacks.picker.lsp_type_definitions`  | `vim.lsp.buf.type_definition`  |
+-- | `<leader>ds` | `Snacks.picker.lsp_symbols`           | `vim.lsp.buf.document_symbol`  |
+-- | `<leader>ws` | `Snacks.picker.lsp_workspace_symbols` | `vim.lsp.buf.workspace_symbol` |

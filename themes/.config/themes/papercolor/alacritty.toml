@@ -1,0 +1,51 @@
+# =========================
+# PaperColor Theme
+# =========================
+
+[colors.primary]
+background = "#F2EDE3"
+foreground = "#292724"
+
+# =========================
+# Normal Colors
+# =========================
+
+[colors.normal]
+black   = "#292724"
+red     = "#A33A3A"
+green   = "#4F6B4A"
+yellow  = "#9A761F"
+blue    = "#4A6280"
+magenta = "#7A596F"
+cyan    = "#4F7470"
+white   = "#D6D0C5"
+
+# =========================
+# Bright Colors
+# =========================
+
+[colors.bright]
+black   = "#5C5954"
+red     = "#C05252"
+green   = "#668A60"
+yellow  = "#B4933A"
+blue    = "#617D9F"
+magenta = "#966F89"
+cyan    = "#64918B"
+white   = "#292724"
+
+# =========================
+# Cursor
+# =========================
+
+[colors.cursor]
+text = "#F2EDE3"
+cursor = "#292724"
+
+# =========================
+# Selection
+# =========================
+
+[colors.selection]
+text = "#292724"
+background = "#D8D0C2"

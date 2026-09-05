@@ -10,16 +10,6 @@ STYLE="$ROFI_DIR/style-6.rasi"
 THEMES_DIR="$HOME/.config/themes"
 CURRENT="$THEMES_DIR/current"
 
-THEMES=(
-    "berserk"
-    "catppuccin"
-    "everforest"
-    "gruvbox"
-    "nord"
-    "sakura"
-    "twilight"
-)
-
 # ============================================================================
 # Validate
 # ============================================================================
@@ -31,6 +21,11 @@ fi
 
 if [[ ! -f "$STYLE" ]]; then
     echo "Error: $STYLE not found"
+    exit 1
+fi
+
+if [[ ! -d "$THEMES_DIR" ]]; then
+    echo "Error: $THEMES_DIR not found"
     exit 1
 fi
 
@@ -53,27 +48,44 @@ app_launcher() {
 
 theme_launcher() {
 
+    local current_theme=""
+    local menu=""
+    local theme_dir
+    local theme
+
+    # ------------------------------------------------------------------------
+    # Get current theme
+    # ------------------------------------------------------------------------
+
     if [[ -L "$CURRENT" ]]; then
-        CURRENT_THEME="$(basename "$(readlink -f "$CURRENT")")"
-    else
-        CURRENT_THEME=""
+        current_theme="$(basename "$(readlink -f "$CURRENT")")"
     fi
 
-    MENU=""
+    # ------------------------------------------------------------------------
+    # Find every theme directory automatically
+    # ------------------------------------------------------------------------
 
-    for theme in "${THEMES[@]}"; do
+    for theme_dir in "$THEMES_DIR"/*/; do
 
-        if [[ "$theme" == "$CURRENT_THEME" ]]; then
-            MENU+="● $theme"
+        [[ -d "$theme_dir" ]] || continue
+
+        theme="$(basename "$theme_dir")"
+
+        if [[ "$theme" == "$current_theme" ]]; then
+            menu+="● $theme"
         else
-            MENU+="  $theme"
+            menu+="  $theme"
         fi
 
-        MENU+=$'\n'
+        menu+=$'\n'
 
     done
 
-    printf '%s' "$MENU" |
+    # ------------------------------------------------------------------------
+    # Launch Rofi
+    # ------------------------------------------------------------------------
+
+    printf '%s' "$menu" |
         rofi \
             -dmenu \
             -i \

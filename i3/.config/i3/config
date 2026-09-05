@@ -26,8 +26,8 @@ exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-ag
 exec --no-startup-id xsetroot -cursor_name left_ptr
 exec --no-startup-id sh -c "sleep 0.75 && ~/.config/i3/scripts/lock.sh"
 exec_always --no-startup-id xrdb -merge ~/.Xresources
-exec_always xinput set-prop 16 "libinput Tapping Enabled" 1
-exec_always --no-startup-id xinput set-prop 16 "libinput Natural Scrolling Enabled" 1
+exec_always --no-startup-id xinput set-prop "AlpsPS/2 ALPS GlidePoint" "libinput Tapping Enabled" 1
+exec_always --no-startup-id xinput set-prop "AlpsPS/2 ALPS GlidePoint" "libinput Natural Scrolling Enabled" 1
 
 # Picom
 bindsym Mod1+Shift+o exec --no-startup-id ~/.config/picom/toggle-blur
