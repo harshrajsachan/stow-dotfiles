@@ -5,8 +5,7 @@ return {
 
   config = function()
     vim.g.omnitheme_transparent = true
-
     -- Choose your flavour.
-    vim.cmd 'colorscheme blackout'
+    -- vim.cmd 'colorscheme omni-jade'
   end,
 }

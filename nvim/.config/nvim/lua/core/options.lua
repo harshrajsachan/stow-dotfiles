@@ -51,3 +51,23 @@ vim.api.nvim_create_autocmd({ 'VimEnter', 'ColorScheme' }, {
   end,
 })
 vim.opt.showbreak = '↪ '
+
+-- lua/core/options.lua
+
+-- Never show Neovim's regular statusline.
+vim.opt.laststatus = 0
+
+-- Never show a winbar anywhere.
+vim.opt.winbar = ''
+
+vim.api.nvim_create_autocmd({
+  'WinNew',
+  'WinEnter',
+  'BufWinEnter',
+  'FileType',
+}, {
+  callback = function()
+    vim.opt_local.statusline = ''
+    vim.opt_local.winbar = ''
+  end,
+})

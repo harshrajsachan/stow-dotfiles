@@ -58,18 +58,41 @@ theme_launcher() {
     # ------------------------------------------------------------------------
 
     if [[ -L "$CURRENT" ]]; then
+
         current_theme="$(basename "$(readlink -f "$CURRENT")")"
+
     fi
 
     # ------------------------------------------------------------------------
-    # Find every theme directory automatically
+    # Find actual theme directories
+    # ------------------------------------------------------------------------
+    #
+    # "current" is a special symlink and is NEVER a selectable theme.
+    #
     # ------------------------------------------------------------------------
 
     for theme_dir in "$THEMES_DIR"/*/; do
 
+        # Ignore missing glob
         [[ -d "$theme_dir" ]] || continue
 
         theme="$(basename "$theme_dir")"
+
+        # ---------------------------------------------------------------
+        # NEVER show the special "current" symlink
+        # ---------------------------------------------------------------
+
+        [[ "$theme" == "current" ]] && continue
+
+        # ---------------------------------------------------------------
+        # NEVER show symlinked theme directories
+        # ---------------------------------------------------------------
+
+        [[ -L "$theme_dir" ]] && continue
+
+        # ---------------------------------------------------------------
+        # Display current theme with marker
+        # ---------------------------------------------------------------
 
         if [[ "$theme" == "$current_theme" ]]; then
             menu+="● $theme"

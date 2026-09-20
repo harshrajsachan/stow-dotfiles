@@ -44,7 +44,10 @@ return {
       require 'none-ls.formatting.ruff_format',
     }
 
-    local augroup = vim.api.nvim_create_augroup('LspFormatting', { clear = true })
+    local augroup = vim.api.nvim_create_augroup(
+      'LspFormatting',
+      { clear = true }
+    )
 
     null_ls.setup {
       sources = sources,
@@ -64,8 +67,10 @@ return {
               vim.lsp.buf.format {
                 bufnr = bufnr,
                 async = false,
+
                 filter = function(format_client)
-                  return format_client.name == 'null-ls' or format_client.name == 'none-ls'
+                  return format_client.name == 'null-ls'
+                    or format_client.name == 'none-ls'
                 end,
               }
             end,

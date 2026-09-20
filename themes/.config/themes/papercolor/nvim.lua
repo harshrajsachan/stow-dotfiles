@@ -1,7 +1,7 @@
 vim.cmd("highlight clear")
 vim.cmd("syntax reset")
 
-vim.g.colors_name = "blackwhite"
+vim.g.colors_name = "paper"
 
 local set = vim.api.nvim_set_hl
 
@@ -13,55 +13,179 @@ local set = vim.api.nvim_set_hl
 local palette = {
 
 	-- Backgrounds
-	bg = "#F2EDE3",
-	bg1 = "#ECE6DB",
-	bg2 = "#E5DED3",
-	bg3 = "#DCD4C8",
-	bg4 = "#D2C9BC",
+	bg = "#F7F2E8",
+	bg1 = "#EFE9DE",
+	bg2 = "#E6DFD2",
+	bg3 = "#DCD3C4",
+	bg4 = "#CEC4B5",
 
 	-- Foreground
-	fg = "#292724",
-	fg1 = "#3A3733",
-	fg2 = "#1F1D1A",
-	muted = "#6F6A62",
-	dim = "#8A847B",
-	faint = "#AAA39A",
+	fg = "#2A2825",
+	fg1 = "#3B3833",
+	fg2 = "#211F1C",
+	muted = "#6B665D",
+	dim = "#827B71",
+	faint = "#A69E92",
 
 	-- Borders / UI
-	border = "#B8B1A6",
-	border2 = "#9F978C",
-	cursor = "#292724",
+	border = "#B9B0A2",
+	border2 = "#9E9588",
+	cursor = "#2A2825",
 
 	-- Accent
-	accent = "#4A6280",
-	accent1 = "#617D9F",
-	accent2 = "#9A761F",
+	accent = "#365A7A",
+	accent1 = "#557795",
+	accent2 = "#8A6718",
 
 	-- Syntax
-	keyword = "#A33A3A",
-	type = "#4F6B4A",
-	func = "#4A6280",
-	variable = "#292724",
-	parameter = "#6F6A62",
-	constant = "#9A761F",
-	string = "#4F7470",
-	number = "#7A596F",
-	boolean = "#A33A3A",
-	operator = "#5C5954",
-	punctuation = "#6F6A62",
-	special = "#9A761F",
+	keyword = "#9A3434",
+	type = "#476A45",
+	func = "#365A7A",
+	variable = "#2A2825",
+	parameter = "#6B665D",
+	constant = "#8A6718",
+	string = "#3E6E6B",
+	number = "#6C567A",
+	boolean = "#9A3434",
+	operator = "#514D47",
+	punctuation = "#6B665D",
+	special = "#765B43",
 
 	-- Diagnostics
-	error = "#A33A3A",
-	warning = "#9A761F",
-	info = "#4A6280",
-	hint = "#4F6B4A",
+	error = "#9A3434",
+	warning = "#8A6718",
+	info = "#365A7A",
+	hint = "#476A45",
 
 	-- Git
-	git_add = "#4F6B4A",
-	git_change = "#9A761F",
-	git_delete = "#A33A3A",
+	git_add = "#476A45",
+	git_change = "#8A6718",
+	git_delete = "#9A3434",
 }
+
+-- ============================================================================
+-- BufferLine
+-- ============================================================================
+
+set(0, "BufferLineFill", {
+	fg = palette.muted,
+	bg = palette.bg1,
+})
+
+set(0, "BufferLineBackground", {
+	fg = palette.muted,
+	bg = palette.bg1,
+})
+
+set(0, "BufferLineBuffer", {
+	fg = palette.muted,
+	bg = palette.bg1,
+})
+
+set(0, "BufferLineBufferVisible", {
+	fg = palette.fg1,
+	bg = palette.bg1,
+})
+
+set(0, "BufferLineBufferSelected", {
+	fg = palette.fg2,
+	bg = palette.bg,
+	bold = true,
+})
+
+set(0, "BufferLineTab", {
+	fg = palette.muted,
+	bg = palette.bg2,
+})
+
+set(0, "BufferLineTabSelected", {
+	fg = palette.accent,
+	bg = palette.bg,
+	bold = true,
+})
+
+set(0, "BufferLineTabClose", {
+	fg = palette.muted,
+	bg = palette.bg1,
+})
+
+set(0, "BufferLineCloseButton", {
+	fg = palette.muted,
+	bg = palette.bg1,
+})
+
+set(0, "BufferLineCloseButtonVisible", {
+	fg = palette.fg1,
+	bg = palette.bg1,
+})
+
+set(0, "BufferLineCloseButtonSelected", {
+	fg = palette.accent,
+	bg = palette.bg,
+	bold = true,
+})
+
+set(0, "BufferLineModified", {
+	fg = palette.accent2,
+	bg = palette.bg1,
+})
+
+set(0, "BufferLineModifiedVisible", {
+	fg = palette.accent2,
+	bg = palette.bg1,
+})
+
+set(0, "BufferLineModifiedSelected", {
+	fg = palette.accent2,
+	bg = palette.bg,
+	bold = true,
+})
+
+set(0, "BufferLineSeparator", {
+	fg = palette.border,
+	bg = palette.bg1,
+})
+
+set(0, "BufferLineSeparatorVisible", {
+	fg = palette.border,
+	bg = palette.bg1,
+})
+
+set(0, "BufferLineSeparatorSelected", {
+	fg = palette.bg,
+	bg = palette.bg,
+})
+
+set(0, "BufferLineIndicatorSelected", {
+	fg = palette.accent,
+	bg = palette.bg,
+})
+
+set(0, "BufferLineIndicatorVisible", {
+	fg = palette.border,
+	bg = palette.bg1,
+})
+
+set(0, "BufferLineOffset", {
+	fg = palette.accent,
+	bg = palette.bg1,
+})
+
+set(0, "BufferLineOffsetSeparator", {
+	fg = palette.border,
+	bg = palette.bg1,
+})
+
+set(0, "BufferLineDevIconDefault", {
+	fg = palette.muted,
+	bg = palette.bg1,
+})
+
+set(0, "BufferLineDevIconDefaultSelected", {
+	fg = palette.accent,
+	bg = palette.bg,
+})
+
 -- ============================================================================
 -- UI
 -- ============================================================================

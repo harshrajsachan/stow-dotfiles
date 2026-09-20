@@ -1,75 +1,96 @@
 vim.cmd("highlight clear")
 vim.cmd("syntax reset")
 
-vim.g.colors_name = "everforest"
+vim.g.colors_name = "omni-jade"
 
 local set = vim.api.nvim_set_hl
 
 -- ============================================================================
 -- PALETTE
--- Change ONLY this section to create another theme
 -- ============================================================================
 
 local palette = {
-
+	-- ============================================================================
 	-- Backgrounds
-	-- bg = '#2D353B',
-	bg = "#000000", -- Base
-	bg1 = "#343F44",
-	bg2 = "#3D484D",
-	bg3 = "#475258",
-	bg4 = "#859289",
+	-- ============================================================================
+	bg = "#000000",
+	bg1 = "#16201F",
+	bg2 = "#1D2927",
+	bg3 = "#283633",
+	bg4 = "#354540",
 
+	-- ============================================================================
 	-- Foreground
-	fg = "#D3C6AA",
-	fg1 = "#E4DCC8",
-	fg2 = "#F0EAD8",
-	muted = "#A7A18F",
-	dim = "#859289",
-	faint = "#475258",
+	-- ============================================================================
+	fg = "#D1DDD8",
+	fg1 = "#E2ECE8",
+	fg2 = "#F0F6F3",
 
+	muted = "#9EADA7",
+	dim = "#74847E",
+	faint = "#53625E",
+
+	-- ============================================================================
 	-- Borders / UI
-	border = "#3D484D",
-	border2 = "#475258",
+	-- ============================================================================
+	border = "#354540",
+	border2 = "#4A5C56",
 
+	-- ============================================================================
 	-- Mode cursors
-	cursor = "#7FBBB3",
-	cursor_normal = "#7FBBB3", -- blue/aqua
-	cursor_insert = "#A7C080", -- green
-	cursor_visual = "#D699B6", -- purple
-	cursor_replace = "#E67E80", -- red
-	cursor_command = "#DBBC7F", -- yellow
+	-- ============================================================================
+	cursor = "#55C2A3",
 
+	cursor_normal = "#55C2A3",
+	cursor_insert = "#8DBB69",
+	cursor_visual = "#A986C7",
+	cursor_replace = "#D86D72",
+	cursor_command = "#D2AE62",
+
+	-- ============================================================================
 	-- Accent
-	accent = "#7FBBB3",
-	accent1 = "#83C092",
-	accent2 = "#D699B6",
+	-- ============================================================================
+	accent = "#55C2A3",
+	accent1 = "#8DBB69",
+	accent2 = "#63AFC0",
 
+	-- ============================================================================
 	-- Syntax
-	keyword = "#D699B6",
-	type = "#7FBBB3",
-	func = "#A7C080",
-	variable = "#D3C6AA",
-	parameter = "#A7A18F",
-	constant = "#D699B6",
-	string = "#A7C080",
-	number = "#E69875",
-	boolean = "#E69875",
-	operator = "#83C092",
-	punctuation = "#859289",
-	special = "#83C092",
+	-- ============================================================================
+	keyword = "#55C2A3",
+	type = "#63AFC0",
+	func = "#8DBB69",
 
+	variable = "#D1DDD8",
+	parameter = "#9EADA7",
+	property = "#91A39D",
+
+	constant = "#B58CC5",
+	string = "#8DBB69",
+	number = "#D7975B",
+	boolean = "#D2AE62",
+
+	operator = "#5CA9A5",
+	punctuation = "#7F908A",
+	special = "#69C5B1",
+
+	-- ============================================================================
 	-- Diagnostics
-	error = "#E67E80",
-	warning = "#DBBC7F",
-	info = "#7FBBB3",
-	hint = "#A7C080",
+	-- ============================================================================
+	error = "#D86D72",
+	warning = "#D2AE62",
+	info = "#63AFC0",
+	hint = "#8DBB69",
 
+	-- ============================================================================
 	-- Git
-	git_add = "#A7C080",
-	git_change = "#DBBC7F",
-	git_delete = "#E67E80",
-} -- ============================================================================
+	-- ============================================================================
+	git_add = "#8DBB69",
+	git_change = "#D2AE62",
+	git_delete = "#D86D72",
+}
+
+-- ============================================================================
 -- UI
 -- ============================================================================
 
@@ -110,17 +131,14 @@ local function set_cursor(color)
 	})
 end
 
--- Initial cursor color
 set_cursor(palette.cursor_normal)
 
--- Change the actual Cursor highlight whenever the mode changes.
--- This keeps the cursor as a block while changing only its color.
-vim.api.nvim_create_augroup("BlackWhiteCursor", {
+vim.api.nvim_create_augroup("OmniJadeCursor", {
 	clear = true,
 })
 
 vim.api.nvim_create_autocmd("ModeChanged", {
-	group = "BlackWhiteCursor",
+	group = "OmniJadeCursor",
 	callback = function()
 		local mode = vim.api.nvim_get_mode().mode
 
@@ -991,86 +1009,4 @@ set(0, "BlinkCmpSignatureHelp", {
 set(0, "BlinkCmpSignatureHelpBorder", {
 	fg = palette.border2,
 	bg = palette.bg,
-})
-
--- ============================================================================
--- LeetCode.nvim
--- ============================================================================
-
-for _, hl in ipairs(vim.fn.getcompletion("leetcode_", "highlight")) do
-	set(0, hl, {
-		fg = palette.accent,
-	})
-end
-
-set(0, "leetcode_easy", {
-	fg = palette.fg,
-	bold = true,
-})
-
-set(0, "leetcode_medium", {
-	fg = palette.accent1,
-	bold = true,
-})
-
-set(0, "leetcode_hard", {
-	fg = palette.accent,
-	bold = true,
-})
-
-set(0, "leetcode_easy_alt", {
-	fg = palette.dim,
-})
-
-set(0, "leetcode_medium_alt", {
-	fg = palette.dim,
-})
-
-set(0, "leetcode_hard_alt", {
-	fg = palette.dim,
-})
-
-set(0, "leetcode_alt", {
-	fg = palette.muted,
-})
-
--- ============================================================================
--- LSP References
--- ============================================================================
-
-set(0, "LspReferenceText", {
-	bg = palette.bg4,
-})
-
-set(0, "LspReferenceRead", {
-	bg = palette.bg4,
-})
-
-set(0, "LspReferenceWrite", {
-	bg = palette.bg4,
-})
-
--- ============================================================================
--- Diff
--- ============================================================================
-
-set(0, "DiffAdd", {
-	fg = palette.git_add,
-	bg = palette.bg1,
-})
-
-set(0, "DiffChange", {
-	fg = palette.git_change,
-	bg = palette.bg1,
-})
-
-set(0, "DiffDelete", {
-	fg = palette.git_delete,
-	bg = palette.bg1,
-})
-
-set(0, "DiffText", {
-	fg = palette.fg2,
-	bg = palette.bg4,
-	bold = true,
 })

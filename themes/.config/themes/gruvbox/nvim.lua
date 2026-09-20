@@ -1,68 +1,90 @@
 vim.cmd("highlight clear")
 vim.cmd("syntax reset")
 
-vim.g.colors_name = "gruvbox"
+vim.g.colors_name = "omni-dusk"
 
 local set = vim.api.nvim_set_hl
 
 -- ============================================================================
 -- PALETTE
--- Change ONLY this section to create another theme
 -- ============================================================================
 
 local palette = {
-
+	-- ============================================================================
 	-- Backgrounds
+	-- ============================================================================
 	bg = "#000000",
-	bg1 = "#3c3836",
-	bg2 = "#504945",
-	bg3 = "#665c54",
-	bg4 = "#7c6f64",
+	bg1 = "#32302f",
+	bg2 = "#3c3836",
+	bg3 = "#504945",
+	bg4 = "#665c54",
 
+	-- ============================================================================
 	-- Foreground
+	-- ============================================================================
 	fg = "#ebdbb2",
 	fg1 = "#fbf1c7",
 	fg2 = "#ffffff",
-	muted = "#c8b58a",
-	dim = "#a89670",
-	faint = "#75684f", -- Borders / UI
+
+	muted = "#d5c4a1",
+	dim = "#a89984",
+	faint = "#928374",
+
+	-- ============================================================================
+	-- Borders / UI
+	-- ============================================================================
 	border = "#504945",
 	border2 = "#665c54",
 
+	-- ============================================================================
 	-- Mode cursors
+	-- ============================================================================
 	cursor = "#fabd2f",
-	cursor_normal = "#fabd2f", -- yellow
-	cursor_insert = "#b8bb26", -- green
-	cursor_visual = "#d3869b", -- purple
-	cursor_replace = "#fb4934", -- red
-	cursor_command = "#83a598", -- blue
 
+	cursor_normal = "#fabd2f",
+	cursor_insert = "#b8bb26",
+	cursor_visual = "#d3869b",
+	cursor_replace = "#fb4934",
+	cursor_command = "#83a598",
+
+	-- ============================================================================
 	-- Accent
+	-- ============================================================================
 	accent = "#fabd2f",
 	accent1 = "#b8bb26",
 	accent2 = "#83a598",
 
+	-- ============================================================================
 	-- Syntax
+	-- ============================================================================
 	keyword = "#fb4934",
 	type = "#fabd2f",
 	func = "#8ec07c",
+
 	variable = "#ebdbb2",
 	parameter = "#d5c4a1",
+	property = "#bdae93",
+
 	constant = "#d3869b",
 	string = "#b8bb26",
-	number = "#d3869b",
-	boolean = "#fe8019",
+	number = "#fe8019",
+	boolean = "#fabd2f",
+
 	operator = "#83a598",
 	punctuation = "#a89984",
 	special = "#8ec07c",
 
+	-- ============================================================================
 	-- Diagnostics
+	-- ============================================================================
 	error = "#fb4934",
 	warning = "#fabd2f",
 	info = "#83a598",
 	hint = "#b8bb26",
 
+	-- ============================================================================
 	-- Git
+	-- ============================================================================
 	git_add = "#b8bb26",
 	git_change = "#fabd2f",
 	git_delete = "#fb4934",
@@ -114,12 +136,12 @@ set_cursor(palette.cursor_normal)
 
 -- Change the actual Cursor highlight whenever the mode changes.
 -- This keeps the cursor as a block while changing only its color.
-vim.api.nvim_create_augroup("BlackWhiteCursor", {
+vim.api.nvim_create_augroup("OmniDuskCursor", {
 	clear = true,
 })
 
 vim.api.nvim_create_autocmd("ModeChanged", {
-	group = "BlackWhiteCursor",
+	group = "OmniDuskCursor",
 	callback = function()
 		local mode = vim.api.nvim_get_mode().mode
 
@@ -990,108 +1012,4 @@ set(0, "BlinkCmpSignatureHelp", {
 set(0, "BlinkCmpSignatureHelpBorder", {
 	fg = palette.border2,
 	bg = palette.bg,
-})
-
--- ============================================================================
--- LeetCode.nvim
--- ============================================================================
-
-for _, hl in ipairs(vim.fn.getcompletion("leetcode_", "highlight")) do
-	set(0, hl, {
-		fg = palette.accent,
-	})
-end
-
--- --------------------------------------------------------------------------
--- Main LeetCode highlights
--- --------------------------------------------------------------------------
-
-set(0, "leetcode_normal", {
-	fg = palette.muted,
-})
-
-set(0, "leetcode_alt", {
-	fg = palette.muted,
-})
-
-set(0, "leetcode_description", {
-	fg = palette.muted,
-})
-
-set(0, "leetcode_list", {
-	fg = palette.muted,
-})
-
-set(0, "leetcode_indent", {
-	fg = palette.muted,
-})
-
--- --------------------------------------------------------------------------
--- Difficulty
--- --------------------------------------------------------------------------
-
-set(0, "leetcode_easy", {
-	fg = palette.fg,
-	bold = true,
-})
-
-set(0, "leetcode_medium", {
-	fg = palette.accent1,
-	bold = true,
-})
-
-set(0, "leetcode_hard", {
-	fg = palette.accent,
-	bold = true,
-})
-
-set(0, "leetcode_easy_alt", {
-	fg = palette.dim,
-})
-
-set(0, "leetcode_medium_alt", {
-	fg = palette.dim,
-})
-
-set(0, "leetcode_hard_alt", {
-	fg = palette.dim,
-})
-
--- LSP References
-
-set(0, "LspReferenceText", {
-	bg = palette.bg4,
-})
-
-set(0, "LspReferenceRead", {
-	bg = palette.bg4,
-})
-
-set(0, "LspReferenceWrite", {
-	bg = palette.bg4,
-})
-
--- ============================================================================
--- Diff
--- ============================================================================
-
-set(0, "DiffAdd", {
-	fg = palette.git_add,
-	bg = palette.bg1,
-})
-
-set(0, "DiffChange", {
-	fg = palette.git_change,
-	bg = palette.bg1,
-})
-
-set(0, "DiffDelete", {
-	fg = palette.git_delete,
-	bg = palette.bg1,
-})
-
-set(0, "DiffText", {
-	fg = palette.fg2,
-	bg = palette.bg4,
-	bold = true,
 })

@@ -1,74 +1,95 @@
 vim.cmd("highlight clear")
 vim.cmd("syntax reset")
 
-vim.g.colors_name = "sakura"
+vim.g.colors_name = "omni-sakura"
 
 local set = vim.api.nvim_set_hl
 
 -- ============================================================================
--- SAKURA PALETTE
--- Inspired by the supplied wallpaper
+-- PALETTE
 -- ============================================================================
 
 local palette = {
-
+	-- ============================================================================
 	-- Backgrounds
+	-- ============================================================================
 	bg = "#000000",
-	bg1 = "#171315",
-	bg2 = "#211A1D",
-	bg3 = "#2C2226",
-	bg4 = "#3B2C31",
+	bg1 = "#111F33",
+	bg2 = "#18283D",
+	bg3 = "#24384D",
+	bg4 = "#344D63",
 
+	-- ============================================================================
 	-- Foreground
-	fg = "#F2EAE7",
-	fg1 = "#D8CFCC",
-	fg2 = "#FFF7F4",
-	muted = "#A49A98",
-	dim = "#807674",
-	faint = "#5A5152",
+	-- ============================================================================
+	fg = "#D6D2C8",
+	fg1 = "#F0E8D8",
+	fg2 = "#FDF1B2",
 
+	muted = "#A9A8A4",
+	dim = "#6B7D8A",
+	faint = "#4D6F82",
+
+	-- ============================================================================
 	-- Borders / UI
-	border = "#302629",
-	border2 = "#4A383D",
+	-- ============================================================================
+	border = "#344D63",
+	border2 = "#4D6F82",
 
+	-- ============================================================================
 	-- Mode cursors
-	cursor = "#F06B88",
-	cursor_normal = "#F2EAE7", -- warm white
-	cursor_insert = "#D72F57", -- sakura pink
-	cursor_visual = "#C75A7A", -- dusty pink
-	cursor_replace = "#B82048", -- deep sakura red
-	cursor_command = "#E8A0A9", -- pale sakura
+	-- ============================================================================
+	cursor = "#FDF1B2",
 
+	cursor_normal = "#FDF1B2",
+	cursor_insert = "#39A6B8",
+	cursor_visual = "#EA4865",
+	cursor_replace = "#FFB0A3",
+	cursor_command = "#DEBF7C",
+
+	-- ============================================================================
 	-- Accent
-	accent = "#D72F57",
-	accent1 = "#E34768",
-	accent2 = "#B82048",
+	-- ============================================================================
+	accent = "#EA4865",
+	accent1 = "#39A6B8",
+	accent2 = "#DEBF7C",
 
+	-- ============================================================================
 	-- Syntax
-	keyword = "#E34768",
-	type = "#F06B88",
-	func = "#F2EAE7",
-	variable = "#D8CFCC",
-	parameter = "#CFC4C1",
-	constant = "#E85A78",
-	string = "#C7BBB5",
-	number = "#E85A78",
-	boolean = "#F06B88",
-	operator = "#E34768",
-	punctuation = "#A49A98",
-	special = "#C75A7A",
+	-- ============================================================================
+	keyword = "#EA4865",
+	type = "#FDF1B2",
+	func = "#39A6B8",
 
+	variable = "#D6D2C8",
+	parameter = "#A9A8A4",
+	property = "#A3B0B5",
+
+	constant = "#A94B70",
+	string = "#DEBF7C",
+	number = "#F99C8F",
+	boolean = "#FFB0A3",
+
+	operator = "#6B8FA3",
+	punctuation = "#4D6F82",
+	special = "#27859A",
+
+	-- ============================================================================
 	-- Diagnostics
-	error = "#F04B68",
-	warning = "#D99070",
-	info = "#AEB8B5",
-	hint = "#9B8C91",
+	-- ============================================================================
+	error = "#EA4865",
+	warning = "#DEBF7C",
+	info = "#39A6B8",
+	hint = "#6B8FA3",
 
+	-- ============================================================================
 	-- Git
-	git_add = "#A8B8A8",
-	git_change = "#E34768",
-	git_delete = "#B82048",
+	-- ============================================================================
+	git_add = "#39A6B8",
+	git_change = "#DEBF7C",
+	git_delete = "#BD4667",
 }
+
 -- ============================================================================
 -- UI
 -- ============================================================================
@@ -110,17 +131,14 @@ local function set_cursor(color)
 	})
 end
 
--- Initial cursor color
 set_cursor(palette.cursor_normal)
 
--- Change the actual Cursor highlight whenever the mode changes.
--- This keeps the cursor as a block while changing only its color.
-vim.api.nvim_create_augroup("BlackWhiteCursor", {
+vim.api.nvim_create_augroup("OmniSakuraCursor", {
 	clear = true,
 })
 
 vim.api.nvim_create_autocmd("ModeChanged", {
-	group = "BlackWhiteCursor",
+	group = "OmniSakuraCursor",
 	callback = function()
 		local mode = vim.api.nvim_get_mode().mode
 
@@ -435,8 +453,34 @@ set(0, "@keyword.operator", {
 	bold = true,
 })
 
+set(0, "@keyword.import", {
+	fg = palette.keyword,
+	bold = true,
+})
+
+set(0, "@keyword.export", {
+	fg = palette.keyword,
+	bold = true,
+})
+
+set(0, "@keyword.conditional", {
+	fg = palette.keyword,
+	bold = true,
+})
+
+set(0, "@keyword.repeat", {
+	fg = palette.keyword,
+	bold = true,
+})
+
+set(0, "@keyword.exception", {
+	fg = palette.keyword,
+	bold = true,
+})
+
 set(0, "@type", {
 	fg = palette.type,
+	bold = true,
 })
 
 set(0, "@type.builtin", {
@@ -448,12 +492,37 @@ set(0, "@type.definition", {
 	bold = true,
 })
 
+set(0, "@type.qualifier", {
+	fg = palette.type,
+})
+
+set(0, "@type.parameter", {
+	fg = palette.type,
+})
+
+set(0, "@storageclass", {
+	fg = palette.type,
+})
+
+set(0, "@attribute", {
+	fg = palette.special,
+})
+
+set(0, "@constructor", {
+	fg = palette.type,
+	bold = true,
+})
+
 set(0, "@function", {
 	fg = palette.func,
 	bold = true,
 })
 
 set(0, "@function.call", {
+	fg = palette.func,
+})
+
+set(0, "@function.builtin", {
 	fg = palette.func,
 })
 
@@ -468,13 +537,10 @@ set(0, "@function.method.call", {
 
 set(0, "@method", {
 	fg = palette.func,
+	bold = true,
 })
 
 set(0, "@method.call", {
-	fg = palette.func,
-})
-
-set(0, "@constructor", {
 	fg = palette.func,
 })
 
@@ -486,28 +552,50 @@ set(0, "@variable.builtin", {
 	fg = palette.accent,
 })
 
+set(0, "@variable.parameter", {
+	fg = palette.parameter,
+	italic = true,
+})
+
 set(0, "@parameter", {
 	fg = palette.parameter,
+	italic = true,
+})
+
+set(0, "@variable.member", {
+	fg = palette.property,
 })
 
 set(0, "@field", {
-	fg = palette.variable,
+	fg = palette.property,
 })
 
 set(0, "@property", {
-	fg = palette.variable,
+	fg = palette.property,
 })
 
 set(0, "@constant", {
 	fg = palette.constant,
+	bold = true,
 })
 
 set(0, "@constant.builtin", {
 	fg = palette.constant,
+	bold = true,
+})
+
+set(0, "@constant.macro", {
+	fg = palette.constant,
+	bold = true,
 })
 
 set(0, "@string", {
 	fg = palette.string,
+})
+
+set(0, "@string.documentation", {
+	fg = palette.string,
+	italic = true,
 })
 
 set(0, "@string.escape", {
@@ -516,6 +604,18 @@ set(0, "@string.escape", {
 
 set(0, "@string.special", {
 	fg = palette.accent1,
+})
+
+set(0, "@string.regexp", {
+	fg = palette.special,
+})
+
+set(0, "@character", {
+	fg = palette.string,
+})
+
+set(0, "@character.special", {
+	fg = palette.special,
 })
 
 set(0, "@number", {
@@ -528,6 +628,7 @@ set(0, "@float", {
 
 set(0, "@boolean", {
 	fg = palette.boolean,
+	bold = true,
 })
 
 set(0, "@operator", {
@@ -546,20 +647,102 @@ set(0, "@punctuation.delimiter", {
 	fg = palette.punctuation,
 })
 
+set(0, "@punctuation.special", {
+	fg = palette.special,
+})
+
 set(0, "@namespace", {
-	fg = palette.punctuation,
+	fg = palette.special,
+})
+
+set(0, "@module", {
+	fg = palette.special,
 })
 
 set(0, "@tag", {
 	fg = palette.keyword,
+	bold = true,
 })
 
 set(0, "@tag.attribute", {
-	fg = palette.variable,
+	fg = palette.property,
 })
 
 set(0, "@tag.delimiter", {
 	fg = palette.punctuation,
+})
+
+-- ============================================================================
+-- LSP Semantic Tokens
+-- ============================================================================
+
+set(0, "@lsp.type.class", {
+	fg = palette.type,
+	bold = true,
+})
+
+set(0, "@lsp.type.struct", {
+	fg = palette.type,
+	bold = true,
+})
+
+set(0, "@lsp.type.enum", {
+	fg = palette.type,
+	bold = true,
+})
+
+set(0, "@lsp.type.interface", {
+	fg = palette.type,
+	bold = true,
+})
+
+set(0, "@lsp.type.type", {
+	fg = palette.type,
+})
+
+set(0, "@lsp.type.typeParameter", {
+	fg = palette.type,
+})
+
+set(0, "@lsp.type.function", {
+	fg = palette.func,
+	bold = true,
+})
+
+set(0, "@lsp.type.method", {
+	fg = palette.func,
+	bold = true,
+})
+
+set(0, "@lsp.type.parameter", {
+	fg = palette.parameter,
+	italic = true,
+})
+
+set(0, "@lsp.type.variable", {
+	fg = palette.variable,
+})
+
+set(0, "@lsp.type.property", {
+	fg = palette.property,
+})
+
+set(0, "@lsp.type.namespace", {
+	fg = palette.special,
+})
+
+set(0, "@lsp.type.enumMember", {
+	fg = palette.constant,
+	bold = true,
+})
+
+set(0, "@lsp.type.typeAlias", {
+	fg = palette.type,
+	bold = true,
+})
+
+set(0, "@lsp.type.decorator", {
+	fg = palette.special,
 })
 
 -- ============================================================================
@@ -600,18 +783,22 @@ set(0, "DiagnosticVirtualTextHint", {
 
 set(0, "DiagnosticUnderlineError", {
 	undercurl = true,
+	sp = palette.error,
 })
 
 set(0, "DiagnosticUnderlineWarn", {
 	undercurl = true,
+	sp = palette.warning,
 })
 
 set(0, "DiagnosticUnderlineInfo", {
 	undercurl = true,
+	sp = palette.info,
 })
 
 set(0, "DiagnosticUnderlineHint", {
 	undercurl = true,
+	sp = palette.hint,
 })
 
 -- ============================================================================
@@ -1003,6 +1190,26 @@ for _, hl in ipairs(vim.fn.getcompletion("leetcode_", "highlight")) do
 	})
 end
 
+set(0, "leetcode_normal", {
+	fg = palette.muted,
+})
+
+set(0, "leetcode_alt", {
+	fg = palette.muted,
+})
+
+set(0, "leetcode_description", {
+	fg = palette.muted,
+})
+
+set(0, "leetcode_list", {
+	fg = palette.muted,
+})
+
+set(0, "leetcode_indent", {
+	fg = palette.muted,
+})
+
 set(0, "leetcode_easy", {
 	fg = palette.fg,
 	bold = true,
@@ -1028,10 +1235,6 @@ set(0, "leetcode_medium_alt", {
 
 set(0, "leetcode_hard_alt", {
 	fg = palette.dim,
-})
-
-set(0, "leetcode_alt", {
-	fg = palette.muted,
 })
 
 -- ============================================================================

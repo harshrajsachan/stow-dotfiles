@@ -2,16 +2,13 @@ return {
   'neovim/nvim-lspconfig',
 
   dependencies = {
-    -- Mason
     {
       'mason-org/mason.nvim',
       config = true,
     },
 
-    -- Mason ↔ LSP name mapping
     'mason-org/mason-lspconfig.nvim',
 
-    -- LSP progress notifications
     {
       'j-hui/fidget.nvim',
       opts = {
@@ -23,7 +20,6 @@ return {
       },
     },
 
-    -- nvim-cmp LSP capabilities
     'hrsh7th/cmp-nvim-lsp',
   },
 
@@ -38,10 +34,6 @@ return {
       }),
 
       callback = function(event)
-        -------------------------------------------------------
-        -- Helper for buffer-local LSP mappings
-        -------------------------------------------------------
-
         local map = function(keys, func, desc, mode)
           mode = mode or 'n'
 
@@ -56,11 +48,8 @@ return {
         -------------------------------------------------------
 
         map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-
         map('gr', vim.lsp.buf.references, '[G]oto [R]eferences')
-
         map('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-
         map('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
 
         -------------------------------------------------------
@@ -68,7 +57,6 @@ return {
         -------------------------------------------------------
 
         map('<leader>ds', vim.lsp.buf.document_symbol, '[D]ocument [S]ymbols')
-
         map('<leader>ws', vim.lsp.buf.workspace_symbol, '[W]orkspace [S]ymbols')
 
         -------------------------------------------------------
@@ -165,7 +153,6 @@ return {
     -----------------------------------------------------------
 
     local servers = {
-
       ---------------------------------------------------------
       -- C / C++
       ---------------------------------------------------------
@@ -261,7 +248,6 @@ return {
 
             workspace = {
               checkThirdParty = false,
-
               library = vim.api.nvim_get_runtime_file('', true),
             },
 
@@ -284,23 +270,121 @@ return {
     }
 
     -----------------------------------------------------------
-    -- CONFIGURE + ENABLE LSP SERVERS
+    -- CONFIGURE LSP SERVERS
+    --
+    -- Servers are configured but NOT enabled automatically.
     -----------------------------------------------------------
 
     for server, cfg in pairs(servers) do
       cfg.capabilities = vim.tbl_deep_extend('force', {}, capabilities, cfg.capabilities or {})
 
       vim.lsp.config(server, cfg)
-      vim.lsp.enable(server)
     end
+
+    -----------------------------------------------------------
+    -- FILETYPE → LSP
+    -----------------------------------------------------------
+
+    local filetype_servers = {
+      -- C / C++
+      c = 'clangd',
+      cpp = 'clangd',
+      objc = 'clangd',
+      objcpp = 'clangd',
+
+      -- Python
+      python = 'pyright',
+
+      -- Bash / Shell
+      sh = 'bashls',
+      bash = 'bashls',
+
+      -- JavaScript / TypeScript
+      javascript = 'ts_ls',
+      javascriptreact = 'ts_ls',
+      typescript = 'ts_ls',
+      typescriptreact = 'ts_ls',
+
+      -- HTML
+      html = 'html',
+
+      -- CSS
+      css = 'cssls',
+      scss = 'cssls',
+
+      -- Tailwind
+      astro = 'tailwindcss',
+      svelte = 'tailwindcss',
+
+      -- Docker
+      dockerfile = 'dockerls',
+
+      -- SQL
+      sql = 'sqlls',
+
+      -- Terraform
+      terraform = 'terraformls',
+
+      -- JSON
+      json = 'jsonls',
+
+      -- YAML
+      yaml = 'yamlls',
+
+      -- Lua
+      lua = 'lua_ls',
+    }
+
+    -----------------------------------------------------------
+    -- MANUAL LSP START
+    --
+    -- <leader>ls
+    -----------------------------------------------------------
+
+    vim.keymap.set('n', '<leader>ls', function()
+      local filetype = vim.bo.filetype
+      local server = filetype_servers[filetype]
+
+      if not server then
+        vim.notify('No LSP configured for: ' .. filetype, vim.log.levels.WARN)
+        return
+      end
+
+      vim.lsp.enable(server)
+
+      vim.notify(server .. ' enabled', vim.log.levels.INFO)
+    end, {
+      desc = 'LSP: Start',
+    })
+
+    -----------------------------------------------------------
+    -- MANUAL LSP STOP
+    --
+    -- <leader>lS
+    -----------------------------------------------------------
+
+    vim.keymap.set('n', '<leader>lS', function()
+      local filetype = vim.bo.filetype
+      local server = filetype_servers[filetype]
+
+      if not server then
+        vim.notify('No LSP configured for: ' .. filetype, vim.log.levels.WARN)
+        return
+      end
+
+      -- Disable the server so it cannot restart.
+      vim.lsp.enable(server, false)
+
+      -- Stop the currently running client.
+      for _, client in ipairs(vim.lsp.get_clients { bufnr = 0 }) do
+        if client.name == server then
+          vim.lsp.stop_client(client.id)
+        end
+      end
+
+      vim.notify(server .. ' stopped', vim.log.levels.INFO)
+    end, {
+      desc = 'LSP: Stop',
+    })
   end,
 }
-
--- | Mapping      | Before                                | Now                            |
--- | ------------ | ------------------------------------- | ------------------------------ |
--- | `gd`         | `Snacks.picker.lsp_definitions`       | `vim.lsp.buf.definition`       |
--- | `gr`         | `Snacks.picker.lsp_references`        | `vim.lsp.buf.references`       |
--- | `gI`         | `Snacks.picker.lsp_implementations`   | `vim.lsp.buf.implementation`   |
--- | `<leader>D`  | `Snacks.picker.lsp_type_definitions`  | `vim.lsp.buf.type_definition`  |
--- | `<leader>ds` | `Snacks.picker.lsp_symbols`           | `vim.lsp.buf.document_symbol`  |
--- | `<leader>ws` | `Snacks.picker.lsp_workspace_symbols` | `vim.lsp.buf.workspace_symbol` |

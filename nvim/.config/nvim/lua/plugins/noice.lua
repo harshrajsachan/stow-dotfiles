@@ -1,7 +1,6 @@
 return {
   {
     'folke/noice.nvim',
-
     event = 'VeryLazy',
 
     dependencies = {
@@ -10,6 +9,35 @@ return {
     },
 
     opts = {
+      cmdline = {
+        enabled = true,
+        view = 'cmdline',
+      },
+
+      views = {
+        cmdline = {
+          position = {
+            row = '100%',
+            col = 0,
+          },
+
+          size = {
+            width = '100%',
+            height = 1,
+          },
+
+          border = {
+            style = 'none',
+            padding = { 0, 0 },
+          },
+
+          win_options = {
+            winblend = 0,
+            winhighlight = 'Normal:Normal',
+          },
+        },
+      },
+
       lsp = {
         progress = {
           enabled = true,
@@ -23,11 +51,11 @@ return {
       },
 
       presets = {
-        bottom_search = true,
-        command_palette = true,
+        bottom_search = false,
+        command_palette = false,
         long_message_to_split = true,
         inc_rename = false,
-        lsp_doc_border = true,
+        lsp_doc_border = false,
       },
     },
   },

@@ -106,9 +106,9 @@ end, {
   desc = 'Yank entire file',
 })
 
--- delete whole file
-vim.keymap.set('n', '<leader>dd', '<cmd>%d+<cr>', {
-  desc = 'Cut entire file to clipboard',
+-- select whole file
+vim.keymap.set('n', '<leader>dd', 'ggVG', {
+  desc = 'Select entire file',
 })
 
 -- Move selected lines down
@@ -209,3 +209,50 @@ end, {
 vim.keymap.set({ 'n', 'v', 'o' }, 'gh', '^', { noremap = true, silent = true })
 vim.keymap.set({ 'n', 'v', 'o' }, 'gl', '$', { noremap = true, silent = true })
 vim.keymap.set({ 'n', 'v', 'o' }, 'gm', '%', { noremap = true, silent = true })
+
+vim.keymap.set('n', '<leader>uc', function()
+  Snacks.picker.colorschemes()
+end, { desc = 'Choose Colorscheme' })
+
+--binding j to gj and k to gk
+vim.keymap.set('n', 'j', 'gj', { desc = 'Move down visually' })
+vim.keymap.set('n', 'k', 'gk', { desc = 'Move up visually' })
+
+--delete buffer
+vim.keymap.set('n', '<C-q>', function()
+  vim.cmd 'bdelete'
+end, { desc = 'Delete buffer' })
+
+vim.keymap.set('n', '<leader>sq', function()
+  vim.cmd 'write'
+  vim.cmd('botright 15split | terminal sqlite3 :memory: < ' .. vim.fn.shellescape(vim.fn.expand '%:p'))
+end, { desc = 'Run SQL' })
+
+vim.keymap.set('n', '<leader>lx', function()
+  vim.cmd 'LiveServerToggle'
+end, { desc = 'LiveSever' })
+
+--Dap Keymap For C++
+vim.keymap.set('n', '<leader>1', function()
+  require('dap').continue()
+end)
+
+vim.keymap.set('n', '<leader>2', function()
+  require('dap').toggle_breakpoint()
+end)
+
+vim.keymap.set('n', '<leader>3', function()
+  require('dap').step_over()
+end)
+
+vim.keymap.set('n', '<leader>4', function()
+  require('dap').step_into()
+end)
+
+vim.keymap.set('n', '<leader5>', function()
+  require('dap').step_out()
+end)
+
+vim.keymap.set('n', '<leader>du', function()
+  require('dapui').toggle()
+end)

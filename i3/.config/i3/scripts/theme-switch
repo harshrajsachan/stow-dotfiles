@@ -37,7 +37,7 @@ die() {
 }
 
 # ============================================================================
-# Validate
+# Validate Base Configuration
 # ============================================================================
 
 [[ -d "$THEMES_DIR" ]] ||
@@ -57,7 +57,11 @@ CURRENT_THEME=""
 
 if [[ -L "$CURRENT" ]]; then
 
-    CURRENT_THEME="$(basename "$(readlink -f "$CURRENT")")"
+    CURRENT_RESOLVED="$(readlink -f "$CURRENT" 2>/dev/null || true)"
+
+    if [[ -n "$CURRENT_RESOLVED" ]]; then
+        CURRENT_THEME="$(basename "$CURRENT_RESOLVED")"
+    fi
 
 fi
 
@@ -106,19 +110,73 @@ SELECTED="${SELECTED%"${SELECTED##*[![:space:]]}"}"
 # Validate Selection
 # ============================================================================
 
-[[ -n "$SELECTED" ]] ||
-    exit 0
+[[ -n "$SELECTED" ]] || exit 0
 
 NEXT_THEME="$SELECTED"
 NEXT_DIR="$THEMES_DIR/$NEXT_THEME"
 
 # ============================================================================
+# HARD PROTECTION
+# ============================================================================
+#
+# "current" is NOT a theme.
+#
+# It is a special symlink that points to the active theme.
+# Never allow it to be selected or used as a destination.
+#
+# ============================================================================
+
+if [[ "$NEXT_THEME" == "current" ]]; then
+
+    die "'current' is the active-theme symlink and cannot be selected"
+
+fi
+
+# ============================================================================
+# Protect Against Path Traversal
+# ============================================================================
+#
+# Theme names must be simple directory names.
+#
+# Reject:
+#
+#   /
+#   ..
+#   .
+#   ./theme
+#   ../theme
+#   foo/bar
+#
+# ============================================================================
+
+if [[ "$NEXT_THEME" == "." ||
+    "$NEXT_THEME" == ".." ||
+    "$NEXT_THEME" == *"/"* ||
+    "$NEXT_THEME" == *"\\"* ]]; then
+
+    die "Invalid theme name: $NEXT_THEME"
+
+fi
+
+# ============================================================================
 # Validate Selected Theme
 # ============================================================================
 
+if [[ ! -e "$NEXT_DIR" ]]; then
+
+    die "Theme does not exist: $NEXT_DIR"
+
+fi
+
 if [[ ! -d "$NEXT_DIR" ]]; then
 
-    die "Theme directory does not exist: $NEXT_DIR"
+    die "Selected theme is not a directory: $NEXT_DIR"
+
+fi
+
+if [[ -L "$NEXT_DIR" ]]; then
+
+    die "Selected theme is a symlink and cannot be used: $NEXT_DIR"
 
 fi
 
@@ -127,6 +185,27 @@ if [[ ! -r "$NEXT_DIR" ]]; then
     die "Theme directory is not readable: $NEXT_DIR"
 
 fi
+
+# ============================================================================
+# Ensure Selected Theme Is Direct Child Of Themes Directory
+# ============================================================================
+
+NEXT_RESOLVED="$(readlink -f "$NEXT_DIR" 2>/dev/null || true)"
+THEMES_RESOLVED="$(readlink -f "$THEMES_DIR" 2>/dev/null || true)"
+
+[[ -n "$NEXT_RESOLVED" ]] ||
+    die "Could not resolve selected theme: $NEXT_DIR"
+
+[[ -n "$THEMES_RESOLVED" ]] ||
+    die "Could not resolve themes directory: $THEMES_DIR"
+
+case "$NEXT_RESOLVED" in
+"$THEMES_RESOLVED"/*)
+    ;;
+*)
+    die "Selected theme resolves outside themes directory: $NEXT_RESOLVED"
+    ;;
+esac
 
 # ============================================================================
 # Same Theme
@@ -158,7 +237,29 @@ ln -sfnT \
     "$NEXT_DIR" \
     "$CURRENT"
 
-CURRENT_THEME_PATH="$(readlink -f "$CURRENT")"
+# ============================================================================
+# Verify Global Theme Symlink
+# ============================================================================
+
+if [[ ! -L "$CURRENT" ]]; then
+
+    die "Failed to create current theme symlink"
+
+fi
+
+CURRENT_THEME_PATH="$(readlink -f "$CURRENT" 2>/dev/null || true)"
+
+if [[ -z "$CURRENT_THEME_PATH" ]]; then
+
+    die "current symlink is broken after switching"
+
+fi
+
+if [[ "$CURRENT_THEME_PATH" != "$NEXT_RESOLVED" ]]; then
+
+    die "current symlink points to the wrong theme"
+
+fi
 
 # ============================================================================
 # 2. Rofi Palette
