@@ -1,0 +1,30 @@
+return {
+  "TheAK12/runic.nvim",
+  main = "runic",
+  opts = {
+      create_commands = true,
+      create_keymaps = true,
+      keymap_mode = "safe", -- "safe" | "force" | "off"
+      keymaps = {
+            run = "<leader>r",
+            pick = "<leader>rp",
+            last = "<leader>rl",
+            legacy = "<leader>R",
+            cf_mode_on = "<leader>cfo",
+            cf_mode_off = "<leader>cfO",
+            cf_status = "<leader>cfs",
+            cf_start = "<leader>cfn",
+            cf_profile_contest = "<leader>cfp",
+            cf_profile_debug = "<leader>cfP",
+            cf_import = "<leader>cfi",
+            cf_test = "<leader>cft",
+            cf_watch_on = "<leader>cfw",
+            cf_watch_off = "<leader>cfW",
+            cf_stress = "<leader>cfx",
+            cf_replay = "<leader>cfr",
+            cf_check = "<leader>cfc",
+            cf_submit = "<leader>cfu",
+            cf_problem_view = "<leader>cfv",
+      },
+  },
+}

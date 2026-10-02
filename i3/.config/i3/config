@@ -133,6 +133,8 @@ bindsym --release $mod+Ctrl+0 move container to workspace $ws10; workspace $ws10
 # Previous / Next Workspace
 bindsym --release $mod+grave workspace prev
 bindsym --release $mod+Tab workspace next
+bindsym --release Mod1+h workspace prev
+bindsym --release Mod1+l workspace next
 
 # Focus Windows
 bindsym --release $mod+h focus left
@@ -250,4 +252,5 @@ bindsym --release $mod+Shift+c reload
 
 # Restart
 bindsym --release $mod+Shift+r restart
+bindsym --release $mod+Shift+k exec ~/.config/i3/scripts/kanata.sh
 

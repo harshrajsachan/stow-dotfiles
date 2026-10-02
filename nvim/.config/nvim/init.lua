@@ -30,7 +30,7 @@ require('lazy').setup {
   require 'plugins.new-file',
   require 'plugins.leet',
   require 'plugins.bufferline',
-  require 'plugins.lualine',
+  -- require 'plugins.lualine',
   require 'plugins.autocompletion',
   require 'plugins.blink',
   require 'plugins.gitsigns',
